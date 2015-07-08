@@ -167,11 +167,6 @@ function iishagenda_event_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  /* Field: Content: Zaal */
-  $handler->display->display_options['fields']['field_room']['id'] = 'field_room';
-  $handler->display->display_options['fields']['field_room']['table'] = 'field_data_field_room';
-  $handler->display->display_options['fields']['field_room']['field'] = 'field_room';
-  $handler->display->display_options['fields']['field_room']['type'] = 'node_reference_plain';
   /* Field: Content: Mensen */
   $handler->display->display_options['fields']['field_people']['id'] = 'field_people';
   $handler->display->display_options['fields']['field_people']['table'] = 'field_data_field_people';
@@ -377,10 +372,11 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
   $handler->display->display_options['fields']['field_note']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_note']['element_label_colon'] = FALSE;
   /* Field: Content: Zaal */
-  $handler->display->display_options['fields']['field_room']['id'] = 'field_room';
-  $handler->display->display_options['fields']['field_room']['table'] = 'field_data_field_room';
-  $handler->display->display_options['fields']['field_room']['field'] = 'field_room';
-  $handler->display->display_options['fields']['field_room']['type'] = 'node_reference_plain';
+  $handler->display->display_options['fields']['field_event_room']['id'] = 'field_event_room';
+  $handler->display->display_options['fields']['field_event_room']['table'] = 'field_data_field_event_room';
+  $handler->display->display_options['fields']['field_event_room']['field'] = 'field_event_room';
+  $handler->display->display_options['fields']['field_event_room']['type'] = 'node_reference_plain';
+  $handler->display->display_options['fields']['field_event_room']['delta_offset'] = '0';
   /* Field: Content: Mensen */
   $handler->display->display_options['fields']['field_people']['id'] = 'field_people';
   $handler->display->display_options['fields']['field_people']['table'] = 'field_data_field_people';
@@ -493,7 +489,6 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
 [field_event_date]<br>
 [field_event_date_1]
 '),
-    t('Zaal'),
     t('Personen'),
     t('Catering'),
     t('Catering page'),
@@ -504,6 +499,7 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
     t('[title]<br>
 [field_event_date]<br>
 [field_event_date_1]'),
+    t('Zaal'),
     t('Week'),
     t('Event-date -  start date (field_event_date)'),
     t('Catering vandaag block'),
@@ -827,7 +823,7 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  /* Field: Content: Zaal */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_room']['id'] = 'field_room';
   $handler->display->display_options['fields']['field_room']['table'] = 'field_data_field_room';
   $handler->display->display_options['fields']['field_room']['field'] = 'field_room';
@@ -902,10 +898,12 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
   );
   $handler->display->display_options['filters']['field_type_activity_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_type_activity_tid']['vocabulary'] = 'event_type';
-  /* Filter criterion: Content: Zaal (field_room) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_room_nid']['id'] = 'field_room_nid';
   $handler->display->display_options['filters']['field_room_nid']['table'] = 'field_data_field_room';
   $handler->display->display_options['filters']['field_room_nid']['field'] = 'field_room_nid';
+  $handler->display->display_options['filters']['field_room_nid']['operator'] = 'in';
+  $handler->display->display_options['filters']['field_room_nid']['value'] = array();
   $handler->display->display_options['filters']['field_room_nid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_room_nid']['expose']['operator_id'] = 'field_room_nid_op';
   $handler->display->display_options['filters']['field_room_nid']['expose']['label'] = 'Room';
@@ -1006,10 +1004,10 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
     'multiple_to' => '',
   );
   /* Field: Content: Zaal */
-  $handler->display->display_options['fields']['field_room']['id'] = 'field_room';
-  $handler->display->display_options['fields']['field_room']['table'] = 'field_data_field_room';
-  $handler->display->display_options['fields']['field_room']['field'] = 'field_room';
-  $handler->display->display_options['fields']['field_room']['label'] = 'Room';
+  $handler->display->display_options['fields']['field_event_room']['id'] = 'field_event_room';
+  $handler->display->display_options['fields']['field_event_room']['table'] = 'field_data_field_event_room';
+  $handler->display->display_options['fields']['field_event_room']['field'] = 'field_event_room';
+  $handler->display->display_options['fields']['field_event_room']['delta_offset'] = '0';
   /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
@@ -1072,21 +1070,6 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
   );
   $handler->display->display_options['filters']['field_type_activity_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_type_activity_tid']['vocabulary'] = 'event_type';
-  /* Filter criterion: Content: Zaal (field_room) */
-  $handler->display->display_options['filters']['field_room_nid']['id'] = 'field_room_nid';
-  $handler->display->display_options['filters']['field_room_nid']['table'] = 'field_data_field_room';
-  $handler->display->display_options['filters']['field_room_nid']['field'] = 'field_room_nid';
-  $handler->display->display_options['filters']['field_room_nid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_room_nid']['expose']['operator_id'] = 'field_room_nid_op';
-  $handler->display->display_options['filters']['field_room_nid']['expose']['label'] = 'Room';
-  $handler->display->display_options['filters']['field_room_nid']['expose']['description'] = 'of op zaal';
-  $handler->display->display_options['filters']['field_room_nid']['expose']['operator'] = 'field_room_nid_op';
-  $handler->display->display_options['filters']['field_room_nid']['expose']['identifier'] = 'field_room_nid';
-  $handler->display->display_options['filters']['field_room_nid']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-  );
   /* Filter criterion: Content: Goedgekeurd (field_approved) */
   $handler->display->display_options['filters']['field_approved_value']['id'] = 'field_approved_value';
   $handler->display->display_options['filters']['field_approved_value']['table'] = 'field_data_field_approved';
@@ -1254,10 +1237,10 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
     'multiple_to' => '',
   );
   /* Field: Content: Zaal */
-  $handler->display->display_options['fields']['field_room']['id'] = 'field_room';
-  $handler->display->display_options['fields']['field_room']['table'] = 'field_data_field_room';
-  $handler->display->display_options['fields']['field_room']['field'] = 'field_room';
-  $handler->display->display_options['fields']['field_room']['label'] = 'Room';
+  $handler->display->display_options['fields']['field_event_room']['id'] = 'field_event_room';
+  $handler->display->display_options['fields']['field_event_room']['table'] = 'field_data_field_event_room';
+  $handler->display->display_options['fields']['field_event_room']['field'] = 'field_event_room';
+  $handler->display->display_options['fields']['field_event_room']['delta_offset'] = '0';
   /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
@@ -1328,22 +1311,6 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
   );
   $handler->display->display_options['filters']['field_type_activity_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_type_activity_tid']['vocabulary'] = 'event_type';
-  /* Filter criterion: Content: Zaal (field_room) */
-  $handler->display->display_options['filters']['field_room_nid']['id'] = 'field_room_nid';
-  $handler->display->display_options['filters']['field_room_nid']['table'] = 'field_data_field_room';
-  $handler->display->display_options['filters']['field_room_nid']['field'] = 'field_room_nid';
-  $handler->display->display_options['filters']['field_room_nid']['group'] = 1;
-  $handler->display->display_options['filters']['field_room_nid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_room_nid']['expose']['operator_id'] = 'field_room_nid_op';
-  $handler->display->display_options['filters']['field_room_nid']['expose']['label'] = 'Room';
-  $handler->display->display_options['filters']['field_room_nid']['expose']['description'] = 'of op zaal';
-  $handler->display->display_options['filters']['field_room_nid']['expose']['operator'] = 'field_room_nid_op';
-  $handler->display->display_options['filters']['field_room_nid']['expose']['identifier'] = 'field_room_nid';
-  $handler->display->display_options['filters']['field_room_nid']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-  );
   /* Filter criterion: Content: Datum -  start date (field_event_date) */
   $handler->display->display_options['filters']['field_event_date_value']['id'] = 'field_event_date_value';
   $handler->display->display_options['filters']['field_event_date_value']['table'] = 'field_data_field_event_date';
@@ -1671,10 +1638,10 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
     'multiple_to' => '',
   );
   /* Field: Content: Zaal */
-  $handler->display->display_options['fields']['field_room']['id'] = 'field_room';
-  $handler->display->display_options['fields']['field_room']['table'] = 'field_data_field_room';
-  $handler->display->display_options['fields']['field_room']['field'] = 'field_room';
-  $handler->display->display_options['fields']['field_room']['label'] = 'Room';
+  $handler->display->display_options['fields']['field_event_room']['id'] = 'field_event_room';
+  $handler->display->display_options['fields']['field_event_room']['table'] = 'field_data_field_event_room';
+  $handler->display->display_options['fields']['field_event_room']['field'] = 'field_event_room';
+  $handler->display->display_options['fields']['field_event_room']['delta_offset'] = '0';
   /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
@@ -1750,10 +1717,12 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
   );
   $handler->display->display_options['filters']['field_type_activity_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_type_activity_tid']['vocabulary'] = 'event_type';
-  /* Filter criterion: Content: Zaal (field_room) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_room_nid']['id'] = 'field_room_nid';
   $handler->display->display_options['filters']['field_room_nid']['table'] = 'field_data_field_room';
   $handler->display->display_options['filters']['field_room_nid']['field'] = 'field_room_nid';
+  $handler->display->display_options['filters']['field_room_nid']['operator'] = 'in';
+  $handler->display->display_options['filters']['field_room_nid']['value'] = array();
   $handler->display->display_options['filters']['field_room_nid']['group'] = 1;
   $handler->display->display_options['filters']['field_room_nid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_room_nid']['expose']['operator_id'] = 'field_room_nid_op';
@@ -2108,10 +2077,10 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
     'multiple_to' => '',
   );
   /* Field: Content: Zaal */
-  $handler->display->display_options['fields']['field_room']['id'] = 'field_room';
-  $handler->display->display_options['fields']['field_room']['table'] = 'field_data_field_room';
-  $handler->display->display_options['fields']['field_room']['field'] = 'field_room';
-  $handler->display->display_options['fields']['field_room']['label'] = 'Room';
+  $handler->display->display_options['fields']['field_event_room']['id'] = 'field_event_room';
+  $handler->display->display_options['fields']['field_event_room']['table'] = 'field_data_field_event_room';
+  $handler->display->display_options['fields']['field_event_room']['field'] = 'field_event_room';
+  $handler->display->display_options['fields']['field_event_room']['delta_offset'] = '0';
   /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
@@ -2180,10 +2149,12 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
   );
   $handler->display->display_options['filters']['field_type_activity_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_type_activity_tid']['vocabulary'] = 'event_type';
-  /* Filter criterion: Content: Zaal (field_room) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_room_nid']['id'] = 'field_room_nid';
   $handler->display->display_options['filters']['field_room_nid']['table'] = 'field_data_field_room';
   $handler->display->display_options['filters']['field_room_nid']['field'] = 'field_room_nid';
+  $handler->display->display_options['filters']['field_room_nid']['operator'] = 'in';
+  $handler->display->display_options['filters']['field_room_nid']['value'] = array();
   $handler->display->display_options['filters']['field_room_nid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_room_nid']['expose']['operator_id'] = 'field_room_nid_op';
   $handler->display->display_options['filters']['field_room_nid']['expose']['label'] = 'Room';
@@ -2511,10 +2482,10 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
     'multiple_to' => '',
   );
   /* Field: Content: Zaal */
-  $handler->display->display_options['fields']['field_room']['id'] = 'field_room';
-  $handler->display->display_options['fields']['field_room']['table'] = 'field_data_field_room';
-  $handler->display->display_options['fields']['field_room']['field'] = 'field_room';
-  $handler->display->display_options['fields']['field_room']['label'] = 'Room';
+  $handler->display->display_options['fields']['field_event_room']['id'] = 'field_event_room';
+  $handler->display->display_options['fields']['field_event_room']['table'] = 'field_data_field_event_room';
+  $handler->display->display_options['fields']['field_event_room']['field'] = 'field_event_room';
+  $handler->display->display_options['fields']['field_event_room']['delta_offset'] = '0';
   /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
@@ -2591,22 +2562,6 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
   );
   $handler->display->display_options['filters']['field_type_activity_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_type_activity_tid']['vocabulary'] = 'event_type';
-  /* Filter criterion: Content: Zaal (field_room) */
-  $handler->display->display_options['filters']['field_room_nid']['id'] = 'field_room_nid';
-  $handler->display->display_options['filters']['field_room_nid']['table'] = 'field_data_field_room';
-  $handler->display->display_options['filters']['field_room_nid']['field'] = 'field_room_nid';
-  $handler->display->display_options['filters']['field_room_nid']['group'] = 1;
-  $handler->display->display_options['filters']['field_room_nid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_room_nid']['expose']['operator_id'] = 'field_room_nid_op';
-  $handler->display->display_options['filters']['field_room_nid']['expose']['label'] = 'Room';
-  $handler->display->display_options['filters']['field_room_nid']['expose']['description'] = 'of op zaal';
-  $handler->display->display_options['filters']['field_room_nid']['expose']['operator'] = 'field_room_nid_op';
-  $handler->display->display_options['filters']['field_room_nid']['expose']['identifier'] = 'field_room_nid';
-  $handler->display->display_options['filters']['field_room_nid']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-  );
   /* Filter criterion: Content: Datum -  start date (field_event_date) */
   $handler->display->display_options['filters']['field_event_date_value']['id'] = 'field_event_date_value';
   $handler->display->display_options['filters']['field_event_date_value']['table'] = 'field_data_field_event_date';
@@ -2666,6 +2621,7 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
     t('Upcoming events'),
     t('Title Link'),
     t('[title] [field_canceled]'),
+    t('Zaal'),
     t('My events'),
     t('Mijn evenementen'),
     t('Approved'),

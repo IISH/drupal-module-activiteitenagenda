@@ -704,14 +704,14 @@ function iishagenda_event_field_default_field_instances() {
     'bundle' => 'event',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'You can give some wishes requirements if you want',
+    'description' => 'Geef hier aanvullende informatie / wensen met betrekking tot de zaal (bijv extra stoelen)',
     'display' => array(
       'default' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 6,
+        'weight' => 19,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -732,10 +732,10 @@ function iishagenda_event_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'rows' => 3,
+        'rows' => 2,
       ),
       'type' => 'text_textarea',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
@@ -751,7 +751,7 @@ function iishagenda_event_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 18,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -864,51 +864,6 @@ function iishagenda_event_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 11,
-    ),
-  );
-
-  // Exported field_instance: 'node-event-field_room'
-  $field_instances['node-event-field_room'] = array(
-    'bundle' => 'event',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Bekijk <a href=\'/rooms\' target=\'_blank\'>Zaaloverzicht</a> voor een lijst met alle beschikbare zalen en eigenschappen',
-    'display' => array(
-      'default' => array(
-        'label' => 'inline',
-        'module' => 'node_reference',
-        'settings' => array(),
-        'type' => 'node_reference_default',
-        'weight' => 4,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'module' => 'node_reference',
-        'settings' => array(),
-        'type' => 'node_reference_default',
-        'weight' => 2,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'module' => 'node_reference',
-        'settings' => array(),
-        'type' => 'node_reference_default',
-        'weight' => 2,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_room',
-    'label' => 'Zaal',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 10,
     ),
   );
 
@@ -1086,7 +1041,6 @@ function iishagenda_event_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('(uu:mm)  ');
-  t('Bekijk <a href=\'/rooms\' target=\'_blank\'>Zaaloverzicht</a> voor een lijst met alle beschikbare zalen en eigenschappen');
   t('Beschrijving');
   t('Bestaande gebruiker');
   t('Bijlage');
@@ -1102,6 +1056,7 @@ function iishagenda_event_field_default_field_instances() {
   t('Geannuleerd');
   t('Geef het maximaal aantal mensen op ');
   t('Geef hier aan of een andere opstelling mogelijk is en hoeveel plaatsen daarbij horen. Bijv: Theateropstelling: 80 plaatsen');
+  t('Geef hier aanvullende informatie / wensen met betrekking tot de zaal (bijv extra stoelen)');
   t('Goedgekeurd');
   t('Intern / Extern');
   t('Kostenpost');
@@ -1115,8 +1070,6 @@ function iishagenda_event_field_default_field_instances() {
   t('Telefoon');
   t('Tijd');
   t('Vink aan als het gaat om een speciaal evenement');
-  t('You can give some wishes requirements if you want');
-  t('Zaal');
 
   return $field_instances;
 }

@@ -23,9 +23,4 @@
         });
     });
 
-
-
 })(jQuery, Drupal, this, this.document);
-
-
-

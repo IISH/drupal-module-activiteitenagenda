@@ -69,20 +69,20 @@ function iishagenda_calendar_views_default_views() {
   );
   $handler->display->display_options['fields']['field_event_date']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_event_date']['delta_offset'] = '0';
+  /* Field: Content: Zaal */
+  $handler->display->display_options['fields']['field_event_room']['id'] = 'field_event_room';
+  $handler->display->display_options['fields']['field_event_room']['table'] = 'field_data_field_event_room';
+  $handler->display->display_options['fields']['field_event_room']['field'] = 'field_event_room';
+  $handler->display->display_options['fields']['field_event_room']['label'] = '';
+  $handler->display->display_options['fields']['field_event_room']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_event_room']['type'] = 'node_reference_plain';
+  $handler->display->display_options['fields']['field_event_room']['delta_offset'] = '0';
   /* Field: Content: Geannuleerd */
   $handler->display->display_options['fields']['field_canceled']['id'] = 'field_canceled';
   $handler->display->display_options['fields']['field_canceled']['table'] = 'field_data_field_canceled';
   $handler->display->display_options['fields']['field_canceled']['field'] = 'field_canceled';
   $handler->display->display_options['fields']['field_canceled']['label'] = '';
   $handler->display->display_options['fields']['field_canceled']['element_label_colon'] = FALSE;
-  /* Field: Content: Zaal */
-  $handler->display->display_options['fields']['field_room']['id'] = 'field_room';
-  $handler->display->display_options['fields']['field_room']['table'] = 'field_data_field_room';
-  $handler->display->display_options['fields']['field_room']['field'] = 'field_room';
-  $handler->display->display_options['fields']['field_room']['label'] = '';
-  $handler->display->display_options['fields']['field_room']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_room']['type'] = 'node_reference_plain';
-  $handler->display->display_options['fields']['field_room']['delta_offset'] = '0';
   /* Sort criterion: Content: Datum -  start date (field_event_date) */
   $handler->display->display_options['sorts']['field_event_date_value']['id'] = 'field_event_date_value';
   $handler->display->display_options['sorts']['field_event_date_value']['table'] = 'field_data_field_event_date';
@@ -121,6 +121,38 @@ function iishagenda_calendar_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'calendar_entity';
   $handler->display->display_options['row_options']['colors']['legend'] = 'type';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['hide_alter_empty'] = FALSE;
+  /* Field: Content: Datum */
+  $handler->display->display_options['fields']['field_event_date']['id'] = 'field_event_date';
+  $handler->display->display_options['fields']['field_event_date']['table'] = 'field_data_field_event_date';
+  $handler->display->display_options['fields']['field_event_date']['field'] = 'field_event_date';
+  $handler->display->display_options['fields']['field_event_date']['label'] = '';
+  $handler->display->display_options['fields']['field_event_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_event_date']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['field_event_date']['settings'] = array(
+    'format_type' => 'time',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  $handler->display->display_options['fields']['field_event_date']['group_rows'] = FALSE;
+  $handler->display->display_options['fields']['field_event_date']['delta_offset'] = '0';
+  /* Field: Content: Geannuleerd */
+  $handler->display->display_options['fields']['field_canceled']['id'] = 'field_canceled';
+  $handler->display->display_options['fields']['field_canceled']['table'] = 'field_data_field_canceled';
+  $handler->display->display_options['fields']['field_canceled']['field'] = 'field_canceled';
+  $handler->display->display_options['fields']['field_canceled']['label'] = '';
+  $handler->display->display_options['fields']['field_canceled']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Date: Date (node) */
   $handler->display->display_options['arguments']['date_argument']['id'] = 'date_argument';
@@ -162,6 +194,46 @@ function iishagenda_calendar_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'calendar_entity';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['hide_alter_empty'] = FALSE;
+  /* Field: Content: Datum */
+  $handler->display->display_options['fields']['field_event_date']['id'] = 'field_event_date';
+  $handler->display->display_options['fields']['field_event_date']['table'] = 'field_data_field_event_date';
+  $handler->display->display_options['fields']['field_event_date']['field'] = 'field_event_date';
+  $handler->display->display_options['fields']['field_event_date']['label'] = '';
+  $handler->display->display_options['fields']['field_event_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_event_date']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['field_event_date']['settings'] = array(
+    'format_type' => 'time',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  $handler->display->display_options['fields']['field_event_date']['group_rows'] = FALSE;
+  $handler->display->display_options['fields']['field_event_date']['delta_offset'] = '0';
+  /* Field: Content: Zaal */
+  $handler->display->display_options['fields']['field_event_room']['id'] = 'field_event_room';
+  $handler->display->display_options['fields']['field_event_room']['table'] = 'field_data_field_event_room';
+  $handler->display->display_options['fields']['field_event_room']['field'] = 'field_event_room';
+  $handler->display->display_options['fields']['field_event_room']['label'] = '';
+  $handler->display->display_options['fields']['field_event_room']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_event_room']['type'] = 'node_reference_plain';
+  $handler->display->display_options['fields']['field_event_room']['delta_offset'] = '0';
+  /* Field: Content: Geannuleerd */
+  $handler->display->display_options['fields']['field_canceled']['id'] = 'field_canceled';
+  $handler->display->display_options['fields']['field_canceled']['table'] = 'field_data_field_canceled';
+  $handler->display->display_options['fields']['field_canceled']['field'] = 'field_canceled';
+  $handler->display->display_options['fields']['field_canceled']['label'] = '';
+  $handler->display->display_options['fields']['field_canceled']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Date: Date (node) */
   $handler->display->display_options['arguments']['date_argument']['id'] = 'date_argument';

@@ -26,6 +26,7 @@ function iishagenda_event_field_group_info() {
       0 => 'field_room',
       1 => 'field_people',
       2 => 'field_note',
+      3 => 'field_event_room',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -56,6 +57,7 @@ function iishagenda_event_field_group_info() {
       1 => 'field_room',
       2 => 'field_people',
       3 => 'field_note',
+      4 => 'field_event_room',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
