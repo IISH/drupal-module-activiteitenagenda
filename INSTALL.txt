@@ -93,5 +93,6 @@ SETUP
     Tour
     Workshop
     Other
+- Set field permissions for fields in organiser fieldset (node type: event)
 - Add Rooms/locations: /node/add/room
 - Add event: /node/add/event

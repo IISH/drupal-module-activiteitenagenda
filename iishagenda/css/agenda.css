@@ -305,3 +305,12 @@ ul.tabs a.active{
 ul.tabs li{
     margin-right:10px;
 }
+
+/* changes for seven theme */
+/* node form */
+body.agenda fieldset .fieldset-legend {
+    margin-top: 0.5em;
+    padding-left: 15px;
+    position: relative;
+    text-transform: uppercase;
+}

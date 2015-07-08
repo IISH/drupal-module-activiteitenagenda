@@ -4,7 +4,7 @@
 
         // clear rooms when none is checed (mainly for new events)
         if($('.field-name-field-event-room .form-checkbox:checked').length == 0){
-            clear_rooms();
+            //clear_rooms();
         }
 
         /*
