@@ -282,6 +282,40 @@ function iishagenda_event_field_default_field_bases() {
     'type' => 'date',
   );
 
+  // Exported field_base: 'field_event_room'
+  $field_bases['field_event_room'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_event_room',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'nid' => array(
+        0 => 'nid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'node_reference',
+    'settings' => array(
+      'referenceable_types' => array(
+        'article' => 0,
+        'event' => 0,
+        'page' => 0,
+        'room' => 'room',
+      ),
+      'view' => array(
+        'args' => array(),
+        'display_name' => '',
+        'view_name' => '',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'node_reference',
+  );
+
   // Exported field_base: 'field_existing_user'
   $field_bases['field_existing_user'] = array(
     'active' => 1,
