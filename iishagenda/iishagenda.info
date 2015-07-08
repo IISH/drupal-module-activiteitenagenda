@@ -10,6 +10,7 @@ dependencies[] = iishagenda_event
 dependencies[] = iishagenda_room
 
 
+dependencies[] = calendar
 dependencies[] = ctools
 dependencies[] = date_datepicker_inline
 dependencies[] = entity

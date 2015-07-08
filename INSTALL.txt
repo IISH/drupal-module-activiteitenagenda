@@ -1,1 +1,18 @@
-INSTALL.txt
+
+
+INSTALLATION
+
+1) Get Color Picker Library
+- 'drush make sites/all/modules/custom/iishagenda/iishagenda.make.example --no-core'
+
+
+2) Enable modules
+- 'drush en iishagenda'
+- 'y' (on downloading/enabling dependencies)
+
+
+
+SETUP
+
+- Set up event administrator (email) : /admin/iishagenda
+-
