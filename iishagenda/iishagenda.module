@@ -114,8 +114,7 @@ function iishagenda_form_alter(&$form, $form_state, $form_id) {
         $form['#group_children']['check'] = 'group_accomodation';
 
         $options = _iishagenda_get_available_rooms($form,$form_state);
-        dpm("!");
-        dpm($options);
+
         if(!array_key_exists('values', $form_state)){
             $msg = t("");
         }else if(count($options)==0){
@@ -165,7 +164,7 @@ function _iishagenda_get_available_rooms($form, $form_state) {
         $enddate    = issetor($form_state['values']['field_event_date'][LANGUAGE_NONE][0]['value2'],$form['#node']->field_event_date[LANGUAGE_NONE][0]['value2']);
     }
 
-    dpm($startdate." - ".$enddate);
+    //dpm($startdate." - ".$enddate);
 
     // check which events times intersects with startdate
     $query = new EntityFieldQuery;
@@ -203,7 +202,7 @@ function _iishagenda_get_available_rooms($form, $form_state) {
     $events3 = count($results3)>0 ? $results3['node'] : array();
     $events = $events1 +$events2+$events3;//  merge and removes duplicates
 
-    dpm($events);
+
 
     //remove current node to keep current choices
     if($nid !== null){
@@ -231,7 +230,7 @@ function _iishagenda_get_available_rooms($form, $form_state) {
     $results = $query->execute();
 
     $options = array();
-    dpm($results);
+   // dpm($results);
 
     // remove booked rooms form all rooms
     foreach ($booked_rooms as $booked_room) {
@@ -240,7 +239,7 @@ function _iishagenda_get_available_rooms($form, $form_state) {
 
     if (isset($results['node'])) {
         $nodes = node_load_multiple(array_keys($results['node']));
-        dpm($nodes);
+      //  dpm($nodes);
         foreach ($nodes as $node) {
 
             // capacity check

@@ -29,6 +29,8 @@ function iishagenda_event_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -50,
     'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
   );
   // Exported menu link: menu-agenda_my-events:my-events
   $menu_links['menu-agenda_my-events:my-events'] = array(
@@ -46,6 +48,8 @@ function iishagenda_event_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -46,
     'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
   );
   // Exported menu link: menu-agenda_upcoming-events:upcoming-events
   $menu_links['menu-agenda_upcoming-events:upcoming-events'] = array(
@@ -63,13 +67,15 @@ function iishagenda_event_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -47,
     'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
   );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Evenement toevoegen');
   t('My Events');
   t('Upcoming events');
-
 
   return $menu_links;
 }

@@ -36,17 +36,30 @@ function iishagenda_event_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'field_event_date_1',
+      'rendered' => 1,
+      'rendered_strip' => 1,
+    ),
+  );
   $handler->display->display_options['style_options']['columns'] = array(
+    'field_note' => 'field_note',
     'title' => 'title',
     'field_event_date_1' => 'field_event_date_1',
     'field_event_date' => 'field_event_date',
-    'field_note' => 'field_note',
-    'field_room' => 'field_room',
     'field_people' => 'field_people',
     'field_catering' => 'field_catering',
   );
   $handler->display->display_options['style_options']['default'] = 'field_event_date_1';
   $handler->display->display_options['style_options']['info'] = array(
+    'field_note' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
     'title' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
@@ -62,20 +75,6 @@ function iishagenda_event_views_default_views() {
       'empty_column' => 0,
     ),
     'field_event_date' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'field_note' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'field_room' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -161,7 +160,7 @@ function iishagenda_event_views_default_views() {
 ';
   $handler->display->display_options['fields']['field_event_date']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_event_date']['settings'] = array(
-    'format_type' => 'date',
+    'format_type' => 'event_date',
     'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',
@@ -214,6 +213,13 @@ function iishagenda_event_views_default_views() {
   $handler->display->display_options['filters']['field_catering_value']['table'] = 'field_data_field_catering';
   $handler->display->display_options['filters']['field_catering_value']['field'] = 'field_catering_value';
   $handler->display->display_options['filters']['field_catering_value']['operator'] = 'not empty';
+  /* Filter criterion: Content: Goedgekeurd (field_approved) */
+  $handler->display->display_options['filters']['field_approved_value']['id'] = 'field_approved_value';
+  $handler->display->display_options['filters']['field_approved_value']['table'] = 'field_data_field_approved';
+  $handler->display->display_options['filters']['field_approved_value']['field'] = 'field_approved_value';
+  $handler->display->display_options['filters']['field_approved_value']['value'] = array(
+    1 => '1',
+  );
 
   /* Display: Catering page */
   $handler = $view->new_display('page', 'Catering page', 'page');
@@ -358,7 +364,7 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
 [field_event_date_1]';
   $handler->display->display_options['fields']['field_event_date']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_event_date']['settings'] = array(
-    'format_type' => 'date',
+    'format_type' => 'event_date',
     'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',
@@ -454,56 +460,73 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
   $handler->display->display_options['filters']['field_note_value']['field'] = 'field_note_value';
   $handler->display->display_options['filters']['field_note_value']['operator'] = 'not empty';
   $handler->display->display_options['filters']['field_note_value']['group'] = 2;
+  /* Filter criterion: Content: Goedgekeurd (field_approved) */
+  $handler->display->display_options['filters']['field_approved_value']['id'] = 'field_approved_value';
+  $handler->display->display_options['filters']['field_approved_value']['table'] = 'field_data_field_approved';
+  $handler->display->display_options['filters']['field_approved_value']['field'] = 'field_approved_value';
+  $handler->display->display_options['filters']['field_approved_value']['value'] = array(
+    1 => '1',
+  );
 
   /* Display: Catering vandaag block */
   $handler = $view->new_display('block', 'Catering vandaag block', 'block_2');
-  $handler->display->display_options['defaults']['footer'] = FALSE;
-  $translatables['catering'] = array(
-    t('Master'),
-    t('Catering vandaag'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('<h2>Catering Binnenkort<.h2>'),
-    t('<div class="messagepop pop">
-  <form method="post" id="new_message" action="/messages">
-    <p><label for="email">Your email or name</label><input type="text" size="30" name="email" id="email" /></p>
-    <p><label for="body">Message</label><textarea rows="6" name="body" id="body" cols="35"></textarea></p>
-    <p><input type="submit" value="Send Message" name="commit" id="message_submit"/> or <a class="close" href="/">Cancel</a></p>
-  </form>
-</div>
-
-<a href="/contact" id="contact">Contact Us</a>'),
-    t('Evenement'),
-    t('[title]<br>
-[field_event_date]<br>
-[field_event_date_1]
-'),
-    t('Personen'),
-    t('Catering'),
-    t('Catering page'),
-    t('Catering binnenkort block'),
-    t('Catering per week'),
-    t('<h2>Catering per week</h2>
-Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nodig hebben, ingedeeld per week.'),
-    t('[title]<br>
-[field_event_date]<br>
-[field_event_date_1]'),
-    t('Zaal'),
-    t('Week'),
-    t('Event-date -  start date (field_event_date)'),
-    t('Catering vandaag block'),
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_note' => 'field_note',
+    'title' => 'title',
+    'field_event_date_1' => 'field_event_date_1',
+    'field_event_date' => 'field_event_date',
+    'field_people' => 'field_people',
+    'field_catering' => 'field_catering',
   );
+  $handler->display->display_options['style_options']['default'] = 'field_event_date_1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_note' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_event_date_1' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_event_date' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_people' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_catering' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['footer'] = FALSE;
   $export['catering'] = $view;
 
   $view = new view();
@@ -823,11 +846,10 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  /* Field: Broken/missing handler */
+  /* Field: User: Room */
   $handler->display->display_options['fields']['field_room']['id'] = 'field_room';
   $handler->display->display_options['fields']['field_room']['table'] = 'field_data_field_room';
   $handler->display->display_options['fields']['field_room']['field'] = 'field_room';
-  $handler->display->display_options['fields']['field_room']['label'] = 'Room';
   /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
@@ -997,7 +1019,7 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
   $handler->display->display_options['fields']['field_event_date']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_event_date']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_event_date']['settings'] = array(
-    'format_type' => 'event_date',
+    'format_type' => 'month',
     'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',
@@ -1060,13 +1082,19 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
   $handler->display->display_options['filters']['field_type_activity_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_type_activity_tid']['expose']['operator_id'] = 'field_type_activity_tid_op';
   $handler->display->display_options['filters']['field_type_activity_tid']['expose']['label'] = 'Type';
-  $handler->display->display_options['filters']['field_type_activity_tid']['expose']['description'] = 'Filter op type';
   $handler->display->display_options['filters']['field_type_activity_tid']['expose']['operator'] = 'field_type_activity_tid_op';
   $handler->display->display_options['filters']['field_type_activity_tid']['expose']['identifier'] = 'field_type_activity_tid';
   $handler->display->display_options['filters']['field_type_activity_tid']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,
+    4 => 0,
+    9 => 0,
+    5 => 0,
+    10 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
   );
   $handler->display->display_options['filters']['field_type_activity_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_type_activity_tid']['vocabulary'] = 'event_type';
@@ -1301,13 +1329,19 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
   $handler->display->display_options['filters']['field_type_activity_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_type_activity_tid']['expose']['operator_id'] = 'field_type_activity_tid_op';
   $handler->display->display_options['filters']['field_type_activity_tid']['expose']['label'] = 'Type';
-  $handler->display->display_options['filters']['field_type_activity_tid']['expose']['description'] = 'Filter op type';
   $handler->display->display_options['filters']['field_type_activity_tid']['expose']['operator'] = 'field_type_activity_tid_op';
   $handler->display->display_options['filters']['field_type_activity_tid']['expose']['identifier'] = 'field_type_activity_tid';
   $handler->display->display_options['filters']['field_type_activity_tid']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,
+    4 => 0,
+    9 => 0,
+    5 => 0,
+    10 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
   );
   $handler->display->display_options['filters']['field_type_activity_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_type_activity_tid']['vocabulary'] = 'event_type';
@@ -1319,7 +1353,7 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
   $handler->display->display_options['filters']['field_event_date_value']['group'] = 1;
   $handler->display->display_options['filters']['field_event_date_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_event_date_value']['expose']['operator_id'] = 'field_event_date_value_op';
-  $handler->display->display_options['filters']['field_event_date_value']['expose']['label'] = 'From date';
+  $handler->display->display_options['filters']['field_event_date_value']['expose']['label'] = 'Vanaf (datum)';
   $handler->display->display_options['filters']['field_event_date_value']['expose']['operator'] = 'field_event_date_value_op';
   $handler->display->display_options['filters']['field_event_date_value']['expose']['identifier'] = 'field_event_date_value';
   $handler->display->display_options['filters']['field_event_date_value']['expose']['remember_roles'] = array(
@@ -1327,8 +1361,13 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
     1 => 0,
     3 => 0,
     4 => 0,
+    9 => 0,
+    5 => 0,
+    10 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
   );
-  $handler->display->display_options['filters']['field_event_date_value']['granularity'] = 'hour';
   $handler->display->display_options['filters']['field_event_date_value']['default_date'] = 'now';
   $handler->display->display_options['path'] = 'my-events';
   $handler->display->display_options['menu']['type'] = 'normal';
@@ -1472,34 +1511,6 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
       'override_label' => 0,
       'label' => '',
     ),
-    'action::views_bulk_operations_delete_revision' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::views_bulk_operations_script_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::node_make_sticky_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::node_make_unsticky_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
     'action::views_bulk_operations_modify_action' => array(
       'selected' => 1,
       'postpone_processing' => 0,
@@ -1518,64 +1529,6 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
           'event::field_approved' => 'event::field_approved',
         ),
       ),
-    ),
-    'action::views_bulk_operations_argument_selector_action' => array(
-      'selected' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-      'settings' => array(
-        'url' => '',
-      ),
-    ),
-    'action::node_promote_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::node_publish_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::node_unpromote_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::node_save_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::system_send_email_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::node_unpublish_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::node_unpublish_by_keyword_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
     ),
   );
   /* Field: Content: Speciaal */
@@ -1911,34 +1864,6 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
       'override_label' => 0,
       'label' => '',
     ),
-    'action::views_bulk_operations_delete_revision' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::views_bulk_operations_script_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::node_make_sticky_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::node_make_unsticky_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
     'action::views_bulk_operations_modify_action' => array(
       'selected' => 1,
       'postpone_processing' => 0,
@@ -1957,64 +1882,6 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
           'event::field_approved' => 'event::field_approved',
         ),
       ),
-    ),
-    'action::views_bulk_operations_argument_selector_action' => array(
-      'selected' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-      'settings' => array(
-        'url' => '',
-      ),
-    ),
-    'action::node_promote_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::node_publish_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::node_unpromote_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::node_save_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::system_send_email_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::node_unpublish_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::node_unpublish_by_keyword_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
     ),
   );
   /* Field: Content: Speciaal */
@@ -2138,34 +2005,23 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
   $handler->display->display_options['filters']['field_type_activity_tid']['field'] = 'field_type_activity_tid';
   $handler->display->display_options['filters']['field_type_activity_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_type_activity_tid']['expose']['operator_id'] = 'field_type_activity_tid_op';
-  $handler->display->display_options['filters']['field_type_activity_tid']['expose']['label'] = 'Type';
-  $handler->display->display_options['filters']['field_type_activity_tid']['expose']['description'] = 'Filter op type';
+  $handler->display->display_options['filters']['field_type_activity_tid']['expose']['label'] = 'Filter op type';
   $handler->display->display_options['filters']['field_type_activity_tid']['expose']['operator'] = 'field_type_activity_tid_op';
   $handler->display->display_options['filters']['field_type_activity_tid']['expose']['identifier'] = 'field_type_activity_tid';
   $handler->display->display_options['filters']['field_type_activity_tid']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,
+    4 => 0,
+    9 => 0,
+    5 => 0,
+    10 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
   );
   $handler->display->display_options['filters']['field_type_activity_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_type_activity_tid']['vocabulary'] = 'event_type';
-  /* Filter criterion: Broken/missing handler */
-  $handler->display->display_options['filters']['field_room_nid']['id'] = 'field_room_nid';
-  $handler->display->display_options['filters']['field_room_nid']['table'] = 'field_data_field_room';
-  $handler->display->display_options['filters']['field_room_nid']['field'] = 'field_room_nid';
-  $handler->display->display_options['filters']['field_room_nid']['operator'] = 'in';
-  $handler->display->display_options['filters']['field_room_nid']['value'] = array();
-  $handler->display->display_options['filters']['field_room_nid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_room_nid']['expose']['operator_id'] = 'field_room_nid_op';
-  $handler->display->display_options['filters']['field_room_nid']['expose']['label'] = 'Room';
-  $handler->display->display_options['filters']['field_room_nid']['expose']['description'] = 'of op zaal';
-  $handler->display->display_options['filters']['field_room_nid']['expose']['operator'] = 'field_room_nid_op';
-  $handler->display->display_options['filters']['field_room_nid']['expose']['identifier'] = 'field_room_nid';
-  $handler->display->display_options['filters']['field_room_nid']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-  );
   /* Filter criterion: Content: Goedgekeurd (field_approved) */
   $handler->display->display_options['filters']['field_approved_value']['id'] = 'field_approved_value';
   $handler->display->display_options['filters']['field_approved_value']['table'] = 'field_data_field_approved';
@@ -2316,34 +2172,6 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
       'override_label' => 0,
       'label' => '',
     ),
-    'action::views_bulk_operations_delete_revision' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::views_bulk_operations_script_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::node_make_sticky_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::node_make_unsticky_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
     'action::views_bulk_operations_modify_action' => array(
       'selected' => 1,
       'postpone_processing' => 0,
@@ -2362,64 +2190,6 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
           'event::field_approved' => 'event::field_approved',
         ),
       ),
-    ),
-    'action::views_bulk_operations_argument_selector_action' => array(
-      'selected' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-      'settings' => array(
-        'url' => '',
-      ),
-    ),
-    'action::node_promote_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::node_publish_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::node_unpromote_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::node_save_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::system_send_email_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::node_unpublish_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::node_unpublish_by_keyword_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
     ),
   );
   /* Field: Content: Speciaal */
@@ -2586,59 +2356,6 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
   $handler->display->display_options['menu']['name'] = 'menu-agenda-admin';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
-  $translatables['upcoming_events'] = array(
-    t('Master'),
-    t('Aankomende evenementen'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Advanced options'),
-    t('Select any filter and click on Apply to see results'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('Geen evenementen.'),
-    t('term'),
-    t('#[field_color]'),
-    t('Type'),
-    t('[name]'),
-    t('int / ext'),
-    t('Title'),
-    t('[title]'),
-    t('Date'),
-    t('Room'),
-    t('edit'),
-    t('All'),
-    t('Filter op type'),
-    t('of op zaal'),
-    t('Upcoming events'),
-    t('Title Link'),
-    t('[title] [field_canceled]'),
-    t('Zaal'),
-    t('My events'),
-    t('Mijn evenementen'),
-    t('Approved'),
-    t('From date'),
-    t('Administer events (future)'),
-    t('Content'),
-    t('- Choose an operation -'),
-    t('Geannuleerd'),
-    t('Event-date -  start date (field_event_date)'),
-    t('Approval list'),
-    t('Wachtlijst'),
-    t('Laat de evenementen zien die nog gekeurd moeten worden.'),
-    t('Deze evenementen wachten op een goedkeuring.'),
-    t('Er zijn geen evenementen die wachten op goedkeuring.'),
-    t('Administer events (past)'),
-    t('Afgelopen evenementen'),
-  );
   $export['upcoming_events'] = $view;
 
   return $export;

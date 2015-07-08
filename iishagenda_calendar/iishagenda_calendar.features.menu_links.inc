@@ -29,11 +29,13 @@ function iishagenda_calendar_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -49,
     'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
   );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Kalender');
-
 
   return $menu_links;
 }

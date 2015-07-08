@@ -62,7 +62,7 @@ function iishagenda_room_views_default_views() {
   $handler->display->display_options['fields']['field_capacity']['id'] = 'field_capacity';
   $handler->display->display_options['fields']['field_capacity']['table'] = 'field_data_field_capacity';
   $handler->display->display_options['fields']['field_capacity']['field'] = 'field_capacity';
-  $handler->display->display_options['fields']['field_capacity']['label'] = 'Capacity';
+  $handler->display->display_options['fields']['field_capacity']['label'] = 'Max. capaciteit';
   $handler->display->display_options['fields']['field_capacity']['type'] = 'number_unformatted';
   $handler->display->display_options['fields']['field_capacity']['settings'] = array(
     'thousand_separator' => ' ',
@@ -84,6 +84,7 @@ function iishagenda_room_views_default_views() {
   $handler->display->display_options['fields']['field_setup']['id'] = 'field_setup';
   $handler->display->display_options['fields']['field_setup']['table'] = 'field_data_field_setup';
   $handler->display->display_options['fields']['field_setup']['field'] = 'field_setup';
+  $handler->display->display_options['fields']['field_setup']['label'] = 'Opstelling';
   /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
@@ -114,26 +115,6 @@ function iishagenda_room_views_default_views() {
   $handler->display->display_options['menu']['name'] = 'menu-agenda';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
-  $translatables['rooms'] = array(
-    t('Master'),
-    t('Zaaloverzicht'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('Capacity'),
-    t('Setup'),
-    t('Page'),
-  );
   $export['rooms'] = $view;
 
   return $export;

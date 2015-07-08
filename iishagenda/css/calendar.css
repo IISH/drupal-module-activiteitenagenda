@@ -37,7 +37,9 @@
     clear:both;
 }
 
-.calendar-calendar th.days {
+.calendar-calendar th.days,
+.calendar-calendar td,
+.calendar-calendar td a {
     font-size: 12px;
 }
 

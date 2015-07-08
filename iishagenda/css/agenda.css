@@ -249,11 +249,11 @@ body.agenda caption{
     margin-bottom:10px;
 }
 .view-catering td{
-    font-size: 10px;
+    font-size: 11px;
 }
 
 .view-catering td{
-    font-size: 10px;
+    font-size: 11px;
 }
 
 th.field_catering_time{
@@ -306,6 +306,34 @@ ul.tabs li{
     margin-right:10px;
 }
 
+
+/* views table*/
+
+
+body.agenda .content thead tr {
+    border: 0px solid #666;
+    border-bottom: 2px solid #666;;
+    padding: 2px;
+    padding-bottom: 4px;
+
+}
+body.agenda .content thead th {
+
+    padding-bottom: 4px;
+}
+body.agenda .content tr {
+border-left:none;
+    border-right:none;
+
+}
+body.agenda .content td {
+    border-left:none;
+    border-right:none;
+    padding:6px 2px;
+    vertical-align: middle;
+}
+
+
 /* changes for seven theme */
 /* node form */
 body.agenda fieldset .fieldset-legend {
@@ -314,3 +342,4 @@ body.agenda fieldset .fieldset-legend {
     position: relative;
     text-transform: uppercase;
 }
+
