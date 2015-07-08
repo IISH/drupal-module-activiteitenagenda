@@ -1,0 +1,291 @@
+/* CUSTOM */
+.event-type{
+    padding: 4px 6px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 9px;
+    float:left;
+}
+
+.view-id-upcoming_events caption{
+    font-size: 15px;
+    font-weight: 600;
+    margin: 8px 0px;
+}
+
+img.special{
+    width:12px;
+    height:12px;
+    margin-bottom:3px;
+}
+
+td.views-field-field-special{
+    vertical-align: middle;
+    padding:8px 2px 0 8px;
+    padding:0;
+    width:10px;
+}
+
+.agenda .pager,
+.agenda .page-calendar .pager{
+    border:none;
+    background: none;
+    margin-bottom: 10px;
+}
+
+
+.agenda fieldset{
+    border: 1px solid #CCC;
+    padding: 6px 13px;
+}
+.agenda fieldset#edit-select,
+.agenda fieldset.vbo-fieldset-select-all{
+    border: none;
+    padding:0;
+}
+
+
+/* EVENT PAGE */
+.field-name-field-room .field-item{
+    margin-right:10px;
+}
+
+/* ADD EVENT PAGE */
+
+.page-node-add-event .agenda fieldset{
+    padding: 0px 13px;
+}
+
+.agenda .fieldset-legend{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.agenda.node-type-event .fieldset{
+    padding: 10px 13px;
+}
+
+.edit-field-event-date .fieldset-legend{
+    font-size: 13px;
+}
+
+#edit-field-reference-number label,
+#edit-field-expense label{
+    float: left;
+    width: 170px;
+
+}
+
+label{
+    font-size: 12px;
+}
+
+.block{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.agenda .vertical-tabs{
+    display: none;
+}
+
+/* NODE FORM CATERING */
+.field-name-field-drinks,
+.field-name-field-catering-time{
+    clear:both;
+    float:left;
+    width: 48%;
+    margin:0;
+}
+
+.field-name-field-catering-time input{
+    float:left;
+    margin-right:5px;
+}
+
+.field-name-field-catering-time .description{
+    padding-top:2px;
+}
+
+form .field-name-field-catering-time,
+form .field-name-field-location{
+    padding-top:10px;
+    padding-bottom: 20px;
+}
+
+.field-name-field-drinks{
+    float:left;
+}
+.field-name-field-drinks label{
+    float: none;
+}
+
+form .field-name-field-note{
+    clear:both;
+    margin:10px 0;
+    padding-top:10px;
+}
+
+.field-name-field-note label {
+    float:none;
+}
+
+.field-name-field-food{
+    float:left;
+}
+
+.group-general,
+.group-admin{
+    margin-top:20px;
+}
+
+.field-name-field-note{
+    clear:both;
+}
+
+
+
+.start-date-wrapper.container-inline-date.date-no-float,
+.end-date-wrapper.container-inline-date.date-no-float {
+    clear: none;
+    float:left;
+    width: auto;
+}
+.start-date-wrapper .container-inline-date > .form-item{
+
+    float:left;
+
+}
+
+.container-inline-date .form-item, .container-inline-date .form-item input {
+    width: auto;
+}
+
+label[for=edit-field-event-date-und-0-value2]
+{
+   float:left;
+    padding-top: 11px;
+}
+
+/* ROOMS LIST */
+
+.view-rooms .views-field-field-image img{
+    float:right;
+    padding-bottom: 20px;
+}
+
+.view-rooms .views-row{
+    clear:both;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid #CCC;
+}
+
+
+.cancelled{
+    display: inline-block;
+    width: auto;
+    margin-bottom: 10px;
+    background: #EE0000;
+    clear: both;
+    padding: 4px 6px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 9px;
+
+}
+.view-calendar .cancelled{
+    background: transparent;
+    clear: both;
+    padding: 0;
+    color: #EE0000;
+    text-transform: uppercase;
+    font-size: 9px;
+    float:left;
+
+}
+body.agenda #block-system-main{
+    margin-top:0;
+}
+
+body.agenda tr:hover td,
+body.agenda tr.even:hover td.active,
+body.agenda tr.odd:hover td.active {
+    background:#FEFEFE;
+}
+
+body.agenda tr.even td,
+body.agenda tr.odd td{
+    background: #FFF none repeat scroll 0% 0%;
+}
+
+body.agenda caption{
+    text-align: left;
+    font-weight: 600;
+    margin-bottom:10px;
+}
+.view-catering td{
+    font-size: 10px;
+}
+
+.view-catering td{
+    font-size: 10px;
+}
+
+th.field_catering_time{
+    width:30px;
+}
+
+body.agenda #region-sidebar-second{
+    display: none;
+}
+body.agenda .container-12 .grid-6 {
+    width: 860px;
+}
+
+
+/* Catering page popup styles */
+a.selected {
+    z-index:100;
+}
+
+.messagepop {
+    background-image: url("/sites/all/modules/custom/iishagenda/images/note_bg.png");
+    color:#FFFFFF;
+    font-size: 13px;
+    cursor:default;
+    display:none;
+    margin-top: 15px;
+    position:absolute;
+    text-align:left;
+    width:350px;
+    z-index:50;
+    padding: 20px 10px;
+    padding-top: 20px;
+}
+
+.messagepop p, .messagepop.div {
+    border-bottom: 1px solid #EFEFEF;
+    margin: 8px 0;
+    padding-bottom: 8px;
+}
+a.messagepop-link:link,
+a.messagepop-link:visited{
+    color: red;
+}
+a.messagepop-link:hover,
+a.messagepop-link:active{
+    color: #75a1c7;
+}
+
+ul.tabs a.active{
+    text-decoration: none;
+    color:#000000;
+    font-weight: bold;
+}
+
+ul.tabs li{
+    margin-right:10px;
+}
