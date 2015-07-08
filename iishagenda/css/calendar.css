@@ -66,6 +66,32 @@
 }
 
 
+
+
+.view .date-nav-wrapper .date-prev,
+.view .date-nav-wrapper .date-next{
+    background: none repeat scroll 0 0 #FFF;
+}
+
+body.agenda   .calendar-calendar tr,
+body.agenda   .calendar-calendar td{
+    border:none;
+}
+
+
+body.agenda   .calendar-calendar td.single-day{
+    border:1px solid #CCC;
+    border-top: none;
+}
+body.agenda   .calendar-calendar td.date-box,
+body.agenda   .calendar-calendar td.calendar-agenda-items,
+body.agenda   .calendar-calendar div.calendar-agenda-items{
+    border-left:1px solid #CCC;
+    border-right:1px solid #CCC;
+
+}
+
+
 .calendar-calendar td{
     text-align: center;
 }
@@ -81,4 +107,10 @@ body.agenda .calendar-calendar tr.even:hover td.today.active,
 body.agenda .calendar-calendar tr.odd:hover td.today.active {
     background-color: #ffe8e0;
 
+}
+
+
+.calendar-calendar .year-view td table td{
+    vertical-align: middle;
+    height:30px;
 }

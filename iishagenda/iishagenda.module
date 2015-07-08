@@ -24,11 +24,15 @@ function iishagenda_init()
            break;
    }
 
-    drupal_add_css(drupal_get_path('module', 'iishagenda') .'/css/agenda.css',array('weight' => 998));
+   drupal_add_css(drupal_get_path('module', 'iishagenda') .'/css/agenda.css',array('weight' => 998));
 }
 
 
 function iishagenda_custom_theme() {
+
+
+    return "iisg";
+    /*
     if(arg(0)=="node"){
         $node = node_load(arg(1));
         if($node && $node->type == "event"){
@@ -37,6 +41,9 @@ function iishagenda_custom_theme() {
             return "seven";
         }
     }
+    */
+
+
 }
 
 /**

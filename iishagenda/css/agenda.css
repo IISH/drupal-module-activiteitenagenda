@@ -1,4 +1,23 @@
+
+body.agenda #region-sidebar-second{
+    display: none;
+}
+
+body.agenda .container-12 .grid-6.region-content {
+    width: 780px;
+}
+body.agenda .grid-2.region-sidebar-first{
+    margin-top: 0;
+}
+
+
+
+
+
+
 /* CUSTOM */
+
+
 .event-type{
     padding: 4px 6px;
     color: #FFFFFF;
@@ -34,7 +53,6 @@ td.views-field-field-special{
     margin-bottom: 10px;
 }
 
-
 .agenda fieldset{
     border: 1px solid #CCC;
     padding: 6px 13px;
@@ -52,7 +70,6 @@ td.views-field-field-special{
 }
 
 /* ADD EVENT PAGE */
-
 .page-node-add-event .agenda fieldset{
     padding: 0px 13px;
 }
@@ -77,14 +94,17 @@ td.views-field-field-special{
 
 }
 
+
+
 label{
     font-size: 12px;
 }
-
+/*
 .block{
     margin-top: 20px;
     margin-bottom: 20px;
 }
+*/
 
 .agenda .vertical-tabs{
     display: none;
@@ -206,6 +226,8 @@ label[for=edit-field-event-date-und-0-value2]
     float:left;
 
 }
+
+
 body.agenda #block-system-main{
     margin-top:0;
 }
@@ -238,12 +260,6 @@ th.field_catering_time{
     width:30px;
 }
 
-body.agenda #region-sidebar-second{
-    display: none;
-}
-body.agenda .container-12 .grid-6 {
-    width: 860px;
-}
 
 
 /* Catering page popup styles */
