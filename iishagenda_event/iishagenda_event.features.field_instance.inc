@@ -570,6 +570,43 @@ function iishagenda_event_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-event-field_event_room'
+  $field_instances['node-event-field_event_room'] = array(
+    'bundle' => 'event',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Bekijk <a href=\'/rooms\' target=\'_blank\'>Zaaloverzicht</a> voor een lijst met alle beschikbare zalen en eigenschappen',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'node_reference',
+        'settings' => array(),
+        'type' => 'node_reference_default',
+        'weight' => 16,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_event_room',
+    'label' => 'Zaal',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 11,
+    ),
+  );
+
   // Exported field_instance: 'node-event-field_existing_user'
   $field_instances['node-event-field_existing_user'] = array(
     'bundle' => 'event',
@@ -1041,6 +1078,7 @@ function iishagenda_event_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('(uu:mm)  ');
+  t('Bekijk <a href=\'/rooms\' target=\'_blank\'>Zaaloverzicht</a> voor een lijst met alle beschikbare zalen en eigenschappen');
   t('Beschrijving');
   t('Bestaande gebruiker');
   t('Bijlage');
@@ -1070,6 +1108,7 @@ function iishagenda_event_field_default_field_instances() {
   t('Telefoon');
   t('Tijd');
   t('Vink aan als het gaat om een speciaal evenement');
+  t('Zaal');
 
   return $field_instances;
 }

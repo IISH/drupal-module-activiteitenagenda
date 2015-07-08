@@ -84,7 +84,10 @@ function _cancelcheck(&$result){
 
 
 
+
+
 SETUP
+- set jquery update to 1.7, jquery 1.1o throws errors in current version
 
 - Set up event administrator (email) : /admin/iishagenda
 - Define event types: admin/structure/taxonomy/event_type
@@ -93,5 +96,7 @@ SETUP
     Tour
     Workshop
     Other
+- Set field permissions for fields in organiser fieldset (node type: event)
 - Add Rooms/locations: /node/add/room
 - Add event: /node/add/event
+
