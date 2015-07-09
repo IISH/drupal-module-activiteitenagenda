@@ -9,7 +9,7 @@ function iishagenda_init()
     global $user;
 
     if (in_array('administrator', $user->roles) && !variable_get('iishagenda_admin')) {
-        drupal_set_message(t('Please define an <a href="/admin/iishagenda">event administrator</a>.'), 'error', false);
+        drupal_set_message(t('Please define an <a href="/admin/config/iishagenda">event administrator</a>.'), 'error', false);
     }
 
    switch(arg(0)){
@@ -289,39 +289,33 @@ function issetor(&$var, $default = false) {
  */
 function iishagenda_node_insert($node){
 
+
     if($node->type =='event' && _check_admin()){
 
-        $email = variable_get('iishagenda_admin');
+        global $user;
+
         $module = 'iishagenda';
-        $key = 'key';
-        $language = language_default();
-        $params = array();
-        $from = NULL;
-        $send = FALSE;
-        $message = drupal_mail($module, $key, $email, $language, $params, $from, $send);
+        $to = variable_get('iishagenda_admin');
+        $from = variable_get('site_mail', '');
 
-        $message['subject'] = "New event registration: ".$node->title;
-        $message['body'] = array();
-        $message['body'][] = "Hallo,";
-        $message['body'][] = "Er is een nieuw evenement geregistreerd.";
-        $message['body'][] = "";
+        $language = user_preferred_language($user);
 
-        // Retrieve the responsible implementation for this message.
-        $system = drupal_mail_system($module, $key);
+        $subject = t("Nieuw evenement");
+        $body = t("Er is een nieuw evenement geregistreerd");
 
-        // Format the message body.
-        $message = $system->format($message);
+        $params = array(
+            'subject' => $subject,
+            'body' => $body,
+        );
 
-        // Send e-mail.
-        $message['result'] = $system->mail($message);
+       $result = drupal_mail($module,'notice',$to,$language,$params,$from);
 
-        drupal_mail('iishagenda','notice',$email,$language,$params,NULL,true);
-
-        if($message['result']){
+        if($result["result"]){
             drupal_set_message(t('Het secretariaat is op de hoogte gesteld.'));
         }else{
             drupal_set_message(t('Het secretariaat is niet op de hoogte gesteld vanwege een fout, neem aub contact op met de beheerder.'),'error');
         }
+
     }
 }
 
@@ -330,8 +324,8 @@ function iishagenda_mail($key, &$message, $params) {
 
     switch($key) {
         case 'notice':
-            $message['subject'] = t('Notification from !site');
-            $message['body'][] = t("Dear !username\n\nThere is new content available on the site.");
+            $message['subject'] =  "huh";
+            $message['body'] =  array(0=>t('Hello World'));
             break;
     }
 }
@@ -357,15 +351,20 @@ function iishagenda_node_presave($node)
 {
     global $user;
 
+    //dpm($result);
+
     // only mail owner if current user is not the owner
     if($user->uid !== $node->uid){
         $old_node = node_load($node->vid);
 
-        $current_approved = $old_node->field_approved[LANGUAGE_NONE][0]['value'];
-        $new_approved = $node->field_approved[LANGUAGE_NONE][0]['value'];
+        if(count($old_node->field_approved)){
 
-        if($current_approved !== $new_approved && $new_approved==1){
-            _notify_event_owner($node);
+            $current_approved = $old_node->field_approved[LANGUAGE_NONE][0]['value'];
+            $new_approved = $node->field_approved[LANGUAGE_NONE][0]['value'];
+
+            if($current_approved !== $new_approved && $new_approved==1){
+                _notify_event_owner($node);
+            }
         }
     }
 }

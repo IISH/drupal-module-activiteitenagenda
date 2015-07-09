@@ -106,7 +106,7 @@ label{
 }
 */
 
-.agenda .vertical-tabs{
+.agenda.page-node-add-event .vertical-tabs{
     display: none;
 }
 

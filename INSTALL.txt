@@ -1,14 +1,16 @@
 
 INSTALLATION
 
+clone repository content into sites/all/modules/custom/ folder
+
 1) Get Color Picker Library
 - 'drush make sites/all/modules/custom/iishagenda/iishagenda.make.example --no-core'
-
+or install manually http://www.eyecon.ro/colorpicker/colorpicker.zip in libraries folder
 
 2) Enable modules
 - 'drush en iishagenda'
-- 'y' (on downloading/enabling dependencies)
-
+- 'y' (on downloading and enabling dependencies)
+- 'drush cc all' (clearing cache)
 
 3) template files
 Copy to theme directory iisg/templates
@@ -19,7 +21,6 @@ Copy to theme directory iisg/templates
 4) template functions
 Copy to iisg/template.php
 
-
 // START TEMPLATE FUNCTIONS FOR IISH AGENDA
 /*
  * Adds reservation number (node id) and cancelled value to template
@@ -27,7 +28,7 @@ Copy to iisg/template.php
 function iisg_preprocess_node(&$variables, $hook){
     if($variables["type"] == "event"){
         $variables["reservation_number"] =  t("Reserveringsnummer: ")."#".$variables["nid"];
-       if(isset($variables['field_canceled'][LANGUAGE_NONE][0]) && $variables['field_canceled'][LANGUAGE_NONE][0]['value'] == 1)  $variables["canceled"] = t("Geannuleerd");
+        if(isset($variables['field_canceled'][LANGUAGE_NONE][0]) && $variables['field_canceled'][LANGUAGE_NONE][0]['value'] == 1)  $variables["canceled"] = t("Geannuleerd");
     }
 }
 
@@ -39,13 +40,13 @@ function iisg_views_pre_render(&$view) {
         case 'upcoming_events':
 
             foreach($view->result as $r => &$result) {
-                 _cancelcheck($result);
+                _cancelcheck($result);
 
-               if($result->field_field_special[0]['raw']['value'] == 1){
+                if($result->field_field_special[0]['raw']['value'] == 1){
                     $result->field_field_special[0]['rendered']['#markup'] = "<img class='special' src='/".drupal_get_path('module','iishagenda')."/images/special.png' title='Dit is een speciaal evenement'>";
-               }else{
+                }else{
                     $result->field_field_special[0]['rendered']['#markup'] = '';
-               }
+                }
             }
             break;
 
@@ -83,18 +84,21 @@ function _cancelcheck(&$result){
 // END TEMPLATE FUNCTIONS FOR IISH AGENDA
 
 
+5)
+- 'drush cc all' clearing the cache
+
 
 NOTE
 
-- set jquery update to 1.7, jquery 1.1o throws errors in current version
+- set jquery update to 1.7, jquery 1.10 throws errors in current version
 - change "latest update" on home to relevant node types
 - would be nice to have add event form into page instead of overlay now
 
 
 SETUP
 
-- define Date formats (formatname>format):  Week>W , event_date>d-m-Y H:i , Time>H:i, Month>F Y, Date>d-m-Y
 - Set up event administrator (email) : /admin/config/iishagenda
+- define Date types and formats (type>format):  Week>W , event_date>d-m-Y H:i , Time>H:i, Month>F Y, Date>d-m-Y
 - add link (path: /calendar) to main menu
 - Define event types: admin/structure/taxonomy/event_type
     Conference
@@ -105,5 +109,6 @@ SETUP
 - Set field permissions for fields in organiser fieldset, canceled and approval field (node type: event)
 - set permissions so users can add events
     Event: Create new content
+- disable comments for events ans rooms
 - Add Rooms/locations: /node/add/room
 - Add event: /node/add/event
