@@ -324,8 +324,8 @@ function iishagenda_mail($key, &$message, $params) {
 
     switch($key) {
         case 'notice':
-            $message['subject'] =  "huh";
-            $message['body'] =  array(0=>t('Hello World'));
+            $message['subject'] = "Nieuw event";
+            $message['body'] =  array(0=>t('Nieuw event'));
             break;
     }
 }
