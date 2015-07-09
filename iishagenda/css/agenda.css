@@ -206,7 +206,7 @@ label[for=edit-field-event-date-und-0-value2]
 .cancelled{
     display: inline-block;
     width: auto;
-    margin-bottom: 10px;
+
     background: #EE0000;
     clear: both;
     padding: 4px 6px;
@@ -215,6 +215,9 @@ label[for=edit-field-event-date-und-0-value2]
     font-weight: bold;
     font-size: 9px;
 
+}
+.page-node .cancelled{
+     margin-bottom: 10px;
 }
 .view-calendar .cancelled{
     background: transparent;
@@ -334,6 +337,19 @@ body.agenda .content td {
 }
 
 
+
+/* ROOMS */
+
+.views-field-field-capacity .views-label-field-capacity{
+    float:left;
+    margin-right:10px;
+}
+
+.views-field-field-capacity,
+.views-field-field-capacity-note,
+.views-field-body{
+    padding-bottom:15px;
+}
 /* changes for seven theme */
 /* node form */
 body.agenda fieldset .fieldset-legend {
@@ -342,4 +358,5 @@ body.agenda fieldset .fieldset-legend {
     position: relative;
     text-transform: uppercase;
 }
+
 

@@ -59,7 +59,7 @@ function iisg_views_pre_render(&$view) {
 
         case 'catering':
             foreach($view->result as $r => &$result) {
-                if(isset($result->field_field_note[0]) && isset($result->field_field_room[0])){
+                if(isset($result->field_field_note[0]) && isset($result->field_field_event_room[0])){
                     $note = '<div class="messagepop pop">'.nl2br($result->field_field_note[0]["rendered"]["#markup"]).'</div>';
                     $markup = $result->field_field_event_room[0]["rendered"]["#markup"] ."<br>".$note.'<a href="#" class="messagepop-link">opmerking!</a>' ;
                     $result->field_field_event_room[0]["rendered"] = array('#markup'=>$markup,'#access'=>TRUE);
@@ -87,26 +87,23 @@ function _cancelcheck(&$result){
 NOTE
 
 - set jquery update to 1.7, jquery 1.1o throws errors in current version
-- change "latest" on home to relevant node types
+- change "latest update" on home to relevant node types
+- would be nice to have add event form into page instead of overlay now
 
 
 SETUP
 
-
-
-- define Date formats:  Week>W , event_date>d-m-Y H:i , Time>H:i, Month>F Y
-
-
-
-
-- Set up event administrator (email) : /admin/iishagenda
+- define Date formats (formatname>format):  Week>W , event_date>d-m-Y H:i , Time>H:i, Month>F Y, Date>d-m-Y
+- Set up event administrator (email) : /admin/config/iishagenda
+- add link (path: /calendar) to main menu
 - Define event types: admin/structure/taxonomy/event_type
     Conference
     Meeting
     Tour
     Workshop
     Other
-- Set field permissions for fields in organiser fieldset (node type: event)
+- Set field permissions for fields in organiser fieldset, canceled and approval field (node type: event)
+- set permissions so users can add events
+    Event: Create new content
 - Add Rooms/locations: /node/add/room
 - Add event: /node/add/event
-

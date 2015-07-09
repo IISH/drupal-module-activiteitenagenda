@@ -32,50 +32,10 @@ function iishagenda_event_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
-  // Exported menu link: menu-agenda_my-events:my-events
-  $menu_links['menu-agenda_my-events:my-events'] = array(
-    'menu_name' => 'menu-agenda',
-    'link_path' => 'my-events',
-    'router_path' => 'my-events',
-    'link_title' => 'My Events',
-    'options' => array(
-      'identifier' => 'menu-agenda_my-events:my-events',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -46,
-    'customized' => 1,
-    'language' => 'und',
-    'menu_links_customized' => 1,
-  );
-  // Exported menu link: menu-agenda_upcoming-events:upcoming-events
-  $menu_links['menu-agenda_upcoming-events:upcoming-events'] = array(
-    'menu_name' => 'menu-agenda',
-    'link_path' => 'upcoming-events',
-    'router_path' => 'upcoming-events',
-    'link_title' => 'Upcoming events',
-    'options' => array(
-      'identifier' => 'menu-agenda_upcoming-events:upcoming-events',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -47,
-    'customized' => 1,
-    'language' => 'und',
-    'menu_links_customized' => 1,
-  );
 
   // Translatables
   // Included for use with string extractors like potx.
   t('Evenement toevoegen');
-  t('My Events');
-  t('Upcoming events');
 
   return $menu_links;
 }

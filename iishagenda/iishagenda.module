@@ -62,17 +62,27 @@ function iishagenda_custom_get_default_theme() {
  */
 function iishagenda_menu() {
 
-    $items['admin/iishagenda'] = array(
-        'title' => t('Events'),
+    $items['admin/config/iishagenda'] = array(
+        'title' => t('IISH Agenda'),
         'description' => '',
         'page callback' => 'drupal_get_form',
         'page arguments' => array('admin_settings'),
-        'access callback' => 'user_is_logged_in',
+        'access callback' => '_iishagenda_user_has_role',
+        'access arguments' => array(array('administrator','event administrator')),
         'type' => MENU_NORMAL_ITEM,
         'file' => 'iishagenda.admin.inc',
     );
 
     return $items;
+}
+
+
+
+
+function _iishagenda_user_has_role($roles = array()) {
+    global $user;
+    $check = array_intersect($roles, array_values($user->roles));
+    return empty($check) ? FALSE : TRUE;
 }
 
 /**

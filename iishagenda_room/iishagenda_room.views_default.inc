@@ -72,19 +72,19 @@ function iishagenda_room_views_default_views() {
   $handler->display->display_options['fields']['field_capacity_note']['id'] = 'field_capacity_note';
   $handler->display->display_options['fields']['field_capacity_note']['table'] = 'field_data_field_capacity_note';
   $handler->display->display_options['fields']['field_capacity_note']['field'] = 'field_capacity_note';
-  $handler->display->display_options['fields']['field_capacity_note']['label'] = '';
+  $handler->display->display_options['fields']['field_capacity_note']['label'] = 'Toelichting';
   $handler->display->display_options['fields']['field_capacity_note']['element_label_colon'] = FALSE;
+  /* Field: Content: Setup */
+  $handler->display->display_options['fields']['field_setup']['id'] = 'field_setup';
+  $handler->display->display_options['fields']['field_setup']['table'] = 'field_data_field_setup';
+  $handler->display->display_options['fields']['field_setup']['field'] = 'field_setup';
+  $handler->display->display_options['fields']['field_setup']['label'] = 'Opstelling';
   /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = '';
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
-  /* Field: Content: Setup */
-  $handler->display->display_options['fields']['field_setup']['id'] = 'field_setup';
-  $handler->display->display_options['fields']['field_setup']['table'] = 'field_data_field_setup';
-  $handler->display->display_options['fields']['field_setup']['field'] = 'field_setup';
-  $handler->display->display_options['fields']['field_setup']['label'] = 'Opstelling';
   /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';

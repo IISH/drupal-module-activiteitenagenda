@@ -54,10 +54,9 @@ function iishagenda_event_field_group_info() {
     'weight' => '5',
     'children' => array(
       0 => 'field_event_date',
-      1 => 'field_room',
-      2 => 'field_people',
-      3 => 'field_note',
-      4 => 'field_event_room',
+      1 => 'field_event_room',
+      2 => 'field_note',
+      3 => 'field_people',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -232,12 +231,12 @@ function iishagenda_event_field_group_info() {
     'weight' => '3',
     'children' => array(
       0 => 'body',
-      1 => 'field_expense',
-      2 => 'field_type_activity',
-      3 => 'field_special',
-      4 => 'field_internal_external',
-      5 => 'field_attachment',
-      6 => 'field_reference_number',
+      1 => 'field_attachment',
+      2 => 'field_expense',
+      3 => 'field_internal_external',
+      4 => 'field_reference_number',
+      5 => 'field_special',
+      6 => 'field_type_activity',
       7 => 'title',
     ),
     'format_type' => 'fieldset',
@@ -297,9 +296,9 @@ function iishagenda_event_field_group_info() {
     'weight' => '3',
     'children' => array(
       0 => 'field_contact_person',
-      1 => 'field_phone',
-      2 => 'field_email',
-      3 => 'field_existing_user',
+      1 => 'field_email',
+      2 => 'field_existing_user',
+      3 => 'field_phone',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -309,7 +308,7 @@ function iishagenda_event_field_group_info() {
         'classes' => 'group-organiser field-group-fieldset',
         'description' => 'Gebruik onderstaande velden om voor een bestaande gebruiker of voor een extern persoon een reservering te maken.',
       ),
-      'formatter' => 'collapsed',
+      'formatter' => 'open',
     ),
   );
   $export['group_organiser|node|event|form'] = $field_group;

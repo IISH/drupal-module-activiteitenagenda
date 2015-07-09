@@ -339,6 +339,11 @@ function iishagenda_event_field_default_field_bases() {
         3 => 0,
         4 => 0,
         5 => 0,
+        6 => 0,
+        7 => 0,
+        8 => 0,
+        9 => 0,
+        10 => 0,
       ),
       'referenceable_status' => array(
         0 => 0,
@@ -428,8 +433,8 @@ function iishagenda_event_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        'internal' => 'Internal',
-        'external' => 'External',
+        'internal' => 'Intern',
+        'external' => 'Extern',
       ),
       'allowed_values_function' => '',
     ),

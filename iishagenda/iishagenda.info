@@ -1,5 +1,5 @@
 name = IISH Agenda
-description = Provides additional functionality to the event registration and calendar
+description = Provides additional functionality to the event registration form and calendar
 core = 7.x
 package = IISH
 
