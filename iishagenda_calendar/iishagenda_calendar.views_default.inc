@@ -44,6 +44,13 @@ function iishagenda_calendar_views_default_views() {
     'event_type' => 'event_type',
     'tags' => 0,
   );
+  /* Field: Content: Goedgekeurd */
+  $handler->display->display_options['fields']['field_approved']['id'] = 'field_approved';
+  $handler->display->display_options['fields']['field_approved']['table'] = 'field_data_field_approved';
+  $handler->display->display_options['fields']['field_approved']['field'] = 'field_approved';
+  $handler->display->display_options['fields']['field_approved']['label'] = '';
+  $handler->display->display_options['fields']['field_approved']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_approved']['element_label_colon'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -94,13 +101,6 @@ function iishagenda_calendar_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 0;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Goedgekeurd (field_approved) */
-  $handler->display->display_options['filters']['field_approved_value']['id'] = 'field_approved_value';
-  $handler->display->display_options['filters']['field_approved_value']['table'] = 'field_data_field_approved';
-  $handler->display->display_options['filters']['field_approved_value']['field'] = 'field_approved_value';
-  $handler->display->display_options['filters']['field_approved_value']['value'] = array(
-    1 => '1',
-  );
 
   /* Display: Month */
   $handler = $view->new_display('page', 'Month', 'page_1');
@@ -122,6 +122,13 @@ function iishagenda_calendar_views_default_views() {
   $handler->display->display_options['row_options']['colors']['legend'] = 'type';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Goedgekeurd */
+  $handler->display->display_options['fields']['field_approved']['id'] = 'field_approved';
+  $handler->display->display_options['fields']['field_approved']['table'] = 'field_data_field_approved';
+  $handler->display->display_options['fields']['field_approved']['field'] = 'field_approved';
+  $handler->display->display_options['fields']['field_approved']['label'] = '';
+  $handler->display->display_options['fields']['field_approved']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_approved']['element_label_colon'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -234,6 +241,13 @@ function iishagenda_calendar_views_default_views() {
   $handler->display->display_options['fields']['field_canceled']['field'] = 'field_canceled';
   $handler->display->display_options['fields']['field_canceled']['label'] = '';
   $handler->display->display_options['fields']['field_canceled']['element_label_colon'] = FALSE;
+  /* Field: Content: Goedgekeurd */
+  $handler->display->display_options['fields']['field_approved']['id'] = 'field_approved';
+  $handler->display->display_options['fields']['field_approved']['table'] = 'field_data_field_approved';
+  $handler->display->display_options['fields']['field_approved']['field'] = 'field_approved';
+  $handler->display->display_options['fields']['field_approved']['label'] = '';
+  $handler->display->display_options['fields']['field_approved']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_approved']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Date: Date (node) */
   $handler->display->display_options['arguments']['date_argument']['id'] = 'date_argument';

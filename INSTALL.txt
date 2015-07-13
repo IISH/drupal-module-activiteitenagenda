@@ -36,12 +36,12 @@ function iisg_preprocess_node(&$variables, $hook){
  * Makes changes to event views output
  */
 function iisg_views_pre_render(&$view) {
+
     switch ($view->name) {
         case 'upcoming_events':
 
             foreach($view->result as $r => &$result) {
                 _cancelcheck($result);
-
                 if($result->field_field_special[0]['raw']['value'] == 1){
                     $result->field_field_special[0]['rendered']['#markup'] = "<img class='special' src='/".drupal_get_path('module','iishagenda')."/images/special.png' title='Dit is een speciaal evenement'>";
                 }else{
@@ -54,6 +54,10 @@ function iisg_views_pre_render(&$view) {
             foreach($view->result as $r => &$result) {
                 if(isset($result->field_field_canceled)){
                     _cancelcheck($result);
+                }
+                $approved = issetor($result->field_field_approved[0]['raw']['value'],false);
+                if($approved !== "1"){
+                    $result->node_title = "- nog niet bevestigd -";
                 }
             }
             break;
@@ -84,6 +88,8 @@ function _cancelcheck(&$result){
 // END TEMPLATE FUNCTIONS FOR IISH AGENDA
 
 
+
+
 5)
 - 'drush cc all' clearing the cache
 
@@ -100,6 +106,7 @@ SETUP
 - Set up event administrator (email) : /admin/config/iishagenda
 - define Date types and formats (type>format):  Week>W , event_date>d-m-Y H:i , Time>H:i, Month>F Y, Date>d-m-Y
 - add link (path: /calendar) to main menu
+- disable comments for Room and Event node types
 - Define event types: admin/structure/taxonomy/event_type
     Conference
     Meeting
