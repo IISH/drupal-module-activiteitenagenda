@@ -99,12 +99,7 @@ td.views-field-field-special{
 label{
     font-size: 12px;
 }
-/*
-.block{
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-*/
+
 
 .agenda.page-node-add-event .vertical-tabs{
     display: none;
@@ -173,9 +168,7 @@ form .field-name-field-note{
     width: auto;
 }
 .start-date-wrapper .container-inline-date > .form-item{
-
     float:left;
-
 }
 
 .container-inline-date .form-item, .container-inline-date .form-item input {
@@ -206,7 +199,6 @@ label[for=edit-field-event-date-und-0-value2]
 .cancelled{
     display: inline-block;
     width: auto;
-
     background: #EE0000;
     clear: both;
     padding: 4px 6px;
@@ -227,7 +219,6 @@ label[for=edit-field-event-date-und-0-value2]
     text-transform: uppercase;
     font-size: 9px;
     float:left;
-
 }
 
 
@@ -262,7 +253,6 @@ body.agenda caption{
 th.field_catering_time{
     width:30px;
 }
-
 
 
 /* Catering page popup styles */
@@ -309,10 +299,7 @@ ul.tabs li{
     margin-right:10px;
 }
 
-
-/* views table*/
-
-
+/* views table */
 body.agenda .content thead tr {
     border: 0px solid #666;
     border-bottom: 2px solid #666;;
@@ -321,11 +308,10 @@ body.agenda .content thead tr {
 
 }
 body.agenda .content thead th {
-
     padding-bottom: 4px;
 }
 body.agenda .content tr {
-border-left:none;
+    border-left:none;
     border-right:none;
 
 }
@@ -350,6 +336,7 @@ body.agenda .content td {
 .views-field-body{
     padding-bottom:15px;
 }
+
 /* changes for seven theme */
 /* node form */
 body.agenda fieldset .fieldset-legend {
@@ -358,5 +345,3 @@ body.agenda fieldset .fieldset-legend {
     position: relative;
     text-transform: uppercase;
 }
-
-

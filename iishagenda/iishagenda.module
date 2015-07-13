@@ -40,6 +40,15 @@ function iishagenda_custom_get_default_theme() {
     return variable_get('theme_default', '0');
 }
 
+/**
+ * Implements hook_admin_paths_alter().
+ *
+ * Disables admin overlay for path
+ */
+function iishagenda_admin_paths_alter(&$paths) {
+    $paths['node/add/event'] = FALSE;
+}
+
 
 /**
  * Implementation of hook_menu().

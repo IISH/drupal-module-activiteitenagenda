@@ -1,25 +1,14 @@
-
 .calendar-calendar .month-view .full tr td.single-day.today {
-    border-bottom: 2px solid #75a1c7;
-    background-color: #dff5ff;
-
     border-bottom: 2px solid #c77d6e;
     background-color: #ffe8e0;
 }
 
 .calendar-calendar .month-view .full td.date-box.today {
-    border-color: #75a1c7;
-    background-color: #dff5ff;
-
     background-color: #ffe8e0;
     border-color: #c77d6e;
 }
 
 .calendar-calendar .month-view .full tr td.today, .calendar-calendar .month-view .full tr.odd td.today, .calendar-calendar .month-view .full tr.even td.today {
-    background-color: #dff5ff;
-    border-left: 2px solid #75a1c7;
-    border-right: 2px solid #75a1c7;
-
     background-color: #ffe8e0;
     border-left: 2px solid #c77d6e;
     border-right: 2px solid #c77d6e;
@@ -30,9 +19,9 @@
 }
 
 .calendar span.cancelled{
-
     margin-bottom:0;
 }
+
 .calendar .views-field-field-room{
     clear:both;
 }
@@ -46,7 +35,6 @@
 .calendar-calendar .month-view .full td.single-day div.monthview,
 .calendar-calendar .week-view .full td.single-day div.weekview,
 .calendar-calendar .day-view .full td.single-day div.dayview{
-    background: #f7f7f7;
     border: none;
     border: 1px solid #CCC;
 
@@ -56,9 +44,6 @@
 
 .calendar-calendar .week-view .full div.single-day div.weekview,
 .calendar-calendar .day-view .full div.single-day div.dayview{
-    border: 1px solid #CCC;
-    background: #f7f7f7;
-
     background-color: #dff5ff;
     border-color: #75a1c7;
 }
@@ -66,9 +51,6 @@
 .calendar-calendar .month-view .full td.single-day div.monthview{
     border: 1px solid #75a1c7;
 }
-
-
-
 
 .view .date-nav-wrapper .date-prev,
 .view .date-nav-wrapper .date-next{
@@ -80,7 +62,6 @@ body.agenda   .calendar-calendar td{
     border:none;
 }
 
-
 body.agenda   .calendar-calendar td.single-day{
     border:1px solid #CCC;
     border-top: none;
@@ -90,7 +71,6 @@ body.agenda   .calendar-calendar td.calendar-agenda-items,
 body.agenda   .calendar-calendar div.calendar-agenda-items{
     border-left:1px solid #CCC;
     border-right:1px solid #CCC;
-
 }
 
 
@@ -108,11 +88,17 @@ body.agenda .calendar-calendar tr:hover td.today,
 body.agenda .calendar-calendar tr.even:hover td.today.active,
 body.agenda .calendar-calendar tr.odd:hover td.today.active {
     background-color: #ffe8e0;
-
 }
 
+.calendar-calendar .year-view  table td{
+    vertical-align: top;
+}
 
-.calendar-calendar .year-view td table td{
+.calendar-calendar .year-view  td table td{
     vertical-align: middle;
-    height:30px;
+    height:35px;
+}
+
+.calendar-calendar table td.mini a{
+    font-weight: 600;
 }
