@@ -27,22 +27,6 @@ function iishagenda_init()
    drupal_add_css(drupal_get_path('module', 'iishagenda') .'/css/agenda.css',array('weight' => 998));
 }
 
-/*
-function iishagenda_custom_theme() {
-
-
-    return "iisg";
-    /*
-    if(arg(0)=="node"){
-        $node = node_load(arg(1));
-        if($node && $node->type == "event"){
-            return "iisg";
-        }else{
-            return "seven";
-        }
-    }
-    */
-
 
 /**
  * Implements hook_menu_alter.
@@ -77,8 +61,6 @@ function iishagenda_menu() {
 }
 
 
-
-
 function _iishagenda_user_has_role($roles = array()) {
     global $user;
     $check = array_intersect($roles, array_values($user->roles));
@@ -90,21 +72,9 @@ function _iishagenda_user_has_role($roles = array()) {
 */
 function iishagenda_form_alter(&$form, $form_state, $form_id) {
 
-
     if($form_id == 'event_node_form'){
 
-        // strip form elements
         unset($form['actions']['preview']);
-
-        /*
-        // optional refresh on people num update
-        $form['field_people'][LANGUAGE_NONE][0]['value']['#ajax'] = array(
-                'event' => 'blur',
-                'callback' => '_iishagenda_rebuild_rooms',
-                'wrapper' => 'rooms-replace',
-                '#weight' => 2,
-        );
-        */
 
         $form['check'] = array(
             '#type'  => 'button',
@@ -126,7 +96,7 @@ function iishagenda_form_alter(&$form, $form_state, $form_id) {
         $options = _iishagenda_get_available_rooms($form,$form_state);
 
         if(!array_key_exists('values', $form_state)){
-            $msg = t("");
+            $msg = t('');
         }else if(count($options)==0){
             $msg = t('Sorry, geen zalen beschikbaar. Pas aub de data aan.');
         }else{
@@ -137,14 +107,12 @@ function iishagenda_form_alter(&$form, $form_state, $form_id) {
         $form['field_event_room'][LANGUAGE_NONE]['#options'] = $options;
 
         return $form;
-
     }
 }
 
 
 /**
- * @return array
- *   Renderable array
+ *  Returns renderable array
  */
 function _iishagenda_rebuild_rooms($form, $form_state) {
     $form_state["rebuild"] = true;
@@ -153,12 +121,7 @@ function _iishagenda_rebuild_rooms($form, $form_state) {
 
 
 /**
- *
- * @param string $key
- *   This will determine which set of options is returned.
- *
- * @return array
- *   Dropdown options
+ * Returns available rooms based on date
  */
 function _iishagenda_get_available_rooms($form, $form_state) {
 
@@ -174,8 +137,6 @@ function _iishagenda_get_available_rooms($form, $form_state) {
         $enddate    = issetor($form_state['values']['field_event_date'][LANGUAGE_NONE][0]['value2'],$form['#node']->field_event_date[LANGUAGE_NONE][0]['value2']);
     }
 
-    //dpm($startdate." - ".$enddate);
-
     // check which events times intersects with startdate
     $query = new EntityFieldQuery;
     $query->entityCondition('entity_type', 'node')
@@ -183,7 +144,6 @@ function _iishagenda_get_available_rooms($form, $form_state) {
         ->fieldCondition('field_event_date', 'value', $startdate, '>=')
         ->fieldCondition('field_event_date', 'value', $enddate, '<=')
         ->fieldCondition('field_canceled', 'value', 1, '!=');
-
     $results = $query->execute();
 
     // check which events times intersects with enddate
@@ -193,7 +153,6 @@ function _iishagenda_get_available_rooms($form, $form_state) {
         ->fieldCondition('field_event_date', 'value2', $startdate, '>=')
         ->fieldCondition('field_event_date', 'value2', $enddate, '<=')
         ->fieldCondition('field_canceled', 'value', 1, '!=');
-
     $results2 = $query->execute();
 
     // check which events times covers in time total
@@ -203,7 +162,6 @@ function _iishagenda_get_available_rooms($form, $form_state) {
         ->fieldCondition('field_event_date', 'value', $startdate, '<=')
         ->fieldCondition('field_event_date', 'value2', $enddate, '>=')
         ->fieldCondition('field_canceled', 'value', 1, '!=');
-
     $results3 = $query->execute();
 
     //merging data
@@ -211,8 +169,6 @@ function _iishagenda_get_available_rooms($form, $form_state) {
     $events2 = count($results2)>0 ? $results2['node'] : array();
     $events3 = count($results3)>0 ? $results3['node'] : array();
     $events = $events1 +$events2+$events3;//  merge and removes duplicates
-
-
 
     //remove current node to keep current choices
     if($nid !== null){
@@ -240,7 +196,6 @@ function _iishagenda_get_available_rooms($form, $form_state) {
     $results = $query->execute();
 
     $options = array();
-   // dpm($results);
 
     // remove booked rooms form all rooms
     foreach ($booked_rooms as $booked_room) {
@@ -249,20 +204,12 @@ function _iishagenda_get_available_rooms($form, $form_state) {
 
     if (isset($results['node'])) {
         $nodes = node_load_multiple(array_keys($results['node']));
-      //  dpm($nodes);
+
         foreach ($nodes as $node) {
 
-            // capacity check
+            // capacity
             $capacity = field_get_items('node', $node, 'field_capacity');
             $capacity_num = $capacity[0]['value'];
-            $warning = "";
-            if($capacity_num < $num){
-               // $warning = "- Let op! Deze zaal is in standaardopstelling te klein als enige ruimte voor het aantal personen.";
-            }else{
-                $warning = "";
-            }
-
-            //capacity note display
             $capacity_note = field_get_items('node', $node, 'field_capacity_note');
             $capacity_note = $capacity_note[0]['value'];
             if($capacity_note){
@@ -271,7 +218,7 @@ function _iishagenda_get_available_rooms($form, $form_state) {
                 $capacity_note = "";
             }
 
-            $options[$node->nid] = $node->title." - Max. ".$capacity_num." plaatsen" .$capacity_note." ".$warning;
+            $options[$node->nid] = $node->title." - Max. ".$capacity_num." plaatsen" .$capacity_note;
         }
     }
 
@@ -289,43 +236,51 @@ function issetor(&$var, $default = false) {
  */
 function iishagenda_node_insert($node){
 
+    $approved = issetor($node->field_approved[LANGUAGE_NONE][0]['value']);
 
+    // only notify when type is event and an event admin email is set)
     if($node->type =='event' && _check_admin()){
 
-        global $user;
-
-        $module = 'iishagenda';
-        $to = variable_get('iishagenda_admin');
-        $from = variable_get('site_mail', '');
-
-        $language = user_preferred_language($user);
-
-        $subject = t("Nieuw evenement");
-        $body = t("Er is een nieuw evenement geregistreerd");
-
-        $params = array(
-            'subject' => $subject,
-            'body' => $body,
-        );
-
-       $result = drupal_mail($module,'notice',$to,$language,$params,$from);
-
-        if($result["result"]){
-            drupal_set_message(t('Het secretariaat is op de hoogte gesteld.'));
+        if($approved == '1'){
+            drupal_set_message(t('Het secretariaat is niet op de hoogte gesteld, omdat het evenement bij het aanmaken is goedgekeurd.'));
         }else{
-            drupal_set_message(t('Het secretariaat is niet op de hoogte gesteld vanwege een fout, neem aub contact op met de beheerder.'),'error');
-        }
+            global $base_url;
+            global $user;
 
+            $module = 'iishagenda';
+            $to = variable_get('iishagenda_admin');
+            $from = variable_get('site_mail', '');
+            $language = user_preferred_language($user);
+
+            $subject = t("Nieuw evenement: ".$node->title);
+            $body = array();
+            $body[] =  t("Het evenement '".$node->title."' is geregistreerd en wacht op goedkeuring.");
+            $body[] =  t("Zie ".$base_url."/approval-list");
+
+            $params = array(
+                'subject' => $subject,
+                'body' => $body,
+            );
+
+            $result = drupal_mail($module,'notice',$to,$language,$params,$from);
+
+            if($result["result"]){
+                drupal_set_message(t('Het secretariaat is op de hoogte gesteld voor goedkeuring.'));
+            }else{
+                drupal_set_message(t('Het secretariaat is niet op de hoogte gesteld vanwege een fout, neem aub contact op met de beheerder.'),'error');
+            }
+        }
     }
 }
 
-
+/**
+ * Implementation of hook_mail().
+ */
 function iishagenda_mail($key, &$message, $params) {
-
     switch($key) {
         case 'notice':
-            $message['subject'] = "Nieuw event";
-            $message['body'] =  array(0=>t('Nieuw event'));
+            $message['subject'] = $params["subject"];
+            $message['body'] =  $params["body"];
             break;
     }
 }
@@ -335,14 +290,13 @@ function iishagenda_mail($key, &$message, $params) {
  */
 function _check_admin(){
     if(variable_get('iishagenda_admin')){
-      return true;
+        return true;
 
     }else{
         drupal_set_message(t('No event administrator defined, contact webmaster please.'),'error');
         return false;
     }
 }
-
 
 /**
  * Implementation of hook_node_presave().
@@ -351,56 +305,47 @@ function iishagenda_node_presave($node)
 {
     global $user;
 
-    //dpm($result);
-
     // only mail owner if current user is not the owner
-    if($user->uid !== $node->uid){
+    if($node->type == 'event' && $user->uid !== $node->uid){
         $old_node = node_load($node->vid);
-
-        if(count($old_node->field_approved)){
-
-            $current_approved = $old_node->field_approved[LANGUAGE_NONE][0]['value'];
-            $new_approved = $node->field_approved[LANGUAGE_NONE][0]['value'];
-
-            if($current_approved !== $new_approved && $new_approved==1){
-                _notify_event_owner($node);
-            }
+        $current_approved = issetor($old_node->field_approved[LANGUAGE_NONE][0]['value'], false);
+        $new_approved = $node->field_approved[LANGUAGE_NONE][0]['value'];
+        if($current_approved !== $new_approved && $new_approved=='1'){
+            _notify_event_owner($node);
         }
+
     }
 }
 
-
+/**
+ * Notifies event creator
+ */
 function _notify_event_owner($node){
-    $user = user_load($node->uid);
-    $email = $user->mail;
+
+    global $base_url;
+
+    $user   = user_load($node->uid);
+    $email  = $user->mail;
     $module = 'iishagenda';
-    $key = 'key';
-    $language = language_default();
-    $params = array();
-    $from = NULL;
-    $send = FALSE;
-    $message = drupal_mail($module, $key, $email, $language, $params, $from, $send);
+    $to     = $email;
+    $from   = variable_get('site_mail', '');
+    $language = user_preferred_language($user);
 
-    $message['subject'] = "Your event is approved ".$node->title;
-    $message['body'] = array();
-    $message['body'][] = "Hi";
-    $message['body'][] = "Your event is succesfully accepted by the event admin.";
-    $message['body'][] = "";
+    $subject = t("Je evenement is goedgekeurd: ".$node->title);
+    $body    = array();
+    $body[]  =  t("Je evenement '".$node->title."' is goedgekeurd.");
+    $body[]  =  t("Zie ".$base_url."/node/".$node->nid);
 
-    // Retrieve the responsible implementation for this message.
-    $system = drupal_mail_system($module, $key);
+    $params = array(
+        'subject' => $subject,
+        'body' => $body,
+    );
 
-    // Format the message body.
-    $message = $system->format($message);
+    $result = drupal_mail($module,'notice',$to,$language,$params,$from);
 
-    // Send e-mail.
-    $message['result'] = $system->mail($message);
-
-    if($message['result']){
-        drupal_set_message(t('The event owner is notified.'));
+    if($result["result"]){
+        drupal_set_message(t('Een bevestiging van de goedkeuring is gestuurd naar de aanvrager: '.$user->name.''));
     }else{
-        drupal_set_message(t('The event owner is NOT notified. Please contact webmaster.'),'error');
+        drupal_set_message(t('De aanvrager is niet op de hoogte gesteld vanwege een fout, neem aub contact op met de beheerder.'),'error');
     }
 }
-
-
