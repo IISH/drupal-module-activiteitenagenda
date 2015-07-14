@@ -88,34 +88,59 @@ function _cancelcheck(&$result){
 // END TEMPLATE FUNCTIONS FOR IISH AGENDA
 
 
-
-
 5)
 - 'drush cc all' clearing the cache
 
 
 NOTE
 
-- set jquery update to 1.7, jquery 1.10 throws errors in current version
+- set jquery update to 1.7 (current jQuery 1.10 throws errors)
 - change "latest update" on home to relevant node types
-- would be nice to have add event form into page instead of overlay now
 
 
 SETUP
 
-- Set up event administrator (email) : /admin/config/iishagenda
-- define Date types and formats (type>format):  Week>W , event_date>d-m-Y H:i , Time>H:i, Month>F Y, Date>d-m-Y
-- add link (path: /calendar) to main menu
+- Set up event administrator (email) for notifications: /admin/config/iishagenda
+- define date formats
+    /admin/config/regional/date-time/formats
+    add the next formats (without quotes):
+    1) 'W'
+    2) 'd-m-Y H:i'
+    3) 'H:i'
+    4) 'F Y'
+    5) 'd-m-Y'
+- define date types
+    /admin/config/regional/date-time
+     add the next types (without quotes) and choose format with the corresponding number (see previous step):
+    1) 'Week'
+    2) 'event_date'
+    3) 'Time'
+    4) 'Month'
+    5) 'Date'
+- add link (path: calendar) to Main Menu
+    /admin/structure/menu/manage/main-menu/add  choose "Agenda" as Menu link title
 - disable comments for Room and Event node types
-- Define event types: admin/structure/taxonomy/event_type
+    /admin/structure/types/manage/event
+    /admin/structure/types/manage/room
+- Define event types as terms: admin/structure/taxonomy/event_type
     Conference
     Meeting
     Tour
     Workshop
     Other
-- Set field permissions for fields in organiser fieldset, canceled and approval field (node type: event)
-- set permissions so users can add events
-    Event: Create new content
-- disable comments for events ans rooms
+- Set field permissions for the next fields:
+    /admin/structure/types/manage/event/fields/field_approved : authenticated users can only view own and all values, administrators and event administrators have all rights
+    /admin/structure/types/manage/event/fields/field_canceled : authenticated users can only view own and all values, administrators and event administrators have all rights
+    /admin/structure/types/manage/event/fields/field_existing_user : administrators and event administrators have all rights, others have none
+    /admin/structure/types/manage/event/fields/field_contact_person : administrators and event administrators have all rights, others have none
+    /admin/structure/types/manage/event/fields/field_phone : administrators and event administrators have all rights, others have none
+    /admin/structure/types/manage/event/fields/field_email : administrators and event administrators have all rights, others have none
+
+- set permissions so users can add events and administrators can do all
+    /admin/people/permissions
+    Node
+        'Event: Create new content' for all authenticated users
+         enable all actions for administrator and event administrator role
+
 - Add Rooms/locations: /node/add/room
 - Add event: /node/add/event
