@@ -1736,8 +1736,13 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
   $handler->display->display_options['title'] = 'Wachtlijst';
   $handler->display->display_options['display_description'] = 'Laat de evenementen zien die nog gekeurd moeten worden.';
   $handler->display->display_options['defaults']['access'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'administer nodes';
+//  $handler->display->display_options['access']['type'] = 'perm';
+//  $handler->display->display_options['access']['perm'] = 'administer nodes';
+	$handler->display->display_options['access']['type'] = 'role';
+	$handler->display->display_options['access']['role'] = array(
+		3 => '3',
+		4 => '4',
+	);
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '50';
