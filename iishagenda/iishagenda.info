@@ -21,6 +21,5 @@ dependencies[] = inline_entity_form
 dependencies[] = jquery_colorpicker
 dependencies[] = jquery_update
 dependencies[] = libraries
-dependencies[] = mailsystem
 dependencies[] = references
 dependencies[] = views_bulk_operations
