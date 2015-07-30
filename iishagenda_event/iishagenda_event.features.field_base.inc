@@ -302,9 +302,19 @@ function iishagenda_event_field_default_field_bases() {
     'settings' => array(
       'referenceable_types' => array(
         'article' => 0,
+        'book' => 0,
         'event' => 0,
+        'forum' => 0,
+        'gallery' => 0,
+        'iisg_in_press' => 0,
+        'maintenance_failures' => 0,
+        'memory_page' => 0,
+        'minutes_page' => 0,
         'page' => 0,
+        'project' => 0,
         'room' => 'room',
+        'tour' => 0,
+        'webform' => 0,
       ),
       'view' => array(
         'args' => array(),

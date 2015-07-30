@@ -26,8 +26,9 @@ function iishagenda_event_views_default_views() {
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
-    4 => '4',
-    5 => '5',
+    3 => '3',
+    9 => '9',
+    10 => '10',
   );
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -36,17 +37,11 @@ function iishagenda_event_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'table';
-  $handler->display->display_options['style_options']['grouping'] = array(
-    0 => array(
-      'field' => 'field_event_date_1',
-      'rendered' => 1,
-      'rendered_strip' => 1,
-    ),
-  );
   $handler->display->display_options['style_options']['columns'] = array(
     'field_note' => 'field_note',
     'title' => 'title',
     'field_event_date_1' => 'field_event_date_1',
+    'field_event_room' => 'field_event_room',
     'field_event_date' => 'field_event_date',
     'field_people' => 'field_people',
     'field_catering' => 'field_catering',
@@ -70,6 +65,11 @@ function iishagenda_event_views_default_views() {
     'field_event_date_1' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_event_room' => array(
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -166,6 +166,12 @@ function iishagenda_event_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
   );
+  /* Field: Content: Zaal */
+  $handler->display->display_options['fields']['field_event_room']['id'] = 'field_event_room';
+  $handler->display->display_options['fields']['field_event_room']['table'] = 'field_data_field_event_room';
+  $handler->display->display_options['fields']['field_event_room']['field'] = 'field_event_room';
+  $handler->display->display_options['fields']['field_event_room']['type'] = 'node_reference_plain';
+  $handler->display->display_options['fields']['field_event_room']['delta_offset'] = '0';
   /* Field: Content: Mensen */
   $handler->display->display_options['fields']['field_people']['id'] = 'field_people';
   $handler->display->display_options['fields']['field_people']['table'] = 'field_data_field_people';
@@ -221,8 +227,8 @@ function iishagenda_event_views_default_views() {
     1 => '1',
   );
 
-  /* Display: Catering page */
-  $handler = $view->new_display('page', 'Catering page', 'page');
+  /* Display: Catering vandaag (page) */
+  $handler = $view->new_display('page', 'Catering vandaag (page)', 'page');
   $handler->display->display_options['defaults']['footer'] = FALSE;
   /* Footer: Global: View area */
   $handler->display->display_options['footer']['view']['id'] = 'view';
@@ -251,17 +257,24 @@ function iishagenda_event_views_default_views() {
     ),
   );
   $handler->display->display_options['style_options']['columns'] = array(
+    'field_note' => 'field_note',
     'title' => 'title',
     'field_event_date_1' => 'field_event_date_1',
     'field_event_date' => 'field_event_date',
-    'field_note' => 'field_note',
-    'field_room' => 'field_room',
+    'field_event_room' => 'field_event_room',
     'field_people' => 'field_people',
     'field_catering' => 'field_catering',
     'field_event_date_2' => 'field_event_date_2',
   );
   $handler->display->display_options['style_options']['default'] = 'field_event_date_1';
   $handler->display->display_options['style_options']['info'] = array(
+    'field_note' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
     'title' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
@@ -283,16 +296,7 @@ function iishagenda_event_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
-    'field_note' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'field_room' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
+    'field_event_room' => array(
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -330,6 +334,13 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['footer'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Field: Opmerking */
+  $handler->display->display_options['fields']['field_note']['id'] = 'field_note';
+  $handler->display->display_options['fields']['field_note']['table'] = 'field_data_field_note';
+  $handler->display->display_options['fields']['field_note']['field'] = 'field_note';
+  $handler->display->display_options['fields']['field_note']['label'] = '';
+  $handler->display->display_options['fields']['field_note']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_note']['element_label_colon'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -370,13 +381,6 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  /* Field: Field: Opmerking */
-  $handler->display->display_options['fields']['field_note']['id'] = 'field_note';
-  $handler->display->display_options['fields']['field_note']['table'] = 'field_data_field_note';
-  $handler->display->display_options['fields']['field_note']['field'] = 'field_note';
-  $handler->display->display_options['fields']['field_note']['label'] = '';
-  $handler->display->display_options['fields']['field_note']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_note']['element_label_colon'] = FALSE;
   /* Field: Content: Zaal */
   $handler->display->display_options['fields']['field_event_room']['id'] = 'field_event_room';
   $handler->display->display_options['fields']['field_event_room']['table'] = 'field_data_field_event_room';
@@ -1401,7 +1405,7 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
     3 => '3',
-    4 => '4',
+    9 => '9',
   );
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'full';
@@ -1736,8 +1740,11 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
   $handler->display->display_options['title'] = 'Wachtlijst';
   $handler->display->display_options['display_description'] = 'Laat de evenementen zien die nog gekeurd moeten worden.';
   $handler->display->display_options['defaults']['access'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'administer nodes';
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    9 => '9',
+  );
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '50';
@@ -2059,7 +2066,7 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
     3 => '3',
-    4 => '4',
+    9 => '9',
   );
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'full';
