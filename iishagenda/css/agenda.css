@@ -19,12 +19,16 @@ body.agenda .grid-2.region-sidebar-first{
 
 
 .event-type{
-    padding: 4px 6px;
+    padding: 2px 4px;
     color: #FFFFFF;
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 9px;
+
     float:left;
+
+    font-size: 8px;
+
+    letter-spacing: 0.01em;
 }
 
 .view-id-upcoming_events caption{
@@ -177,7 +181,7 @@ form .field-name-field-note{
 
 label[for=edit-field-event-date-und-0-value2]
 {
-   float:left;
+    float:left;
     padding-top: 11px;
 }
 
@@ -201,16 +205,17 @@ label[for=edit-field-event-date-und-0-value2]
     width: auto;
     background: #EE0000;
     clear: both;
-    padding: 4px 6px;
+    padding: 2px 4px;
     color: #FFFFFF;
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 9px;
+    font-size: 8px;
     margin-left:4px;
+    letter-spacing: 0.01em;
 
 }
 .page-node .cancelled{
-     margin-bottom: 10px;
+    margin-bottom: 10px;
     margin-left:0px;
 }
 .view-calendar .cancelled{
@@ -218,12 +223,15 @@ label[for=edit-field-event-date-und-0-value2]
     clear: both;
     padding: 0;
     color: #EE0000;
-    text-transform: uppercase;
-    font-size: 9px;
     float:left;
     margin-left:0px;
 }
 
+
+body.node-type-event .field-name-body{
+    padding-top: 8px;
+    padding-bottom: 12px;
+}
 
 body.agenda #block-system-main{
     margin-top:0;
@@ -263,7 +271,7 @@ th.field_catering_time{
 }
 
 .view-catering th{
-   font-style: italic;
+    font-style: italic;
 }
 
 .view-catering h2{
@@ -275,6 +283,25 @@ body.agenda .content .view-catering table.field-collection-view-final td{
     border-color: #CCC;
 }
 
+.view-catering .views-field-field-event-date{   width: 200px; }
+.view-catering .views-field-field-event-date{   width: 200px; }
+.view-catering .views-field-field-people{       width: 80px; text-align: center;}
+.view-catering .views-field-field-catering{     width: 400px; }
+
+
+.view-catering th.field_catering_time{
+    width:45px;
+}
+.view-catering th.field_location{
+    width:55px;
+}
+.views-field-field-catering th{
+    color:#AAA;
+}
+
+.field-name-field-drinks .field-item{
+    margin-right:10px;
+}
 
 /* Catering page popup styles */
 a.selected {
@@ -343,17 +370,40 @@ body.agenda .content td {
 }
 
 
+body.agenda .view-id-upcoming_events span.date-display-single {
+    width: 95px;
+    display: inline-block;
+}
+body.agenda .view th.views-field-field-event-room{
+    width: 110px;
+}
+
+body.agenda .view th.views-field-field-internal-external{
+    width: 70px;
+}
+
+
 
 /* ROOMS */
-
-.views-field-field-capacity .views-label-field-capacity{
+.page-rooms .views-label{
     float:left;
     margin-right:10px;
+    width:100px;
+    font-style: italic;
+}
+
+.page-rooms .views-field-body{
+    margin-top:30px;
+}
+
+.views-field-field-setup .field-content{
+    margin-left:110px;
 }
 
 .views-field-field-capacity,
 .views-field-field-capacity-note,
-.views-field-body{
+.views-field-body,
+.views-field-field-room-phone{
     padding-bottom:15px;
 }
 
@@ -364,4 +414,22 @@ body.agenda fieldset .fieldset-legend {
     padding-left: 15px;
     position: relative;
     text-transform: uppercase;
+}
+
+
+/* pager */
+
+.agenda .item-list .pager li {
+    width: auto;
+}
+
+#iishagenda-event-clone-form label{
+    display: none;
+}
+
+#iishagenda-event-clone-form .date-padding{
+    padding:0;
+}
+#views-form-clones-block{
+    margin-bottom:100px;
 }

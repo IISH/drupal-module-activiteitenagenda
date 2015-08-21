@@ -17,8 +17,11 @@ function iishagenda_init()
            drupal_add_js(drupal_get_path('module', 'iishagenda') .'/js/iishagenda.js');
            break;
        case "node":
+           drupal_add_js(drupal_get_path('module', 'iishagenda') .'/vendor/jquery_timepicker/jquery.timepicker.js');
            drupal_add_js(drupal_get_path('module', 'iishagenda') .'/js/iishagenda_eventform.js');
+           drupal_add_css(drupal_get_path('module', 'iishagenda') .'/vendor/jquery_timepicker/jquery.timepicker.css',array('weight' => 998));
            break;
+
        case "calendar":
            drupal_add_css(drupal_get_path('module', 'iishagenda') .'/css/calendar.css',array('weight' => 999));
            break;
@@ -66,9 +69,10 @@ function iishagenda_menu() {
         'file' => 'iishagenda.admin.inc',
     );
 
+
+
     return $items;
 }
-
 
 function _iishagenda_user_has_role($roles = array()) {
     global $user;
@@ -227,7 +231,7 @@ function _iishagenda_get_available_rooms($form, $form_state) {
                 $capacity_note = "";
             }
 
-            $options[$node->nid] = $node->title." - Max. ".$capacity_num." plaatsen" .$capacity_note;
+            $options[$node->nid] = $node->title." - Max. ".$capacity_num." personen" .$capacity_note;
         }
     }
 
@@ -247,8 +251,9 @@ function iishagenda_node_insert($node){
 
     $approved = issetor($node->field_approved[LANGUAGE_NONE][0]['value']);
 
-    // only notify when type is event and an event admin email is set)
-    if($node->type =='event' && _check_admin()){
+
+    // only notify when type is event and an event admin email is set and current user is not an admin
+    if($node->type =='event' && _check_admin() && !is_user_admin()){
 
         if($approved == '1'){
             drupal_set_message(t('Het secretariaat is niet op de hoogte gesteld, omdat het evenement bij het aanmaken is goedgekeurd.'));
@@ -298,11 +303,27 @@ function iishagenda_mail($key, &$message, $params) {
  * checks if admin is defined and exists
  */
 function _check_admin(){
+
     if(variable_get('iishagenda_admin')){
         return true;
 
     }else{
         drupal_set_message(t('No event administrator defined, contact webmaster please.'),'error');
+        return false;
+    }
+}
+
+/**
+ * checks users is admin
+ */
+function is_user_admin(){
+
+    global $user;
+    $roles = array('administrator','event administrator');
+
+    if(count(array_intersect($roles,$user->roles))>0){
+        return true;
+    }else{
         return false;
     }
 }
@@ -314,15 +335,16 @@ function iishagenda_node_presave($node)
 {
     global $user;
 
-    // only mail owner if current user is not the owner
-    if($node->type == 'event' && $user->uid !== $node->uid){
+    // only mail owner if current user is not the owner, and it is not a clone
+    if($node->type == 'event' && $user->uid !== $node->uid && count($node->field_clone_of[LANGUAGE_NONE])==0){
         $old_node = node_load($node->vid);
-        $current_approved = issetor($old_node->field_approved[LANGUAGE_NONE][0]['value'], false);
-        $new_approved = $node->field_approved[LANGUAGE_NONE][0]['value'];
-        if($current_approved !== $new_approved && $new_approved=='1'){
+
+        $current_status = issetor($old_node->field_event_status[LANGUAGE_NONE][0]['value'], false);
+        $new_status = issetor($node->field_event_status[LANGUAGE_NONE][0]['value'], false);
+
+        if($current_status !== $new_status && $new_status=='approved'){
             _notify_event_owner($node);
         }
-
     }
 }
 

@@ -1,6 +1,6 @@
 
 INSTALLATION
-
+================================================================================
 clone repository content into sites/all/modules/custom/ folder
 
 1) Get Color Picker Library
@@ -93,12 +93,13 @@ function _cancelcheck(&$result){
 
 
 NOTE
-
+================================================================================
 - set jquery update to 1.7 (current jQuery 1.10 throws errors)
 - change "latest update" on home to relevant node types
 
 
 SETUP
+================================================================================
 
 - Set up event administrator (email) for notifications: /admin/config/iishagenda
 - define date formats
@@ -119,7 +120,7 @@ SETUP
     5) 'Date'
 - add link (path: calendar) to Main Menu
     /admin/structure/menu/manage/main-menu/add  choose "Agenda" as Menu link title
-- disable comments for Room and Event node types
+- disable 'comments' and 'promoted to frontpage' for Room and Event node types
     /admin/structure/types/manage/event
     /admin/structure/types/manage/room
 - Define event types as terms: admin/structure/taxonomy/event_type
@@ -144,3 +145,12 @@ SETUP
 
 - Add Rooms/locations: /node/add/room
 - Add event: /node/add/event
+
+New in version 1.1
+- configure today's events block for homepage only (enter <front> as page) in first sidebar, in IISG theme only:
+    /admin/structure/block/manage/views/today_events-block_1/configure
+- be sure SEVEN theme uses jquery 1.7    /admin/config/development/jquery_update
+
+- permissions for status and clone field
+- nieuwe template files en functies
+- enable iishagenda_event_clone + contrib replicate module

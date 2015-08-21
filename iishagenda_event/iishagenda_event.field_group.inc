@@ -23,10 +23,9 @@ function iishagenda_event_field_group_info() {
     'label' => 'Accommodatie',
     'weight' => '4',
     'children' => array(
-      0 => 'field_room',
-      1 => 'field_people',
-      2 => 'field_note',
-      3 => 'field_event_room',
+      0 => 'field_event_room',
+      1 => 'field_note',
+      2 => 'field_people',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -85,6 +84,7 @@ function iishagenda_event_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'field_approved',
+      1 => 'field_event_status',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -113,7 +113,8 @@ function iishagenda_event_field_group_info() {
     'children' => array(
       0 => 'field_approved',
       1 => 'field_canceled',
-      2 => 'group_organiser',
+      2 => 'field_event_status',
+      3 => 'group_organiser',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -197,13 +198,13 @@ function iishagenda_event_field_group_info() {
     'weight' => '2',
     'children' => array(
       0 => 'body',
-      1 => 'field_event_date',
-      2 => 'field_expense',
-      3 => 'field_type_activity',
-      4 => 'field_special',
-      5 => 'field_internal_external',
-      6 => 'field_attachment',
-      7 => 'field_reference_number',
+      1 => 'field_attachment',
+      2 => 'field_event_date',
+      3 => 'field_expense',
+      4 => 'field_internal_external',
+      5 => 'field_reference_number',
+      6 => 'field_special',
+      7 => 'field_type_activity',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -266,9 +267,9 @@ function iishagenda_event_field_group_info() {
     'weight' => '3',
     'children' => array(
       0 => 'field_contact_person',
-      1 => 'field_phone',
-      2 => 'field_email',
-      3 => 'field_existing_user',
+      1 => 'field_email',
+      2 => 'field_existing_user',
+      3 => 'field_phone',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -292,8 +293,8 @@ function iishagenda_event_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_admin';
   $field_group->data = array(
-    'label' => 'Organiser',
-    'weight' => '3',
+    'label' => 'Organisator',
+    'weight' => '34',
     'children' => array(
       0 => 'field_contact_person',
       1 => 'field_email',
@@ -302,7 +303,7 @@ function iishagenda_event_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => 'Organiser',
+      'label' => 'Organisator',
       'instance_settings' => array(
         'required_fields' => 1,
         'classes' => 'group-organiser field-group-fieldset',
