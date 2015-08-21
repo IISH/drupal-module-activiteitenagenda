@@ -194,7 +194,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 2,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -230,7 +230,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 7,
+      'weight' => -4,
     ),
   );
 
@@ -243,10 +243,9 @@ in de kantine, <b>na afloop terug brengen</b>.',
     'display' => array(
       'default' => array(
         'label' => 'inline',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 1,
+        'type' => 'hidden',
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -274,7 +273,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 32,
+      'weight' => 34,
     ),
   );
 
@@ -289,7 +288,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
         'module' => 'file',
         'settings' => array(),
         'type' => 'file_default',
-        'weight' => 7,
+        'weight' => 10,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -330,7 +329,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 13,
+      'weight' => 2,
     ),
   );
 
@@ -349,7 +348,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -439,6 +438,53 @@ in de kantine, <b>na afloop terug brengen</b>.',
     ),
   );
 
+  // Exported field_instance: 'node-event-field_clone_of'
+  $field_instances['node-event-field_clone_of'] = array(
+    'bundle' => 'event',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_clone_of',
+    'label' => 'Clone van',
+    'required' => 0,
+    'settings' => array(
+      'mediafront' => array(
+        'custom' => '',
+        'field_type' => 0,
+        'media_type' => 'media',
+        'preview' => 0,
+        'thumbnail' => 0,
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 32,
+    ),
+  );
+
   // Exported field_instance: 'node-event-field_contact_person'
   $field_instances['node-event-field_contact_person'] = array(
     'bundle' => 'event',
@@ -489,7 +535,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 19,
+      'weight' => 36,
     ),
   );
 
@@ -542,7 +588,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 21,
+      'weight' => 38,
     ),
   );
 
@@ -563,7 +609,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
           'multiple_to' => '',
         ),
         'type' => 'date_default',
-        'weight' => 1,
+        'weight' => 5,
       ),
       'full' => array(
         'label' => 'above',
@@ -628,6 +674,56 @@ in de kantine, <b>na afloop terug brengen</b>.',
     ),
   );
 
+  // Exported field_instance: 'node-event-field_event_option'
+  $field_instances['node-event-field_event_option'] = array(
+    'bundle' => 'event',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Vink dit vakje aan als je alvast een reservering wilt maken, maar nog niet helemaal zeker is of het evenement doorgaat.',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_event_option',
+    'label' => 'Optie',
+    'required' => 0,
+    'settings' => array(
+      'mediafront' => array(
+        'custom' => '',
+        'field_type' => 0,
+        'media_type' => 'media',
+        'preview' => 0,
+        'thumbnail' => 0,
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => -3,
+    ),
+  );
+
   // Exported field_instance: 'node-event-field_event_room'
   $field_instances['node-event-field_event_room'] = array(
     'bundle' => 'event',
@@ -677,11 +773,11 @@ in de kantine, <b>na afloop terug brengen</b>.',
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -757,7 +853,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
         'size' => 60,
       ),
       'type' => 'user_reference_autocomplete',
-      'weight' => 18,
+      'weight' => 35,
     ),
   );
 
@@ -773,7 +869,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 6,
+        'weight' => 9,
       ),
       'full' => array(
         'label' => 'above',
@@ -804,7 +900,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
         'size' => 20,
       ),
       'type' => 'text_textfield',
-      'weight' => 12,
+      'weight' => 1,
     ),
   );
 
@@ -824,7 +920,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 3,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -852,7 +948,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 9,
+      'weight' => -1,
     ),
   );
 
@@ -994,7 +1090,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 20,
+      'weight' => 37,
     ),
   );
 
@@ -1010,7 +1106,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1034,7 +1130,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
         'size' => 20,
       ),
       'type' => 'text_textfield',
-      'weight' => 11,
+      'weight' => 0,
     ),
   );
 
@@ -1050,7 +1146,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
-        'weight' => 2,
+        'weight' => 6,
       ),
       'full' => array(
         'label' => 'above',
@@ -1079,7 +1175,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 8,
+      'weight' => -2,
     ),
   );
 
@@ -1216,6 +1312,7 @@ in de kantine, <b>na afloop terug brengen</b>.');
   t('Bijlage');
   t('Capaciteit toelichting');
   t('Catering');
+  t('Clone van');
   t('Color');
   t('Contactpersoon (extern)');
   t('Datum');
@@ -1235,6 +1332,7 @@ in de kantine, <b>na afloop terug brengen</b>.');
   t('Locatie');
   t('Markeer dit veld om het evenement te annuleren.');
   t('Opmerking');
+  t('Optie');
   t('Personen');
   t('Referentienummer');
   t('Soort activiteit');
@@ -1242,6 +1340,7 @@ in de kantine, <b>na afloop terug brengen</b>.');
   t('Telefoon');
   t('Telefoon (extern)');
   t('Tijd');
+  t('Vink dit vakje aan als je alvast een reservering wilt maken, maar nog niet helemaal zeker is of het evenement doorgaat.');
   t('Zaal');
 
   return $field_instances;

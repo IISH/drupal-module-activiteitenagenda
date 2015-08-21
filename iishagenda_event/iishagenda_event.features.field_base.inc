@@ -162,6 +162,44 @@ function iishagenda_event_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_clone_of'
+  $field_bases['field_clone_of'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_clone_of',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'event' => 'event',
+        ),
+      ),
+      'target_type' => 'node',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
   // Exported field_base: 'field_color'
   $field_bases['field_color'] = array(
     'active' => 1,
@@ -282,6 +320,34 @@ function iishagenda_event_field_default_field_bases() {
     'type' => 'date',
   );
 
+  // Exported field_base: 'field_event_option'
+  $field_bases['field_event_option'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_event_option',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => '',
+        1 => '',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
   // Exported field_base: 'field_event_room'
   $field_bases['field_event_room'] = array(
     'active' => 1,
@@ -338,7 +404,6 @@ function iishagenda_event_field_default_field_bases() {
         'new' => 'Nieuw',
         'approved' => 'Goedgekeurd',
         'cancelled' => 'Geannuleerd',
-        'option' => 'Optie',
       ),
       'allowed_values_function' => '',
     ),

@@ -42,6 +42,7 @@ function iishagenda_event_context_default_contexts() {
         'calendar' => 'calendar',
         'upcoming-events' => 'upcoming-events',
         'catering' => 'catering',
+        'clone/*' => 'clone/*',
       ),
     ),
   );

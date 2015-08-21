@@ -111,10 +111,10 @@ function iishagenda_event_field_group_info() {
     'label' => 'Beheer',
     'weight' => '0',
     'children' => array(
-      0 => 'field_approved',
-      1 => 'field_canceled',
-      2 => 'field_event_status',
-      3 => 'group_organiser',
+      0 => 'field_event_status',
+      1 => 'field_clone_of',
+      2 => 'group_organiser',
+      3 => 'group_former',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -187,6 +187,34 @@ function iishagenda_event_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_former|node|event|form';
+  $field_group->group_name = 'group_former';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_admin';
+  $field_group->data = array(
+    'label' => 'Voormalige velden',
+    'weight' => '34',
+    'children' => array(
+      0 => 'field_approved',
+      1 => 'field_canceled',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-former field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_former|node|event|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_general|node|event|default';
   $field_group->group_name = 'group_general';
   $field_group->entity_type = 'node';
@@ -203,8 +231,9 @@ function iishagenda_event_field_group_info() {
       3 => 'field_expense',
       4 => 'field_internal_external',
       5 => 'field_reference_number',
-      6 => 'field_special',
-      7 => 'field_type_activity',
+      6 => 'field_type_activity',
+      7 => 'field_event_status',
+      8 => 'field_event_option',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -236,8 +265,8 @@ function iishagenda_event_field_group_info() {
       2 => 'field_expense',
       3 => 'field_internal_external',
       4 => 'field_reference_number',
-      5 => 'field_special',
-      6 => 'field_type_activity',
+      5 => 'field_type_activity',
+      6 => 'field_event_option',
       7 => 'title',
     ),
     'format_type' => 'fieldset',
@@ -294,7 +323,7 @@ function iishagenda_event_field_group_info() {
   $field_group->parent_name = 'group_admin';
   $field_group->data = array(
     'label' => 'Organisator',
-    'weight' => '34',
+    'weight' => '33',
     'children' => array(
       0 => 'field_contact_person',
       1 => 'field_email',
