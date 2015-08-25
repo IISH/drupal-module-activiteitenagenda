@@ -3,7 +3,7 @@ description = Provides additional functionality to the event registration form a
 core = 7.x
 package = IISH
 
-version = "7.x-1.0"
+version = "7.x-1.1"
 core = "7.x"
 
 dependencies[] = iishagenda_event

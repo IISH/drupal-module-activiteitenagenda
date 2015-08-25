@@ -585,6 +585,13 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'Vandaag geen evenementen.';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -650,6 +657,16 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
   $handler->display->display_options['filters']['field_event_date_value']['table'] = 'field_data_field_event_date';
   $handler->display->display_options['filters']['field_event_date_value']['field'] = 'field_event_date_value';
   $handler->display->display_options['filters']['field_event_date_value']['default_date'] = 'today';
+  /* Filter criterion: Content: Soort activiteit (field_type_activity) (translated) */
+  $handler->display->display_options['filters']['field_type_activity_tid_i18n']['id'] = 'field_type_activity_tid_i18n';
+  $handler->display->display_options['filters']['field_type_activity_tid_i18n']['table'] = 'field_data_field_type_activity';
+  $handler->display->display_options['filters']['field_type_activity_tid_i18n']['field'] = 'field_type_activity_tid_i18n';
+  $handler->display->display_options['filters']['field_type_activity_tid_i18n']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_type_activity_tid_i18n']['value'] = array(
+    44 => '44',
+  );
+  $handler->display->display_options['filters']['field_type_activity_tid_i18n']['type'] = 'select';
+  $handler->display->display_options['filters']['field_type_activity_tid_i18n']['vocabulary'] = 'event_type';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');

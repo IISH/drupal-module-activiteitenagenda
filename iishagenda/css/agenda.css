@@ -309,12 +309,10 @@ a.selected {
 }
 
 .messagepop {
-    background-image: url("/sites/all/modules/custom/iishagenda/images/note_bg.png");
     color:#FFFFFF;
     font-size: 13px;
     cursor:default;
     display:none;
-    margin-top: 15px;
     position:absolute;
     text-align:left;
     width:350px;
