@@ -69,8 +69,8 @@
         }
 
         function convertToTime(nTime){
-
-            if(nTime == NaN){
+           
+            if(nTime == NaN || nTime == undefined){
                 return 0;
             }else{
                 var today = new Date();
