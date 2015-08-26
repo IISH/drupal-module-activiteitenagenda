@@ -83,6 +83,8 @@ SETUP
 New in version 1.1
 (you might need to upgrade php memory limit to 256 or 512MB)
 
+-delete special field at:
+    /admin/structure/types/manage/event/fields/field_special/delete
 - configure today's events block for homepage only (enter <front> as page) in first sidebar, in IISG theme only:
     /admin/structure/block/manage/views/today_events-block_1/configure
 - be sure SEVEN theme uses jquery 1.7    /admin/config/development/jquery_update

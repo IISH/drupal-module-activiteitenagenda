@@ -69,7 +69,7 @@
         }
 
         function convertToTime(nTime){
-           
+
             if(nTime == NaN || nTime == undefined){
                 return 0;
             }else{

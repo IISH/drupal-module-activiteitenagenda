@@ -1227,12 +1227,13 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
   );
   $handler->display->display_options['filters']['field_type_activity_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_type_activity_tid']['vocabulary'] = 'event_type';
-  /* Filter criterion: Content: Goedgekeurd (field_approved) */
-  $handler->display->display_options['filters']['field_approved_value']['id'] = 'field_approved_value';
-  $handler->display->display_options['filters']['field_approved_value']['table'] = 'field_data_field_approved';
-  $handler->display->display_options['filters']['field_approved_value']['field'] = 'field_approved_value';
-  $handler->display->display_options['filters']['field_approved_value']['value'] = array(
-    1 => '1',
+  /* Filter criterion: Content: Status (field_event_status) */
+  $handler->display->display_options['filters']['field_event_status_value']['id'] = 'field_event_status_value';
+  $handler->display->display_options['filters']['field_event_status_value']['table'] = 'field_data_field_event_status';
+  $handler->display->display_options['filters']['field_event_status_value']['field'] = 'field_event_status_value';
+  $handler->display->display_options['filters']['field_event_status_value']['value'] = array(
+    'approved' => 'approved',
+    'cancelled' => 'cancelled',
   );
   $handler->display->display_options['path'] = 'upcoming-events';
   $handler->display->display_options['menu']['type'] = 'normal';
@@ -1403,11 +1404,6 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
   $handler->display->display_options['fields']['field_event_room']['table'] = 'field_data_field_event_room';
   $handler->display->display_options['fields']['field_event_room']['field'] = 'field_event_room';
   $handler->display->display_options['fields']['field_event_room']['delta_offset'] = '0';
-  /* Field: Content: Edit link */
-  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
-  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
-  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
-  $handler->display->display_options['fields']['edit_node']['label'] = 'edit';
   /* Field: Content: Datum */
   $handler->display->display_options['fields']['field_event_date_1']['id'] = 'field_event_date_1';
   $handler->display->display_options['fields']['field_event_date_1']['table'] = 'field_data_field_event_date';
