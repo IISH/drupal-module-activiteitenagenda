@@ -1364,19 +1364,12 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
   $handler->display->display_options['fields']['name']['element_wrapper_class'] = 'css[name]';
   $handler->display->display_options['fields']['name']['element_default_classes'] = FALSE;
   /* Field: Content: Title */
-  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
-  $handler->display->display_options['fields']['title_1']['table'] = 'node';
-  $handler->display->display_options['fields']['title_1']['field'] = 'title';
-  $handler->display->display_options['fields']['title_1']['label'] = 'Title Link';
-  $handler->display->display_options['fields']['title_1']['exclude'] = TRUE;
-  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['text'] = '[title] [field_canceled]';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Content: Status */
   $handler->display->display_options['fields']['field_event_status']['id'] = 'field_event_status';
   $handler->display->display_options['fields']['field_event_status']['table'] = 'field_data_field_event_status';
