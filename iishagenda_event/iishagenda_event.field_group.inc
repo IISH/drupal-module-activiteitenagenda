@@ -21,7 +21,7 @@ function iishagenda_event_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Accommodatie',
-    'weight' => '4',
+    'weight' => '2',
     'children' => array(
       0 => 'field_event_room',
       1 => 'field_note',
@@ -140,7 +140,7 @@ function iishagenda_event_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Catering',
-    'weight' => '5',
+    'weight' => '3',
     'children' => array(
       0 => 'field_catering',
     ),
@@ -202,12 +202,13 @@ function iishagenda_event_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Voormalige velden',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-former field-group-fieldset',
         'required_fields' => 1,
+        'classes' => 'group-former field-group-fieldset',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $export['group_former|node|event|form'] = $field_group;
@@ -223,7 +224,7 @@ function iishagenda_event_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Algemeen',
-    'weight' => '2',
+    'weight' => '0',
     'children' => array(
       0 => 'body',
       1 => 'field_attachment',
@@ -234,6 +235,7 @@ function iishagenda_event_field_group_info() {
       6 => 'field_type_activity',
       7 => 'field_event_status',
       8 => 'field_event_option',
+      9 => 'field_clone_of',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -267,7 +269,8 @@ function iishagenda_event_field_group_info() {
       4 => 'field_reference_number',
       5 => 'field_type_activity',
       6 => 'field_event_option',
-      7 => 'title',
+      7 => 'field_show_frontpage',
+      8 => 'title',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -293,7 +296,7 @@ function iishagenda_event_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Organisator',
-    'weight' => '3',
+    'weight' => '1',
     'children' => array(
       0 => 'field_contact_person',
       1 => 'field_email',

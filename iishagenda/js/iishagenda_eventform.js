@@ -2,7 +2,6 @@
 
     jQuery(document).ready(function($) {
 
-
         var duration = determineDuration();
 
         $('#edit-field-event-date-und-0-value-timeEntry-popup-1').timepicker({
@@ -30,15 +29,14 @@
 
         $('#edit-field-event-date-und-0-value-timeEntry-popup-1').change(function(){
             var endtimefield = $('#edit-field-event-date-und-0-value2-timeEntry-popup-1');
-            if(endtimefield.val() == ""){
+
+            if(endtimefield.val() == "" || duration==0){
                 endtimefield.val($(this).val());
             }else{
-                var d = new Date();
-                var theDate = d.getFullYear() + '-' + ( d.getMonth() + 1 ) + '-' + d.getDate();
-                var theTime = theDate + " "+ $(this).val()+":00";
-                var newTime = new Date( Date.parse( theTime ) + duration );
+                var nEndtime = convertToTime($(this).val())+duration;
+                var dEnddate = new Date(nEndtime*1000);
 
-                endtimefield.val(pad(newTime.getHours())+":"+pad(newTime.getMinutes()));
+                endtimefield.val(pad(dEnddate.getHours())+":"+pad(dEnddate.getMinutes()));
             }
         })
         function pad( value) {
@@ -51,25 +49,47 @@
 
         $('#edit-field-event-date-und-0-value2-timeEntry-popup-1').change(function(){
             duration = determineDuration();
+
         })
 
         function determineDuration(){
             var starttimefield = $('#edit-field-event-date-und-0-value-timeEntry-popup-1');
             var endtimefield = $('#edit-field-event-date-und-0-value2-timeEntry-popup-1');
+
+
             if(starttimefield.val() !== ""){
-                return convertToTime(endtimefield.val()) - convertToTime(starttimefield.val());
+                startTimestamp = convertToTime(starttimefield.val());
+                endTimestamp =convertToTime(endtimefield.val());
+                duration =  (endTimestamp-startTimestamp);
             }else{
-                return 0;
+                duration = 0;
+
             }
+            return duration;
         }
 
-        function convertToTime(sTime){
-            var d = new Date();
-            var theDate = d.getFullYear() + '-' + ( d.getMonth() + 1 ) + '-' + d.getDate();
-            var theTime = theDate + " " + sTime +":00";
-            var newTime = new Date( Date.parse( theTime )  );
-            return newTime;
+        function convertToTime(nTime){
+
+            if(nTime == NaN){
+                return 0;
+            }else{
+                var today = new Date();
+                var aTime = nTime.split(":");
+                var d = new Date(today.getFullYear(),today.getMonth(),today.getDate(),aTime[0],aTime[1],0);
+                var nTimestamp = Math.floor(d.getTime()/1000);
+                return nTimestamp;
+            }
+
         }
+
+        // Disable clone field, used automatically
+        $("#edit-field-clone-of-und-0-target-id").prop('disabled', true);
+        $("#edit-field-clone-of-und-0-target-id").addClass("input-disabled");
+
+
+        var showed_changedate_msg = false;
+        var current_rooms = new Array();
+        $(".currentrooms").css("display","none");
 
         // clear rooms when none is checked (mainly for new events)
         if($('.field-name-field-event-room .form-checkbox:checked').length == 0){
@@ -82,25 +102,50 @@
         $('.form-item-field-event-date-und-0-value2-date').css("display","none");
         $("label[for='edit-field-event-date-und-0-value2']").html("tot");
 
-        $('#edit-field-event-date-und-0-value-datepicker-popup-0').change(function() {
+        $('#edit-field-event-date-und-0-value-datepicker-popup-0').change(function(e) {
             $("#edit-field-event-date-und-0-value2-datepicker-popup-0").val($("#edit-field-event-date-und-0-value-datepicker-popup-0").val());
-            onchange_date();
+            onchange_date(this);
         });
-        $('#edit-field-event-date-und-0-value-timeEntry-popup-1').change(onchange_date);
-        $('#edit-field-event-date-und-0-value2-timeEntry-popup-1').change(onchange_date);
+        $('#edit-field-event-date-und-0-value-timeEntry-popup-1').change(function(e){ onchange_date(this); });
+        $('#edit-field-event-date-und-0-value2-timeEntry-popup-1').change(function(e){ onchange_date(this); });
 
 
         $('#edit-check').mousedown(function(){
             $('#edit-check').css("border","0px");
+
+            if(showed_changedate_msg){
+                showed_changedate_msg = false;
+                $(".currentrooms").css("display","block");
+            }else{
+                $('.form-item-field-event-date-und-0-value2-date').css("display","none");
+            }
+
         });
 
-        function onchange_date(){
-            $('#edit-check').css("border","2px solid orange");
-            clear_rooms();
+        function onchange_date(e){
+
+            if($("body").hasClass('page-node-edit')){
+                show_alert();
+                $(".ui-timepicker-wrapper").css("display","none");
+                $('#edit-check').css("border","2px solid orange");
+
+                clear_rooms();
+            }
+
+        }
+        function show_alert(){
+            if(!showed_changedate_msg){
+                alert('Je verandert de datum/tijd. Klik op "Controleer beschikbaarheid" voor beschikbare zalen op deze nieuwe datum/tijd.');
+                showed_changedate_msg = true;
+            }
         }
 
         function clear_rooms(){
-            $('.field-name-field-event-room .form-checkboxes').html("klik op 'Controleer beschikbaarheid' voor beschikbare zalen.");
+            $( ".field-name-field-event-room input:checked" ).each(function( index ) {
+                current_rooms.push($( this ).attr('id'));
+            });
+
+           $('.field-name-field-event-room .form-checkboxes').html("klik op 'Controleer beschikbaarheid' voor beschikbare zalen.");
         }
 
     });

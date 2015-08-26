@@ -13,8 +13,6 @@ body.agenda .grid-2.region-sidebar-first{
 
 
 
-
-
 /* CUSTOM */
 
 
@@ -185,6 +183,20 @@ label[for=edit-field-event-date-und-0-value2]
     padding-top: 11px;
 }
 
+html.js input.form-autocomplete.input-disabled{
+    background-color: #EEE;
+    color: #CCC;
+}
+
+.currentrooms{
+
+    background-color: #fff4d2;
+    padding:8px 6px;
+
+}
+#rooms-replace{
+    clear:both;
+}
 /* ROOMS LIST */
 
 .view-rooms .views-field-field-image img{

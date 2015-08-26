@@ -17,7 +17,7 @@ Event content type:
     - added option field
     - grouped cancelled and approved field
     - improved css for catering layout
-    
+
 Calendar:
     - add color coding to events based on internal/external field values
     - fixed error that showed on day view
