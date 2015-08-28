@@ -51,7 +51,8 @@ function iishagenda_event_field_default_field_instances() {
     'bundle' => 'field_catering',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Bestellingen tot 15 personen kunnen afgehaald worden<br>
+in de kantine, <b>na afloop terug brengen</b>.',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -66,6 +67,13 @@ function iishagenda_event_field_default_field_instances() {
     'label' => 'Drinken',
     'required' => 0,
     'settings' => array(
+      'mediafront' => array(
+        'custom' => '',
+        'field_type' => 0,
+        'media_type' => 'media',
+        'preview' => 0,
+        'thumbnail' => 0,
+      ),
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -186,7 +194,7 @@ function iishagenda_event_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 10,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -222,7 +230,7 @@ function iishagenda_event_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 7,
+      'weight' => -4,
     ),
   );
 
@@ -235,10 +243,9 @@ function iishagenda_event_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'inline',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 1,
+        'type' => 'hidden',
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -266,7 +273,7 @@ function iishagenda_event_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 1,
+      'weight' => 34,
     ),
   );
 
@@ -281,7 +288,7 @@ function iishagenda_event_field_default_field_instances() {
         'module' => 'file',
         'settings' => array(),
         'type' => 'file_default',
-        'weight' => 7,
+        'weight' => 18,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -322,7 +329,7 @@ function iishagenda_event_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 13,
+      'weight' => 3,
     ),
   );
 
@@ -369,7 +376,7 @@ function iishagenda_event_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 2,
+      'weight' => 33,
     ),
   );
 
@@ -431,12 +438,62 @@ function iishagenda_event_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-event-field_clone_of'
+  $field_instances['node-event-field_clone_of'] = array(
+    'bundle' => 'event',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Dit veld wordt automatisch gevuld als het een evenement een kloon is van een ander evenement.',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => 1,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 9,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_clone_of',
+    'label' => 'Kloon van',
+    'required' => 0,
+    'settings' => array(
+      'mediafront' => array(
+        'custom' => '',
+        'field_type' => 0,
+        'media_type' => 'media',
+        'preview' => 0,
+        'thumbnail' => 0,
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 32,
+    ),
+  );
+
   // Exported field_instance: 'node-event-field_contact_person'
   $field_instances['node-event-field_contact_person'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Geef de naam op van de externe contactpersoon.',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -461,7 +518,7 @@ function iishagenda_event_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_contact_person',
-    'label' => 'Contactpersoon',
+    'label' => 'Contactpersoon (extern)',
     'required' => 0,
     'settings' => array(
       'mediafront' => array(
@@ -481,7 +538,7 @@ function iishagenda_event_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 19,
+      'weight' => 34,
     ),
   );
 
@@ -515,7 +572,7 @@ function iishagenda_event_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_email',
-    'label' => 'Email',
+    'label' => 'Email (extern)',
     'required' => 0,
     'settings' => array(
       'mediafront' => array(
@@ -534,7 +591,7 @@ function iishagenda_event_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 21,
+      'weight' => 36,
     ),
   );
 
@@ -555,7 +612,7 @@ function iishagenda_event_field_default_field_instances() {
           'multiple_to' => '',
         ),
         'type' => 'date_default',
-        'weight' => 1,
+        'weight' => 13,
       ),
       'full' => array(
         'label' => 'above',
@@ -589,10 +646,17 @@ function iishagenda_event_field_default_field_instances() {
     'label' => 'Datum',
     'required' => 1,
     'settings' => array(
-      'default_value' => 'strtotime',
-      'default_value2' => 'strtotime',
+      'default_value' => 'blank',
+      'default_value2' => 'blank',
       'default_value_code' => '+168 hours',
       'default_value_code2' => '+170 hours',
+      'mediafront' => array(
+        'custom' => '',
+        'field_type' => 0,
+        'media_type' => 'media',
+        'preview' => 0,
+        'thumbnail' => 0,
+      ),
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -610,6 +674,56 @@ function iishagenda_event_field_default_field_instances() {
       ),
       'type' => 'date_popup',
       'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'node-event-field_event_option'
+  $field_instances['node-event-field_event_option'] = array(
+    'bundle' => 'event',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Vink dit vakje aan als je alvast een reservering wilt maken, maar nog niet helemaal zeker is of het evenement doorgaat.',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 12,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_event_option',
+    'label' => 'Optie',
+    'required' => 0,
+    'settings' => array(
+      'mediafront' => array(
+        'custom' => '',
+        'field_type' => 0,
+        'media_type' => 'media',
+        'preview' => 0,
+        'thumbnail' => 0,
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => -3,
     ),
   );
 
@@ -650,12 +764,60 @@ function iishagenda_event_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-event-field_event_status'
+  $field_instances['node-event-field_event_status'] = array(
+    'bundle' => 'event',
+    'default_value' => array(
+      0 => array(
+        'value' => 'new',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 11,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_event_status',
+    'label' => 'Status',
+    'required' => 1,
+    'settings' => array(
+      'mediafront' => array(
+        'custom' => '',
+        'field_type' => 0,
+        'media_type' => 'media',
+        'preview' => 0,
+        'thumbnail' => 0,
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 31,
+    ),
+  );
+
   // Exported field_instance: 'node-event-field_existing_user'
   $field_instances['node-event-field_existing_user'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Gebruik dit veld om namens een bestaande gebruiker een evenement aan te maken. <br>Typ de gebruikersnaam van de gebruiker, formaat: voornaam.achternaam',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -694,7 +856,7 @@ function iishagenda_event_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'user_reference_autocomplete',
-      'weight' => 18,
+      'weight' => 33,
     ),
   );
 
@@ -710,7 +872,7 @@ function iishagenda_event_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 6,
+        'weight' => 17,
       ),
       'full' => array(
         'label' => 'above',
@@ -741,7 +903,7 @@ function iishagenda_event_field_default_field_instances() {
         'size' => 20,
       ),
       'type' => 'text_textfield',
-      'weight' => 12,
+      'weight' => 2,
     ),
   );
 
@@ -761,7 +923,7 @@ function iishagenda_event_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 3,
+        'weight' => 15,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -789,7 +951,7 @@ function iishagenda_event_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 9,
+      'weight' => 0,
     ),
   );
 
@@ -798,7 +960,7 @@ function iishagenda_event_field_default_field_instances() {
     'bundle' => 'event',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Geef hier aanvullende informatie / wensen met betrekking tot de zaal (bijv extra stoelen)',
+    'description' => 'Geef hier aanvullende informatie / wensen met betrekking tot de zaal (bijv extra stoelen) en zaalcombinaties',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -819,6 +981,13 @@ function iishagenda_event_field_default_field_instances() {
     'label' => 'Opmerking',
     'required' => 0,
     'settings' => array(
+      'mediafront' => array(
+        'custom' => '',
+        'field_type' => 0,
+        'media_type' => 'media',
+        'preview' => 0,
+        'thumbnail' => 0,
+      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -838,7 +1007,7 @@ function iishagenda_event_field_default_field_instances() {
     'bundle' => 'event',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Geef het maximaal aantal mensen op ',
+    'description' => 'Geef het maximaal aantal personen op ',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -856,9 +1025,16 @@ function iishagenda_event_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_people',
-    'label' => 'Mensen',
+    'label' => 'Personen',
     'required' => 0,
     'settings' => array(
+      'mediafront' => array(
+        'custom' => '',
+        'field_type' => 0,
+        'media_type' => 'media',
+        'preview' => 0,
+        'thumbnail' => 0,
+      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -904,7 +1080,7 @@ function iishagenda_event_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_phone',
-    'label' => 'Telefoon',
+    'label' => 'Telefoon (extern)',
     'required' => 0,
     'settings' => array(
       'mediafront' => array(
@@ -924,7 +1100,7 @@ function iishagenda_event_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 20,
+      'weight' => 35,
     ),
   );
 
@@ -940,7 +1116,7 @@ function iishagenda_event_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 16,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -964,12 +1140,12 @@ function iishagenda_event_field_default_field_instances() {
         'size' => 20,
       ),
       'type' => 'text_textfield',
-      'weight' => 11,
+      'weight' => 1,
     ),
   );
 
-  // Exported field_instance: 'node-event-field_special'
-  $field_instances['node-event-field_special'] = array(
+  // Exported field_instance: 'node-event-field_show_frontpage'
+  $field_instances['node-event-field_show_frontpage'] = array(
     'bundle' => 'event',
     'default_value' => array(
       0 => array(
@@ -977,35 +1153,33 @@ function iishagenda_event_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => 'Vink aan als het gaat om een speciaal evenement',
+    'description' => 'Vink dit vakje aan als dit evenement moet verschijnen op de voorpagina van het intranet, op de datum van het evenement. ',
     'display' => array(
       'default' => array(
-        'label' => 'inline',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 4,
-      ),
-      'full' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 12,
+        'type' => 'hidden',
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 5,
+        'type' => 'hidden',
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_special',
-    'label' => 'Speciaal',
+    'field_name' => 'field_show_frontpage',
+    'label' => 'Toon op voorpagina',
     'required' => 0,
     'settings' => array(
+      'mediafront' => array(
+        'custom' => '',
+        'field_type' => 0,
+        'media_type' => 'media',
+        'preview' => 0,
+        'thumbnail' => 0,
+      ),
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1015,7 +1189,7 @@ function iishagenda_event_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 10,
+      'weight' => -2,
     ),
   );
 
@@ -1031,7 +1205,7 @@ function iishagenda_event_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
-        'weight' => 2,
+        'weight' => 14,
       ),
       'full' => array(
         'label' => 'above',
@@ -1060,7 +1234,7 @@ function iishagenda_event_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 8,
+      'weight' => -1,
     ),
   );
 
@@ -1076,7 +1250,7 @@ function iishagenda_event_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1100,7 +1274,54 @@ function iishagenda_event_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 3,
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'node-room-field_room_phone'
+  $field_instances['node-room-field_room_phone'] = array(
+    'bundle' => 'room',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_room_phone',
+    'label' => 'Telefoon',
+    'required' => 0,
+    'settings' => array(
+      'mediafront' => array(
+        'custom' => '',
+        'field_type' => 0,
+        'media_type' => 'media',
+        'preview' => 0,
+        'thumbnail' => 0,
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 2,
     ),
   );
 
@@ -1145,33 +1366,43 @@ function iishagenda_event_field_default_field_instances() {
   t('Bekijk <a href=\'/rooms\' target=\'_blank\'>Zaaloverzicht</a> voor een lijst met alle beschikbare zalen en eigenschappen');
   t('Beschrijving');
   t('Bestaande gebruiker');
+  t('Bestellingen tot 15 personen kunnen afgehaald worden<br>
+in de kantine, <b>na afloop terug brengen</b>.');
   t('Bijlage');
   t('Capaciteit toelichting');
   t('Catering');
   t('Color');
-  t('Contactpersoon');
+  t('Contactpersoon (extern)');
   t('Datum');
   t('Deze instelling is alleen voor beheerders.');
+  t('Dit veld wordt automatisch gevuld als het een evenement een kloon is van een ander evenement.');
   t('Drinken');
-  t('Email');
+  t('Email (extern)');
   t('Eten');
   t('Geannuleerd');
-  t('Geef het maximaal aantal mensen op ');
+  t('Gebruik dit veld om namens een bestaande gebruiker een evenement aan te maken. <br>Typ de gebruikersnaam van de gebruiker, formaat: voornaam.achternaam');
+  t('Geef de naam op van de externe contactpersoon.');
+  t('Geef het maximaal aantal personen op ');
   t('Geef hier aan of een andere opstelling mogelijk is en hoeveel plaatsen daarbij horen. Bijv: Theateropstelling: 80 plaatsen');
-  t('Geef hier aanvullende informatie / wensen met betrekking tot de zaal (bijv extra stoelen)');
+  t('Geef hier aanvullende informatie / wensen met betrekking tot de zaal (bijv extra stoelen) en zaalcombinaties');
   t('Goedgekeurd');
   t('Intern / Extern');
+  t('Kloon van');
   t('Kostenpost');
   t('Locatie');
   t('Markeer dit veld om het evenement te annuleren.');
-  t('Mensen');
   t('Opmerking');
+  t('Optie');
+  t('Personen');
   t('Referentienummer');
   t('Soort activiteit');
-  t('Speciaal');
+  t('Status');
   t('Telefoon');
+  t('Telefoon (extern)');
   t('Tijd');
-  t('Vink aan als het gaat om een speciaal evenement');
+  t('Toon op voorpagina');
+  t('Vink dit vakje aan als dit evenement moet verschijnen op de voorpagina van het intranet, op de datum van het evenement. ');
+  t('Vink dit vakje aan als je alvast een reservering wilt maken, maar nog niet helemaal zeker is of het evenement doorgaat.');
   t('Zaal');
 
   return $field_instances;

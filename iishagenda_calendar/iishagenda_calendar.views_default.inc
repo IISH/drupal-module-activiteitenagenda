@@ -44,13 +44,6 @@ function iishagenda_calendar_views_default_views() {
     'event_type' => 'event_type',
     'tags' => 0,
   );
-  /* Field: Content: Goedgekeurd */
-  $handler->display->display_options['fields']['field_approved']['id'] = 'field_approved';
-  $handler->display->display_options['fields']['field_approved']['table'] = 'field_data_field_approved';
-  $handler->display->display_options['fields']['field_approved']['field'] = 'field_approved';
-  $handler->display->display_options['fields']['field_approved']['label'] = '';
-  $handler->display->display_options['fields']['field_approved']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_approved']['element_label_colon'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -84,12 +77,19 @@ function iishagenda_calendar_views_default_views() {
   $handler->display->display_options['fields']['field_event_room']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_event_room']['type'] = 'node_reference_plain';
   $handler->display->display_options['fields']['field_event_room']['delta_offset'] = '0';
-  /* Field: Content: Geannuleerd */
-  $handler->display->display_options['fields']['field_canceled']['id'] = 'field_canceled';
-  $handler->display->display_options['fields']['field_canceled']['table'] = 'field_data_field_canceled';
-  $handler->display->display_options['fields']['field_canceled']['field'] = 'field_canceled';
-  $handler->display->display_options['fields']['field_canceled']['label'] = '';
-  $handler->display->display_options['fields']['field_canceled']['element_label_colon'] = FALSE;
+  /* Field: Content: Intern / Extern */
+  $handler->display->display_options['fields']['field_internal_external']['id'] = 'field_internal_external';
+  $handler->display->display_options['fields']['field_internal_external']['table'] = 'field_data_field_internal_external';
+  $handler->display->display_options['fields']['field_internal_external']['field'] = 'field_internal_external';
+  $handler->display->display_options['fields']['field_internal_external']['label'] = '';
+  $handler->display->display_options['fields']['field_internal_external']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_internal_external']['element_label_colon'] = FALSE;
+  /* Field: Content: Status */
+  $handler->display->display_options['fields']['field_event_status']['id'] = 'field_event_status';
+  $handler->display->display_options['fields']['field_event_status']['table'] = 'field_data_field_event_status';
+  $handler->display->display_options['fields']['field_event_status']['field'] = 'field_event_status';
+  $handler->display->display_options['fields']['field_event_status']['label'] = '';
+  $handler->display->display_options['fields']['field_event_status']['element_label_colon'] = FALSE;
   /* Sort criterion: Content: Datum -  start date (field_event_date) */
   $handler->display->display_options['sorts']['field_event_date_value']['id'] = 'field_event_date_value';
   $handler->display->display_options['sorts']['field_event_date_value']['table'] = 'field_data_field_event_date';
@@ -122,13 +122,6 @@ function iishagenda_calendar_views_default_views() {
   $handler->display->display_options['row_options']['colors']['legend'] = 'type';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Goedgekeurd */
-  $handler->display->display_options['fields']['field_approved']['id'] = 'field_approved';
-  $handler->display->display_options['fields']['field_approved']['table'] = 'field_data_field_approved';
-  $handler->display->display_options['fields']['field_approved']['field'] = 'field_approved';
-  $handler->display->display_options['fields']['field_approved']['label'] = '';
-  $handler->display->display_options['fields']['field_approved']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_approved']['element_label_colon'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -154,12 +147,19 @@ function iishagenda_calendar_views_default_views() {
   );
   $handler->display->display_options['fields']['field_event_date']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_event_date']['delta_offset'] = '0';
-  /* Field: Content: Geannuleerd */
-  $handler->display->display_options['fields']['field_canceled']['id'] = 'field_canceled';
-  $handler->display->display_options['fields']['field_canceled']['table'] = 'field_data_field_canceled';
-  $handler->display->display_options['fields']['field_canceled']['field'] = 'field_canceled';
-  $handler->display->display_options['fields']['field_canceled']['label'] = '';
-  $handler->display->display_options['fields']['field_canceled']['element_label_colon'] = FALSE;
+  /* Field: Content: Intern / Extern */
+  $handler->display->display_options['fields']['field_internal_external']['id'] = 'field_internal_external';
+  $handler->display->display_options['fields']['field_internal_external']['table'] = 'field_data_field_internal_external';
+  $handler->display->display_options['fields']['field_internal_external']['field'] = 'field_internal_external';
+  $handler->display->display_options['fields']['field_internal_external']['label'] = '';
+  $handler->display->display_options['fields']['field_internal_external']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_internal_external']['element_label_colon'] = FALSE;
+  /* Field: Content: Status */
+  $handler->display->display_options['fields']['field_event_status']['id'] = 'field_event_status';
+  $handler->display->display_options['fields']['field_event_status']['table'] = 'field_data_field_event_status';
+  $handler->display->display_options['fields']['field_event_status']['field'] = 'field_event_status';
+  $handler->display->display_options['fields']['field_event_status']['label'] = '';
+  $handler->display->display_options['fields']['field_event_status']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Date: Date (node) */
   $handler->display->display_options['arguments']['date_argument']['id'] = 'date_argument';
@@ -235,19 +235,19 @@ function iishagenda_calendar_views_default_views() {
   $handler->display->display_options['fields']['field_event_room']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_event_room']['type'] = 'node_reference_plain';
   $handler->display->display_options['fields']['field_event_room']['delta_offset'] = '0';
-  /* Field: Content: Geannuleerd */
-  $handler->display->display_options['fields']['field_canceled']['id'] = 'field_canceled';
-  $handler->display->display_options['fields']['field_canceled']['table'] = 'field_data_field_canceled';
-  $handler->display->display_options['fields']['field_canceled']['field'] = 'field_canceled';
-  $handler->display->display_options['fields']['field_canceled']['label'] = '';
-  $handler->display->display_options['fields']['field_canceled']['element_label_colon'] = FALSE;
-  /* Field: Content: Goedgekeurd */
-  $handler->display->display_options['fields']['field_approved']['id'] = 'field_approved';
-  $handler->display->display_options['fields']['field_approved']['table'] = 'field_data_field_approved';
-  $handler->display->display_options['fields']['field_approved']['field'] = 'field_approved';
-  $handler->display->display_options['fields']['field_approved']['label'] = '';
-  $handler->display->display_options['fields']['field_approved']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_approved']['element_label_colon'] = FALSE;
+  /* Field: Content: Intern / Extern */
+  $handler->display->display_options['fields']['field_internal_external']['id'] = 'field_internal_external';
+  $handler->display->display_options['fields']['field_internal_external']['table'] = 'field_data_field_internal_external';
+  $handler->display->display_options['fields']['field_internal_external']['field'] = 'field_internal_external';
+  $handler->display->display_options['fields']['field_internal_external']['label'] = '';
+  $handler->display->display_options['fields']['field_internal_external']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_internal_external']['element_label_colon'] = FALSE;
+  /* Field: Content: Status */
+  $handler->display->display_options['fields']['field_event_status']['id'] = 'field_event_status';
+  $handler->display->display_options['fields']['field_event_status']['table'] = 'field_data_field_event_status';
+  $handler->display->display_options['fields']['field_event_status']['field'] = 'field_event_status';
+  $handler->display->display_options['fields']['field_event_status']['label'] = '';
+  $handler->display->display_options['fields']['field_event_status']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Date: Date (node) */
   $handler->display->display_options['arguments']['date_argument']['id'] = 'date_argument';
@@ -282,6 +282,7 @@ function iishagenda_calendar_views_default_views() {
   $handler->display->display_options['style_options']['multiday_theme'] = '1';
   $handler->display->display_options['style_options']['theme_style'] = '1';
   $handler->display->display_options['style_options']['max_items'] = '0';
+  $handler->display->display_options['style_options']['groupby_times'] = 'half';
   $handler->display->display_options['style_options']['multiday_hidden'] = array(
     'field_event_date' => 'field_event_date',
   );

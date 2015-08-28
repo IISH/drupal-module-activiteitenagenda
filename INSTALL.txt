@@ -1,6 +1,9 @@
+IISH Agenda modules
+Version 7.x-1.1
+
 
 INSTALLATION
-
+================================================================================
 clone repository content into sites/all/modules/custom/ folder
 
 1) Get Color Picker Library
@@ -12,93 +15,23 @@ or install manually http://www.eyecon.ro/colorpicker/colorpicker.zip in librarie
 - 'y' (on downloading and enabling dependencies)
 - 'drush cc all' (clearing cache)
 
-3) template files
-Copy to theme directory iisg/templates
-- calendar-week-overlap.tpl.php
-- node--event.tpl.php
-- views-view-field--upcoming-events--page--name.tpl.php
-
-4) template functions
-Copy to iisg/template.php
-
-// START TEMPLATE FUNCTIONS FOR IISH AGENDA
-/*
- * Adds reservation number (node id) and cancelled value to template
- */
-function iisg_preprocess_node(&$variables, $hook){
-    if($variables["type"] == "event"){
-        $variables["reservation_number"] =  t("Reserveringsnummer: ")."#".$variables["nid"];
-        if(isset($variables['field_canceled'][LANGUAGE_NONE][0]) && $variables['field_canceled'][LANGUAGE_NONE][0]['value'] == 1)  $variables["canceled"] = t("Geannuleerd");
-    }
-}
-
-/*
- * Makes changes to event views output
- */
-function iisg_views_pre_render(&$view) {
-
-    switch ($view->name) {
-        case 'upcoming_events':
-
-            foreach($view->result as $r => &$result) {
-                _cancelcheck($result);
-                if($result->field_field_special[0]['raw']['value'] == 1){
-                    $result->field_field_special[0]['rendered']['#markup'] = "<img class='special' src='/".drupal_get_path('module','iishagenda')."/images/special.png' title='Dit is een speciaal evenement'>";
-                }else{
-                    $result->field_field_special[0]['rendered']['#markup'] = '';
-                }
-            }
-            break;
-
-        case 'calendar':
-            foreach($view->result as $r => &$result) {
-                if(isset($result->field_field_canceled)){
-                    _cancelcheck($result);
-                }
-                $approved = issetor($result->field_field_approved[0]['raw']['value'],false);
-                if($approved !== "1"){
-                    $result->node_title = "- nog niet bevestigd -";
-                }
-            }
-            break;
-
-        case 'catering':
-            foreach($view->result as $r => &$result) {
-                if(isset($result->field_field_note[0]) && isset($result->field_field_event_room[0])){
-                    $note = '<div class="messagepop pop">'.nl2br($result->field_field_note[0]["rendered"]["#markup"]).'</div>';
-                    $markup = $result->field_field_event_room[0]["rendered"]["#markup"] ."<br>".$note.'<a href="#" class="messagepop-link">opmerking!</a>' ;
-                    $result->field_field_event_room[0]["rendered"] = array('#markup'=>$markup,'#access'=>TRUE);
-                }
-            }
-            break;
-    }
-}
-/*
- * Add cancelled div for cancelled events
- */
-function _cancelcheck(&$result){
-    if(isset($result->field_field_canceled)){
-        if( $result->field_field_canceled[0]['raw']['value'] == 1){
-            $result->field_field_canceled[0]['rendered'] = "<span class='cancelled'>geannuleerd</span>";
-        }else{
-            $result->field_field_canceled[0]['rendered'] = "";
-        }
-    }
-}
-// END TEMPLATE FUNCTIONS FOR IISH AGENDA
+3)
+- Use latest version of IISH Itranet theme:
+https://github.com/IISH/drupal-module-activiteitenagenda
 
 
-5)
+4)
 - 'drush cc all' clearing the cache
 
 
 NOTE
-
-- set jquery update to 1.7 (current jQuery 1.10 throws errors)
-- change "latest update" on home to relevant node types
+================================================================================
+- set jquery update to 1.7 for IISG AND Seven theme (current jQuery 1.10 throws errors)
+- change "latest update" block on home to relevant node types (exclude node and room node types)
 
 
 SETUP
+================================================================================
 
 - Set up event administrator (email) for notifications: /admin/config/iishagenda
 - define date formats
@@ -119,7 +52,7 @@ SETUP
     5) 'Date'
 - add link (path: calendar) to Main Menu
     /admin/structure/menu/manage/main-menu/add  choose "Agenda" as Menu link title
-- disable comments for Room and Event node types
+- disable 'comments' and 'promoted to frontpage' for Room and Event node types
     /admin/structure/types/manage/event
     /admin/structure/types/manage/room
 - Define event types as terms: admin/structure/taxonomy/event_type
@@ -144,3 +77,19 @@ SETUP
 
 - Add Rooms/locations: /node/add/room
 - Add event: /node/add/event
+
+
+
+New in version 1.1
+(you might need to upgrade php memory limit to 256 or 512MB)
+
+-delete special field at:
+    /admin/structure/types/manage/event/fields/field_special/delete
+- configure today's events block for homepage only (enter <front> as page) in first sidebar, in IISG theme only:
+    /admin/structure/block/manage/views/today_events-block_1/configure
+- be sure SEVEN theme uses jquery 1.7    /admin/config/development/jquery_update
+- Set field permissions for status and clone field:
+    /admin/structure/types/manage/event/fields/field_event_status : authenticated users can only view own and all values, administrators and event administrators have all rights
+    /admin/structure/types/manage/event/fields/field_clone_of : administrators and event administrators have all rights, others have none
+- download and enable contrib replicate module
+- enable iishagenda_event_clone

@@ -58,6 +58,12 @@ function iishagenda_room_views_default_views() {
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Content: Telefoon */
+  $handler->display->display_options['fields']['field_room_phone']['id'] = 'field_room_phone';
+  $handler->display->display_options['fields']['field_room_phone']['table'] = 'field_data_field_room_phone';
+  $handler->display->display_options['fields']['field_room_phone']['field'] = 'field_room_phone';
+  $handler->display->display_options['fields']['field_room_phone']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_room_phone']['type'] = 'text_plain';
   /* Field: Content: Maximale capaciteit */
   $handler->display->display_options['fields']['field_capacity']['id'] = 'field_capacity';
   $handler->display->display_options['fields']['field_capacity']['table'] = 'field_data_field_capacity';

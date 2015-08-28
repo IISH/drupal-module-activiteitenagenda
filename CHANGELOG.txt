@@ -1,0 +1,29 @@
+Version 1.1
+--------------------------------------------
+
+
+Event content type:
+    - deleted special field
+    - comments to organiser fieldset and containing fields
+    - extended internal/external field values
+    - Fix that shows background of  notices in caering View
+    - renaming some field labels to "Persons"
+    - added block that shows today's events
+    - possibility to clone an event (link on node view page)
+    - added jquery timepicker for time fields, added logic for end time
+    - deleted standard date values, setted time boundaries
+    - fixed error that showed after updating event from admin view
+    - added event status field
+    - added option field
+    - grouped cancelled and approved field
+    - improved css for catering layout
+
+Calendar:
+    - add color coding to events based on internal/external field values
+    - fixed error that showed on day view
+    - better calendar view header texts
+
+Room content type:
+    - added phone number
+
+
