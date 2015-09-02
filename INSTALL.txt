@@ -19,7 +19,6 @@ or install manually http://www.eyecon.ro/colorpicker/colorpicker.zip in librarie
 - Use latest version of IISH Itranet theme:
 https://github.com/IISH/drupal-module-activiteitenagenda
 
-
 4)
 - 'drush cc all' clearing the cache
 
