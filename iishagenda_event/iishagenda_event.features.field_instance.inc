@@ -605,7 +605,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
         'label' => 'inline',
         'module' => 'date',
         'settings' => array(
-          'format_type' => 'long',
+          'format_type' => 'event_date',
           'fromto' => 'both',
           'multiple_from' => '',
           'multiple_number' => '',

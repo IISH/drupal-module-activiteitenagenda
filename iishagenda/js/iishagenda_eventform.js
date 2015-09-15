@@ -2,7 +2,31 @@
 
     jQuery(document).ready(function($) {
 
-        var duration = determineDuration();
+        /*
+         *  Set catering time pickers
+         */
+
+        setCateringTimePicker();
+
+        Drupal.behaviors.dogmodule = {
+            attach : function(context, settings) {
+                setCateringTimePicker(context, settings);
+            }
+        };
+
+        function setCateringTimePicker(){
+            $('.field-name-field-catering-time input').timepicker({
+                'minTime': '07:30',
+                'maxTime': '23:00',
+                'timeFormat': 'H:i',
+                'step': 15
+            });
+        }
+
+
+        /*
+         *  Set event time pickers
+         */
 
         $('#edit-field-event-date-und-0-value-timeEntry-popup-1').timepicker({
             'minTime': '07:30',
@@ -19,13 +43,7 @@
         });
 
 
-        $('.field-name-field-catering-time input').timepicker({
-            'minTime': '07:30',
-            'maxTime': '23:00',
-            'timeFormat': 'H:i',
-            'step': 15
-        });
-
+        var duration = determineDuration();
 
         $('#edit-field-event-date-und-0-value-timeEntry-popup-1').change(function(){
             var endtimefield = $('#edit-field-event-date-und-0-value2-timeEntry-popup-1');
@@ -35,10 +53,19 @@
             }else{
                 var nEndtime = convertToTime($(this).val())+duration;
                 var dEnddate = new Date(nEndtime*1000);
-
                 endtimefield.val(pad(dEnddate.getHours())+":"+pad(dEnddate.getMinutes()));
             }
         })
+
+
+        $('#edit-field-event-date-und-0-value2-timeEntry-popup-1').change(function(){
+            duration = determineDuration();
+        })
+
+
+        /*
+         *   Adds zero to number below 10
+         */
         function pad( value) {
             if(value < 10) {
                 return '0' + value;
@@ -47,15 +74,12 @@
             }
         }
 
-        $('#edit-field-event-date-und-0-value2-timeEntry-popup-1').change(function(){
-            duration = determineDuration();
-
-        })
-
+        /*
+         *   Calculates duration in seconds between start and endtime
+         */
         function determineDuration(){
             var starttimefield = $('#edit-field-event-date-und-0-value-timeEntry-popup-1');
             var endtimefield = $('#edit-field-event-date-und-0-value2-timeEntry-popup-1');
-
 
             if(starttimefield.val() !== ""){
                 startTimestamp = convertToTime(starttimefield.val());
@@ -63,13 +87,14 @@
                 duration =  (endTimestamp-startTimestamp);
             }else{
                 duration = 0;
-
             }
             return duration;
         }
 
+        /*
+         *   convert time 12:23 into timestamp,
+         */
         function convertToTime(nTime){
-
             if(nTime == NaN || nTime == undefined){
                 return 0;
             }else{
@@ -79,7 +104,6 @@
                 var nTimestamp = Math.floor(d.getTime()/1000);
                 return nTimestamp;
             }
-
         }
 
         // Disable clone field, used automatically
@@ -119,11 +143,9 @@
             }else{
                 $('.form-item-field-event-date-und-0-value2-date').css("display","none");
             }
-
         });
 
         function onchange_date(e){
-
             if($("body").hasClass('page-node-edit')){
                 show_alert();
                 $(".ui-timepicker-wrapper").css("display","none");
@@ -131,8 +153,8 @@
 
                 clear_rooms();
             }
-
         }
+
         function show_alert(){
             if(!showed_changedate_msg){
                 alert('Je verandert de datum/tijd. Klik op "Controleer beschikbaarheid" voor beschikbare zalen op deze nieuwe datum/tijd.');
