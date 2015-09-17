@@ -71,6 +71,17 @@ td.views-field-field-special{
     margin-right:10px;
 }
 
+.node-type-event .user-picture{
+
+
+    float: right;
+
+}
+.node-type-event .user-picture img{
+     height: 50px;
+}
+
+
 /* ADD EVENT PAGE */
 .page-node-add-event .agenda fieldset{
     padding: 0px 13px;
@@ -133,6 +144,7 @@ form .field-name-field-location{
 
 .field-name-field-drinks{
     float:left;
+    min-width: 72px;
 }
 .field-name-field-drinks label{
     float: none;
@@ -442,4 +454,8 @@ body.agenda fieldset .fieldset-legend {
 }
 #views-form-clones-block{
     margin-bottom:100px;
+}
+
+.clone-link{
+    font-weight: 600;
 }
