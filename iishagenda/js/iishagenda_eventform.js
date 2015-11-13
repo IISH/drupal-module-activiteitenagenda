@@ -27,6 +27,12 @@
         /*
          *  Set event time pickers
          */
+        $('#edit-field-catering-time-und-0-value').timepicker({
+            'minTime': '07:30',
+            'maxTime': '23:00',
+            'timeFormat': 'H:i',
+            'step': 15
+        });
 
         $('#edit-field-event-date-und-0-value-timeEntry-popup-1').timepicker({
             'minTime': '07:30',

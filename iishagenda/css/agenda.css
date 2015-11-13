@@ -15,17 +15,13 @@ body.agenda .grid-2.region-sidebar-first{
 
 /* CUSTOM */
 
-
 .event-type{
     padding: 2px 4px;
     color: #FFFFFF;
     text-transform: uppercase;
     font-weight: bold;
-
     float:left;
-
-    font-size: 8px;
-
+    font-size: 9px;
     letter-spacing: 0.01em;
 }
 
@@ -40,6 +36,34 @@ img.special{
     height:12px;
     margin-bottom:3px;
 }
+
+
+.view-id-upcoming_events table.views-table td:nth-child(1){
+     width:86px;
+ }
+
+.view-id-upcoming_events table.views-table td.views-field-field-event-date{
+    width:124px;
+    max-width: 124px;
+}
+.view-id-upcoming_events table.views-table td.views-field-field-event-room{
+    width: 90px;
+}
+
+.view-id-upcoming_events table{
+   margin-bottom:30px;
+}
+
+
+.ics-link{
+    float:right;
+    margin-right:3px;
+}
+.ics-link img{
+   width: 30px;
+    height:auto;
+}
+
 
 td.views-field-field-special{
     vertical-align: middle;
@@ -72,14 +96,36 @@ td.views-field-field-special{
 }
 
 .node-type-event .user-picture{
-
-
     float: right;
-
 }
 .node-type-event .user-picture img{
      height: 50px;
 }
+
+.node-type-event .field-collection-view-links,
+.node-type-event .action-links{
+    display: none;
+}
+
+
+
+.ics-full-link{
+    clear: both;
+    display: inline-block;
+    width: 260px;
+    padding:8px;
+    font-size: 12px;
+    border: 1px solid #CCC;
+    margin-top:20px;
+}
+.ics-full-link img{
+   float:left;
+    margin-right:8px;
+}
+.ics-full-link span{
+    padding-top:4px;
+}
+
 
 
 /* ADD EVENT PAGE */
@@ -104,10 +150,7 @@ td.views-field-field-special{
 #edit-field-expense label{
     float: left;
     width: 170px;
-
 }
-
-
 
 label{
     font-size: 12px;
@@ -393,7 +436,7 @@ body.agenda .content td {
 
 
 body.agenda .view-id-upcoming_events span.date-display-single {
-    width: 95px;
+    width: 90px;
     display: inline-block;
 }
 body.agenda .view th.views-field-field-event-room{

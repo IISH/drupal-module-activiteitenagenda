@@ -84,7 +84,6 @@ function iishagenda_event_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'field_approved',
-      1 => 'field_event_status',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -233,9 +232,9 @@ function iishagenda_event_field_group_info() {
       4 => 'field_internal_external',
       5 => 'field_reference_number',
       6 => 'field_type_activity',
-      7 => 'field_event_status',
+      7 => 'field_clone_of',
       8 => 'field_event_option',
-      9 => 'field_clone_of',
+      9 => 'field_event_status',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

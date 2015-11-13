@@ -36,7 +36,7 @@ SETUP
 - define date formats
     /admin/config/regional/date-time/formats
     add the next formats (without quotes):
-    1) 'W'
+    1) 'W - Y'
     2) 'd-m-Y H:i'
     3) 'H:i'
     4) 'F Y'
@@ -78,8 +78,8 @@ SETUP
 - Add event: /node/add/event
 
 
-
 New in version 1.1
+----------------------------
 (you might need to upgrade php memory limit to 256 or 512MB)
 
 -delete special field at:
@@ -92,3 +92,12 @@ New in version 1.1
     /admin/structure/types/manage/event/fields/field_clone_of : administrators and event administrators have all rights, others have none
 - download and enable contrib replicate module
 - enable iishagenda_event_clone
+
+Change date format of Drupals 'Short' date to a new format, to get rid of AM/PM
+- add the format  y M Y - H:i  at /admin/config/regional/date-time/formats
+- change Short date format to the just newly created format, at /admin/config/regional/date-time
+
+
+New changes for version 1.2
+----------------------------
+- apply patch to fix calendar month pager: https://www.drupal.org/files/issues/calendar_pager_broken-2375235-35.patch

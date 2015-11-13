@@ -27,3 +27,16 @@ Room content type:
     - added phone number
 
 
+
+
+
+Version 1.2
+--------------------------------------------
+
+Hided hours 00:00-7:30 in calender day view through CSS
+Remove operations box in events admin views
+added shadows to events in calendar views
+theme fix for dayview
+add .ics download support for events
+show option values in event table views
+auto sort catering items

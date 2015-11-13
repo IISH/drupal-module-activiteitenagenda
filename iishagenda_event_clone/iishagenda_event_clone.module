@@ -24,7 +24,7 @@ function iishagenda_event_clone_menu() {
         'title' => t('Clone'),
         'description' => '',
         'page callback' => 'clone_overview',
-        'access arguments' => arg(1),
+
         'access callback' => '_iishagenda_user_has_role',
         'access arguments' => array(array('administrator','event administrator')),
     );
@@ -107,7 +107,7 @@ function iishagenda_event_clone_form_submit($form, &$form_state) {
             $clone->field_event_date[LANGUAGE_NONE][0]['value2'] =  $enddate;
             $clone->field_clone_of[LANGUAGE_NONE][0]['target_id'] = $node_id;
 
-            if(is_available($startdate,$enddate, $clone->field_event_room[LANGUAGE_NONE])){
+            if(!isset($clone->field_event_room[LANGUAGE_NONE]) || is_available($startdate,$enddate, $clone->field_event_room[LANGUAGE_NONE])){
                 if(replicate_entity('node', $clone)){
                     drupal_set_message('Kloon aangemaakt op: '.$newdate );
                 }
