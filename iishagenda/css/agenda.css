@@ -448,6 +448,11 @@ body.agenda .view th.views-field-field-internal-external{
 }
 
 
+body.agenda  .form-item-field-type-activity-tid .description{
+    display: none;
+}
+
+
 
 /* ROOMS */
 .page-rooms .views-label{
