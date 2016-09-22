@@ -473,7 +473,8 @@ body.agenda  .form-item-field-type-activity-tid .description{
 .views-field-field-capacity,
 .views-field-field-capacity-note,
 .views-field-body,
-.views-field-field-room-phone{
+.views-field-field-room-phone,
+.views-field-field-room-type{
     padding-bottom:15px;
 }
 

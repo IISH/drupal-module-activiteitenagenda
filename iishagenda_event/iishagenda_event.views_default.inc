@@ -1358,14 +1358,6 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
     'event' => 'event',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Datum -  start date (field_event_date) */
-  $handler->display->display_options['filters']['field_event_date_value']['id'] = 'field_event_date_value';
-  $handler->display->display_options['filters']['field_event_date_value']['table'] = 'field_data_field_event_date';
-  $handler->display->display_options['filters']['field_event_date_value']['field'] = 'field_event_date_value';
-  $handler->display->display_options['filters']['field_event_date_value']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_event_date_value']['group'] = 1;
-  $handler->display->display_options['filters']['field_event_date_value']['granularity'] = 'hour';
-  $handler->display->display_options['filters']['field_event_date_value']['default_date'] = 'now';
   /* Filter criterion: Content: Soort activiteit (field_type_activity) */
   $handler->display->display_options['filters']['field_type_activity_tid']['id'] = 'field_type_activity_tid';
   $handler->display->display_options['filters']['field_type_activity_tid']['table'] = 'field_data_field_type_activity';
@@ -1397,6 +1389,13 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
     'approved' => 'approved',
     'cancelled' => 'cancelled',
   );
+  /* Filter criterion: Content: Datum - end date (field_event_date:value2) */
+  $handler->display->display_options['filters']['field_event_date_value2']['id'] = 'field_event_date_value2';
+  $handler->display->display_options['filters']['field_event_date_value2']['table'] = 'field_data_field_event_date';
+  $handler->display->display_options['filters']['field_event_date_value2']['field'] = 'field_event_date_value2';
+  $handler->display->display_options['filters']['field_event_date_value2']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_event_date_value2']['granularity'] = 'minute';
+  $handler->display->display_options['filters']['field_event_date_value2']['default_date'] = 'now';
   $handler->display->display_options['path'] = 'upcoming-events';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Aankomende evenementen';
@@ -1926,23 +1925,6 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
   );
   $handler->display->display_options['filters']['field_type_activity_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_type_activity_tid']['vocabulary'] = 'event_type';
-  /* Filter criterion: Content: Datum -  start date (field_event_date) */
-  $handler->display->display_options['filters']['field_event_date_value']['id'] = 'field_event_date_value';
-  $handler->display->display_options['filters']['field_event_date_value']['table'] = 'field_data_field_event_date';
-  $handler->display->display_options['filters']['field_event_date_value']['field'] = 'field_event_date_value';
-  $handler->display->display_options['filters']['field_event_date_value']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_event_date_value']['expose']['operator_id'] = 'field_event_date_value_op';
-  $handler->display->display_options['filters']['field_event_date_value']['expose']['label'] = 'Event-date -  start date (field_event_date)';
-  $handler->display->display_options['filters']['field_event_date_value']['expose']['operator'] = 'field_event_date_value_op';
-  $handler->display->display_options['filters']['field_event_date_value']['expose']['identifier'] = 'field_event_date_value';
-  $handler->display->display_options['filters']['field_event_date_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-    5 => 0,
-  );
-  $handler->display->display_options['filters']['field_event_date_value']['default_date'] = 'today';
   /* Filter criterion: Content: Status (field_event_status) */
   $handler->display->display_options['filters']['field_event_status_value']['id'] = 'field_event_status_value';
   $handler->display->display_options['filters']['field_event_status_value']['table'] = 'field_data_field_event_status';
@@ -1964,6 +1946,13 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
     7 => 0,
     8 => 0,
   );
+  /* Filter criterion: Content: Datum - end date (field_event_date:value2) */
+  $handler->display->display_options['filters']['field_event_date_value2']['id'] = 'field_event_date_value2';
+  $handler->display->display_options['filters']['field_event_date_value2']['table'] = 'field_data_field_event_date';
+  $handler->display->display_options['filters']['field_event_date_value2']['field'] = 'field_event_date_value2';
+  $handler->display->display_options['filters']['field_event_date_value2']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_event_date_value2']['granularity'] = 'minute';
+  $handler->display->display_options['filters']['field_event_date_value2']['default_date'] = 'now';
   $handler->display->display_options['path'] = 'administer-events/future';
   $handler->display->display_options['menu']['type'] = 'default tab';
   $handler->display->display_options['menu']['title'] = 'Aankomende evenementen';
@@ -2270,26 +2259,21 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
-    'views_bulk_operations' => 'views_bulk_operations',
-    'field_special' => 'field_special',
+    'field_event_status' => 'field_event_status',
     'field_color' => 'field_color',
-    'title' => 'title',
     'name' => 'name',
+    'title_1' => 'title_1',
+    'title' => 'title',
+    'field_event_option' => 'field_event_option',
     'field_internal_external' => 'field_internal_external',
     'field_event_date' => 'field_event_date',
-    'field_room' => 'field_room',
+    'field_event_room' => 'field_event_room',
     'edit_node' => 'edit_node',
     'field_event_date_1' => 'field_event_date_1',
-    'field_approved' => 'field_approved',
   );
-  $handler->display->display_options['style_options']['default'] = 'field_event_date_1';
+  $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
-    'views_bulk_operations' => array(
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'field_special' => array(
+    'field_event_status' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -2303,6 +2287,20 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
       'separator' => '',
       'empty_column' => 0,
     ),
+    'name' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'title_1' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
     'title' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
@@ -2310,7 +2308,7 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
       'separator' => '',
       'empty_column' => 0,
     ),
-    'name' => array(
+    'field_event_option' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -2331,9 +2329,7 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
       'separator' => '',
       'empty_column' => 0,
     ),
-    'field_room' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
+    'field_event_room' => array(
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -2344,13 +2340,6 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
       'empty_column' => 0,
     ),
     'field_event_date_1' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'field_approved' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -2513,23 +2502,6 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
   );
   $handler->display->display_options['filters']['field_type_activity_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_type_activity_tid']['vocabulary'] = 'event_type';
-  /* Filter criterion: Content: Datum -  start date (field_event_date) */
-  $handler->display->display_options['filters']['field_event_date_value']['id'] = 'field_event_date_value';
-  $handler->display->display_options['filters']['field_event_date_value']['table'] = 'field_data_field_event_date';
-  $handler->display->display_options['filters']['field_event_date_value']['field'] = 'field_event_date_value';
-  $handler->display->display_options['filters']['field_event_date_value']['operator'] = '<';
-  $handler->display->display_options['filters']['field_event_date_value']['expose']['operator_id'] = 'field_event_date_value_op';
-  $handler->display->display_options['filters']['field_event_date_value']['expose']['label'] = 'Event-date -  start date (field_event_date)';
-  $handler->display->display_options['filters']['field_event_date_value']['expose']['operator'] = 'field_event_date_value_op';
-  $handler->display->display_options['filters']['field_event_date_value']['expose']['identifier'] = 'field_event_date_value';
-  $handler->display->display_options['filters']['field_event_date_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-    5 => 0,
-  );
-  $handler->display->display_options['filters']['field_event_date_value']['default_date'] = 'today';
   /* Filter criterion: Content: Status (field_event_status) */
   $handler->display->display_options['filters']['field_event_status_value']['id'] = 'field_event_status_value';
   $handler->display->display_options['filters']['field_event_status_value']['table'] = 'field_data_field_event_status';
@@ -2551,6 +2523,13 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
     7 => 0,
     8 => 0,
   );
+  /* Filter criterion: Content: Datum - end date (field_event_date:value2) */
+  $handler->display->display_options['filters']['field_event_date_value2']['id'] = 'field_event_date_value2';
+  $handler->display->display_options['filters']['field_event_date_value2']['table'] = 'field_data_field_event_date';
+  $handler->display->display_options['filters']['field_event_date_value2']['field'] = 'field_event_date_value2';
+  $handler->display->display_options['filters']['field_event_date_value2']['operator'] = '<';
+  $handler->display->display_options['filters']['field_event_date_value2']['granularity'] = 'minute';
+  $handler->display->display_options['filters']['field_event_date_value2']['default_date'] = 'now';
   $handler->display->display_options['path'] = 'administer-events/past';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Afgelopen evenementen';

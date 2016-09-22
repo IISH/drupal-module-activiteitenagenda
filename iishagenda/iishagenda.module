@@ -78,8 +78,6 @@ function iishagenda_menu() {
         'file' => 'iishagenda.admin.inc',
     );
 
-
-
     $items['ics/%'] = array(
         'title' => t('ICS'),
         'description' => '',
