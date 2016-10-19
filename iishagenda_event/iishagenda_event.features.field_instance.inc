@@ -1417,7 +1417,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1441,7 +1441,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -1488,7 +1488,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 

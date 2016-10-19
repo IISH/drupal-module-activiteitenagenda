@@ -20,8 +20,10 @@ function iishagenda_event_context_default_contexts() {
     'menu' => array(
       'values' => array(
         'administer-events' => 'administer-events',
+        'administer-flex' => 'administer-flex',
         'approval-list' => 'approval-list',
         'calendar' => 'calendar',
+        'catering' => 'catering',
         'my-events' => 'my-events',
         'node/add/event' => 'node/add/event',
         'rooms' => 'rooms',

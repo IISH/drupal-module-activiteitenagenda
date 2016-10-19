@@ -119,7 +119,7 @@ function iishagenda_event_field_default_field_bases() {
   // Exported field_base: 'field_catering'
   $field_bases['field_catering'] = array(
     'active' => 1,
-    'cardinality' => 3,
+    'cardinality' => 5,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_catering',

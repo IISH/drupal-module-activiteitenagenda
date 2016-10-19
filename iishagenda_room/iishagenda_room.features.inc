@@ -44,7 +44,7 @@ function iishagenda_room_node_info() {
     'room' => array(
       'name' => t('Room'),
       'base' => 'node_content',
-      'description' => '',
+      'description' => t('A room is used as a location for Events.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',
