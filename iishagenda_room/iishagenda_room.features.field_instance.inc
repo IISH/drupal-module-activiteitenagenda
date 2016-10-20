@@ -10,7 +10,7 @@
 function iishagenda_room_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-room-body'
+  // Exported field_instance: 'node-room-body'.
   $field_instances['node-room-body'] = array(
     'bundle' => 'room',
     'default_value' => NULL,
@@ -54,7 +54,7 @@ function iishagenda_room_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-room-field_capacity'
+  // Exported field_instance: 'node-room-field_capacity'.
   $field_instances['node-room-field_capacity'] = array(
     'bundle' => 'room',
     'default_value' => NULL,
@@ -100,7 +100,7 @@ function iishagenda_room_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-room-field_image'
+  // Exported field_instance: 'node-room-field_image'.
   $field_instances['node-room-field_image'] = array(
     'bundle' => 'room',
     'deleted' => 0,
@@ -164,7 +164,7 @@ function iishagenda_room_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-room-field_room_type'
+  // Exported field_instance: 'node-room-field_room_type'.
   $field_instances['node-room-field_room_type'] = array(
     'bundle' => 'room',
     'default_value' => array(
@@ -192,7 +192,7 @@ function iishagenda_room_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_room_type',
     'label' => 'Type',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'mediafront' => array(
         'custom' => '',
@@ -212,7 +212,7 @@ function iishagenda_room_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-room-field_setup'
+  // Exported field_instance: 'node-room-field_setup'.
   $field_instances['node-room-field_setup'] = array(
     'bundle' => 'room',
     'default_value' => NULL,
