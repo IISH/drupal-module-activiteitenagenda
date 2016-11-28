@@ -16,7 +16,7 @@ function iishagenda_event_menu_default_menu_custom() {
     'title' => 'Agenda',
     'description' => '',
     'language' => 'und',
-    'i18n_mode' => 0,
+    'i18n_mode' => 5,
   );
   // Exported menu: menu-agenda-admin.
   $menus['menu-agenda-admin'] = array(
@@ -30,7 +30,6 @@ function iishagenda_event_menu_default_menu_custom() {
   // Included for use with string extractors like potx.
   t('Agenda');
   t('Agenda Admin');
-
 
   return $menus;
 }

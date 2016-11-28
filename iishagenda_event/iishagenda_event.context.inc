@@ -23,6 +23,7 @@ function iishagenda_event_context_default_contexts() {
         'administer-flex' => 'administer-flex',
         'approval-list' => 'approval-list',
         'calendar' => 'calendar',
+        'calendar-flex' => 'calendar-flex',
         'catering' => 'catering',
         'my-events' => 'my-events',
         'node/add/event' => 'node/add/event',
@@ -42,7 +43,9 @@ function iishagenda_event_context_default_contexts() {
     'path' => array(
       'values' => array(
         'calendar' => 'calendar',
+        'calendar-flex' => 'calendar-flex',
         'upcoming-events' => 'upcoming-events',
+        'upcoming-flex' => 'upcoming-flex',
         'catering' => 'catering',
         'clone/*' => 'clone/*',
       ),

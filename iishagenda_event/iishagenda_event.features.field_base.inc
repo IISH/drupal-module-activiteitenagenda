@@ -10,7 +10,7 @@
 function iishagenda_event_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_approved'
+  // Exported field_base: 'field_approved'.
   $field_bases['field_approved'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -38,7 +38,7 @@ function iishagenda_event_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_attachment'
+  // Exported field_base: 'field_attachment'.
   $field_bases['field_attachment'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -64,7 +64,7 @@ function iishagenda_event_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_canceled'
+  // Exported field_base: 'field_canceled'.
   $field_bases['field_canceled'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -92,7 +92,7 @@ function iishagenda_event_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_capacity_note'
+  // Exported field_base: 'field_capacity_note'.
   $field_bases['field_capacity_note'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -116,7 +116,7 @@ function iishagenda_event_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_catering'
+  // Exported field_base: 'field_catering'.
   $field_bases['field_catering'] = array(
     'active' => 1,
     'cardinality' => 5,
@@ -141,7 +141,7 @@ function iishagenda_event_field_default_field_bases() {
     'type' => 'field_collection',
   );
 
-  // Exported field_base: 'field_catering_time'
+  // Exported field_base: 'field_catering_time'.
   $field_bases['field_catering_time'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -165,7 +165,7 @@ function iishagenda_event_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_clone_of'
+  // Exported field_base: 'field_clone_of'.
   $field_bases['field_clone_of'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -203,7 +203,7 @@ function iishagenda_event_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_color'
+  // Exported field_base: 'field_color'.
   $field_bases['field_color'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -221,7 +221,7 @@ function iishagenda_event_field_default_field_bases() {
     'type' => 'jquery_colorpicker',
   );
 
-  // Exported field_base: 'field_contact_person'
+  // Exported field_base: 'field_contact_person'.
   $field_bases['field_contact_person'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -245,7 +245,7 @@ function iishagenda_event_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_drinks'
+  // Exported field_base: 'field_drinks'.
   $field_bases['field_drinks'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -273,7 +273,7 @@ function iishagenda_event_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_email'
+  // Exported field_base: 'field_email'.
   $field_bases['field_email'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -291,7 +291,7 @@ function iishagenda_event_field_default_field_bases() {
     'type' => 'email',
   );
 
-  // Exported field_base: 'field_event_date'
+  // Exported field_base: 'field_event_date'.
   $field_bases['field_event_date'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -323,7 +323,7 @@ function iishagenda_event_field_default_field_bases() {
     'type' => 'date',
   );
 
-  // Exported field_base: 'field_event_option'
+  // Exported field_base: 'field_event_option'.
   $field_bases['field_event_option'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -351,7 +351,7 @@ function iishagenda_event_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_event_room'
+  // Exported field_base: 'field_event_room'.
   $field_bases['field_event_room'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -385,7 +385,7 @@ function iishagenda_event_field_default_field_bases() {
     'type' => 'node_reference',
   );
 
-  // Exported field_base: 'field_event_status'
+  // Exported field_base: 'field_event_status'.
   $field_bases['field_event_status'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -414,7 +414,7 @@ function iishagenda_event_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_existing_user'
+  // Exported field_base: 'field_existing_user'.
   $field_bases['field_existing_user'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -457,7 +457,7 @@ function iishagenda_event_field_default_field_bases() {
     'type' => 'user_reference',
   );
 
-  // Exported field_base: 'field_expense'
+  // Exported field_base: 'field_expense'.
   $field_bases['field_expense'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -481,7 +481,7 @@ function iishagenda_event_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_food'
+  // Exported field_base: 'field_food'.
   $field_bases['field_food'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -512,7 +512,7 @@ function iishagenda_event_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_internal_external'
+  // Exported field_base: 'field_internal_external'.
   $field_bases['field_internal_external'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -542,7 +542,7 @@ function iishagenda_event_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_location'
+  // Exported field_base: 'field_location'.
   $field_bases['field_location'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -572,7 +572,7 @@ function iishagenda_event_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_note'
+  // Exported field_base: 'field_note'.
   $field_bases['field_note'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -594,7 +594,7 @@ function iishagenda_event_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_people'
+  // Exported field_base: 'field_people'.
   $field_bases['field_people'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -618,7 +618,7 @@ function iishagenda_event_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_phone'
+  // Exported field_base: 'field_phone'.
   $field_bases['field_phone'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -642,7 +642,7 @@ function iishagenda_event_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_reference_number'
+  // Exported field_base: 'field_reference_number'.
   $field_bases['field_reference_number'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -666,7 +666,7 @@ function iishagenda_event_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_room_phone'
+  // Exported field_base: 'field_room_phone'.
   $field_bases['field_room_phone'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -690,7 +690,7 @@ function iishagenda_event_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_show_frontpage'
+  // Exported field_base: 'field_show_frontpage'.
   $field_bases['field_show_frontpage'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -718,7 +718,7 @@ function iishagenda_event_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_type_activity'
+  // Exported field_base: 'field_type_activity'.
   $field_bases['field_type_activity'] = array(
     'active' => 1,
     'cardinality' => 1,
