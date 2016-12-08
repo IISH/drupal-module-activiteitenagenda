@@ -3,7 +3,6 @@
 /**
  * Implementation of hook_init().
  */
-
 function iishagenda_init()
 {
     global $user;
@@ -25,6 +24,9 @@ function iishagenda_init()
        case "calendar":
            drupal_add_css(drupal_get_path('module', 'iishagenda') .'/css/calendar.css',array('weight' => 999));
            break;
+       case "calendar-flex":
+           drupal_add_css(drupal_get_path('module', 'iishagenda') .'/css/calendar.css',array('weight' => 999));
+           break;
 
        case "field-collection":
            if(arg(1)=="field-catering"){
@@ -34,7 +36,6 @@ function iishagenda_init()
            }
            break;
    }
-
 
    drupal_add_css(drupal_get_path('module', 'iishagenda') .'/css/agenda.css',array('weight' => 998));
 }
@@ -82,7 +83,6 @@ function iishagenda_menu() {
         'title' => t('ICS'),
         'description' => '',
         'page callback' => '_generate_ics',
-
         'access callback' => '_iishagenda_user_has_role',
         'access arguments' => array(array('authenticated user')),
 
@@ -173,7 +173,6 @@ END:VCALENDAR";
     }else{
         return t("Invalid argument");
     }
-
 }
 
 
@@ -368,9 +367,6 @@ function _iishagenda_get_available_rooms($form, $form_state) {
 
     return $options;
 }
-
-
-
 
 
 function issetor(&$var, $default = false) {

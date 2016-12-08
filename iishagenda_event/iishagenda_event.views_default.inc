@@ -1401,6 +1401,15 @@ Dit zijn de komende evenementen (na vandaag) die catering en/of faciliteiten nod
   $handler->display->display_options['filters']['field_event_date_value2']['operator'] = '>=';
   $handler->display->display_options['filters']['field_event_date_value2']['granularity'] = 'minute';
   $handler->display->display_options['filters']['field_event_date_value2']['default_date'] = 'now';
+  /* Filter criterion: Content: Type (field_room_type) */
+  $handler->display->display_options['filters']['field_room_type_value']['id'] = 'field_room_type_value';
+  $handler->display->display_options['filters']['field_room_type_value']['table'] = 'field_data_field_room_type';
+  $handler->display->display_options['filters']['field_room_type_value']['field'] = 'field_room_type_value';
+  $handler->display->display_options['filters']['field_room_type_value']['relationship'] = 'field_event_room_nid';
+  $handler->display->display_options['filters']['field_room_type_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_room_type_value']['value'] = array(
+    1 => '1',
+  );
   $handler->display->display_options['path'] = 'upcoming-events';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Aankomende evenementen';

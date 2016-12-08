@@ -22,7 +22,7 @@ function iishagenda_calendar_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Calendar';
+  $handler->display->display_options['title'] = 'Calendar Events';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['link_display'] = 'page_1';
   $handler->display->display_options['access']['type'] = 'role';
@@ -44,6 +44,11 @@ function iishagenda_calendar_views_default_views() {
     'event_type' => 'event_type',
     'tags' => 0,
   );
+  /* Relationship: Content: Zaal (field_event_room) */
+  $handler->display->display_options['relationships']['field_event_room_nid']['id'] = 'field_event_room_nid';
+  $handler->display->display_options['relationships']['field_event_room_nid']['table'] = 'field_data_field_event_room';
+  $handler->display->display_options['relationships']['field_event_room_nid']['field'] = 'field_event_room_nid';
+  $handler->display->display_options['relationships']['field_event_room_nid']['delta'] = '-1';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -101,6 +106,15 @@ function iishagenda_calendar_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 0;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type (field_room_type) */
+  $handler->display->display_options['filters']['field_room_type_value']['id'] = 'field_room_type_value';
+  $handler->display->display_options['filters']['field_room_type_value']['table'] = 'field_data_field_room_type';
+  $handler->display->display_options['filters']['field_room_type_value']['field'] = 'field_room_type_value';
+  $handler->display->display_options['filters']['field_room_type_value']['relationship'] = 'field_event_room_nid';
+  $handler->display->display_options['filters']['field_room_type_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_room_type_value']['value'] = array(
+    1 => '1',
+  );
 
   /* Display: Month */
   $handler = $view->new_display('page', 'Month', 'page_1');
@@ -178,7 +192,7 @@ function iishagenda_calendar_views_default_views() {
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['tab_options']['type'] = 'normal';
-  $handler->display->display_options['tab_options']['title'] = 'Calendar';
+  $handler->display->display_options['tab_options']['title'] = 'Calendar Events';
   $handler->display->display_options['tab_options']['weight'] = '0';
 
   /* Display: Week */

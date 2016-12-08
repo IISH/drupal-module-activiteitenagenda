@@ -10,7 +10,7 @@
 function iishagenda_room_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_capacity'
+  // Exported field_base: 'field_capacity'.
   $field_bases['field_capacity'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -28,7 +28,7 @@ function iishagenda_room_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_image'
+  // Exported field_base: 'field_image'.
   $field_bases['field_image'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -53,7 +53,7 @@ function iishagenda_room_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_room_type'
+  // Exported field_base: 'field_room_type'.
   $field_bases['field_room_type'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -81,7 +81,7 @@ function iishagenda_room_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_setup'
+  // Exported field_base: 'field_setup'.
   $field_bases['field_setup'] = array(
     'active' => 1,
     'cardinality' => 1,

@@ -11,7 +11,7 @@ function iishagenda_event_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance:
-  // 'field_collection_item-field_catering-field_catering_time'
+  // 'field_collection_item-field_catering-field_catering_time'.
   $field_instances['field_collection_item-field_catering-field_catering_time'] = array(
     'bundle' => 'field_catering',
     'default_value' => NULL,
@@ -46,7 +46,7 @@ function iishagenda_event_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_catering-field_drinks'
+  // 'field_collection_item-field_catering-field_drinks'.
   $field_instances['field_collection_item-field_catering-field_drinks'] = array(
     'bundle' => 'field_catering',
     'default_value' => NULL,
@@ -85,7 +85,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_catering-field_food'
+  // Exported field_instance: 'field_collection_item-field_catering-field_food'.
   $field_instances['field_collection_item-field_catering-field_food'] = array(
     'bundle' => 'field_catering',
     'default_value' => NULL,
@@ -117,7 +117,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_catering-field_location'
+  // 'field_collection_item-field_catering-field_location'.
   $field_instances['field_collection_item-field_catering-field_location'] = array(
     'bundle' => 'field_catering',
     'default_value' => NULL,
@@ -148,7 +148,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_catering-field_note'
+  // Exported field_instance: 'field_collection_item-field_catering-field_note'.
   $field_instances['field_collection_item-field_catering-field_note'] = array(
     'bundle' => 'field_catering',
     'default_value' => NULL,
@@ -182,7 +182,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
     ),
   );
 
-  // Exported field_instance: 'node-event-body'
+  // Exported field_instance: 'node-event-body'.
   $field_instances['node-event-body'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -241,7 +241,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
     ),
   );
 
-  // Exported field_instance: 'node-event-field_approved'
+  // Exported field_instance: 'node-event-field_approved'.
   $field_instances['node-event-field_approved'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -290,7 +290,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
     ),
   );
 
-  // Exported field_instance: 'node-event-field_attachment'
+  // Exported field_instance: 'node-event-field_attachment'.
   $field_instances['node-event-field_attachment'] = array(
     'bundle' => 'event',
     'deleted' => 0,
@@ -353,7 +353,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
     ),
   );
 
-  // Exported field_instance: 'node-event-field_canceled'
+  // Exported field_instance: 'node-event-field_canceled'.
   $field_instances['node-event-field_canceled'] = array(
     'bundle' => 'event',
     'default_value' => array(
@@ -406,7 +406,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
     ),
   );
 
-  // Exported field_instance: 'node-event-field_catering'
+  // Exported field_instance: 'node-event-field_catering'.
   $field_instances['node-event-field_catering'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -482,7 +482,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
     ),
   );
 
-  // Exported field_instance: 'node-event-field_clone_of'
+  // Exported field_instance: 'node-event-field_clone_of'.
   $field_instances['node-event-field_clone_of'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -541,7 +541,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
     ),
   );
 
-  // Exported field_instance: 'node-event-field_contact_person'
+  // Exported field_instance: 'node-event-field_contact_person'.
   $field_instances['node-event-field_contact_person'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -602,7 +602,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
     ),
   );
 
-  // Exported field_instance: 'node-event-field_email'
+  // Exported field_instance: 'node-event-field_email'.
   $field_instances['node-event-field_email'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -662,7 +662,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
     ),
   );
 
-  // Exported field_instance: 'node-event-field_event_date'
+  // Exported field_instance: 'node-event-field_event_date'.
   $field_instances['node-event-field_event_date'] = array(
     'bundle' => 'event',
     'deleted' => 0,
@@ -761,7 +761,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
     ),
   );
 
-  // Exported field_instance: 'node-event-field_event_option'
+  // Exported field_instance: 'node-event-field_event_option'.
   $field_instances['node-event-field_event_option'] = array(
     'bundle' => 'event',
     'default_value' => array(
@@ -818,7 +818,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
     ),
   );
 
-  // Exported field_instance: 'node-event-field_event_room'
+  // Exported field_instance: 'node-event-field_event_room'.
   $field_instances['node-event-field_event_room'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -862,7 +862,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
     ),
   );
 
-  // Exported field_instance: 'node-event-field_event_status'
+  // Exported field_instance: 'node-event-field_event_status'.
   $field_instances['node-event-field_event_status'] = array(
     'bundle' => 'event',
     'default_value' => array(
@@ -917,7 +917,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
     ),
   );
 
-  // Exported field_instance: 'node-event-field_existing_user'
+  // Exported field_instance: 'node-event-field_existing_user'.
   $field_instances['node-event-field_existing_user'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -972,7 +972,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
     ),
   );
 
-  // Exported field_instance: 'node-event-field_expense'
+  // Exported field_instance: 'node-event-field_expense'.
   $field_instances['node-event-field_expense'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -1026,7 +1026,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
     ),
   );
 
-  // Exported field_instance: 'node-event-field_internal_external'
+  // Exported field_instance: 'node-event-field_internal_external'.
   $field_instances['node-event-field_internal_external'] = array(
     'bundle' => 'event',
     'default_value' => array(
@@ -1081,7 +1081,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
     ),
   );
 
-  // Exported field_instance: 'node-event-field_note'
+  // Exported field_instance: 'node-event-field_note'.
   $field_instances['node-event-field_note'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -1135,7 +1135,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
     ),
   );
 
-  // Exported field_instance: 'node-event-field_people'
+  // Exported field_instance: 'node-event-field_people'.
   $field_instances['node-event-field_people'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -1189,7 +1189,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
     ),
   );
 
-  // Exported field_instance: 'node-event-field_phone'
+  // Exported field_instance: 'node-event-field_phone'.
   $field_instances['node-event-field_phone'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -1251,7 +1251,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
     ),
   );
 
-  // Exported field_instance: 'node-event-field_reference_number'
+  // Exported field_instance: 'node-event-field_reference_number'.
   $field_instances['node-event-field_reference_number'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -1298,7 +1298,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
     ),
   );
 
-  // Exported field_instance: 'node-event-field_show_frontpage'
+  // Exported field_instance: 'node-event-field_show_frontpage'.
   $field_instances['node-event-field_show_frontpage'] = array(
     'bundle' => 'event',
     'default_value' => array(
@@ -1353,7 +1353,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
     ),
   );
 
-  // Exported field_instance: 'node-event-field_type_activity'
+  // Exported field_instance: 'node-event-field_type_activity'.
   $field_instances['node-event-field_type_activity'] = array(
     'bundle' => 'event',
     'default_value' => NULL,
@@ -1405,7 +1405,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
     ),
   );
 
-  // Exported field_instance: 'node-room-field_capacity_note'
+  // Exported field_instance: 'node-room-field_capacity_note'.
   $field_instances['node-room-field_capacity_note'] = array(
     'bundle' => 'room',
     'default_value' => NULL,
@@ -1445,7 +1445,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
     ),
   );
 
-  // Exported field_instance: 'node-room-field_room_phone'
+  // Exported field_instance: 'node-room-field_room_phone'.
   $field_instances['node-room-field_room_phone'] = array(
     'bundle' => 'room',
     'default_value' => NULL,
@@ -1492,7 +1492,7 @@ in de kantine, <b>na afloop terug brengen</b>.',
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-event_type-field_color'
+  // Exported field_instance: 'taxonomy_term-event_type-field_color'.
   $field_instances['taxonomy_term-event_type-field_color'] = array(
     'bundle' => 'event_type',
     'default_value' => array(
