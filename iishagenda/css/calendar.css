@@ -8,7 +8,9 @@
     border-color: #c77d6e;
 }
 
-.calendar-calendar .month-view .full tr td.today, .calendar-calendar .month-view .full tr.odd td.today, .calendar-calendar .month-view .full tr.even td.today {
+.calendar-calendar .month-view .full tr td.today,
+.calendar-calendar .month-view .full tr.odd td.today,
+.calendar-calendar .month-view .full tr.even td.today {
     background-color: #ffe8e0;
     border-left: 2px solid #c77d6e;
     border-right: 2px solid #c77d6e;
