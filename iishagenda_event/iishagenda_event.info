@@ -13,7 +13,6 @@ dependencies[] = features
 dependencies[] = field_collection
 dependencies[] = field_group
 dependencies[] = file
-dependencies[] = iishagenda_room
 dependencies[] = jquery_colorpicker
 dependencies[] = list
 dependencies[] = menu

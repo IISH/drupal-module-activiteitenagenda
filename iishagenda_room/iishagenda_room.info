@@ -5,7 +5,6 @@ package = Features
 version = 7.x-2.1-beta2
 project = iishagenda_room
 dependencies[] = features
-dependencies[] = iishagenda_event
 dependencies[] = image
 dependencies[] = list
 dependencies[] = menu
